@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edtechvault.com - Complete Preview</title>
+  <meta name="description" content="Professional websites for tutors, coaches & teaching businesses. Launch in 3-7 days.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================
+       DESIGN TOKENS - edtechvault.com
+       From Component Specification v2.1
+       ============================================ */
+    :root {
+      /* Colors */
+      --primary: #C4785A;
+      --primary-light: #D89A7F;
+      --primary-dark: #A45C42;
+      --primary-foreground: #FFFFFF;
+      --secondary: #FDF6F0;
+      --secondary-dark: #F5E8DC;
+      --accent: #2A6B6B;
+      --accent-light: #3A8585;
+      --accent-dark: #1A5151;
+      --accent-foreground: #FFFFFF;
+      --text-primary: #2D2D2D;
+      --text-secondary: #6B6B6B;
+      --background: #FAFAFA;
+      --background-white: #FFFFFF;
+      --success: #7DB59A;
+      --error: #EF4444;
+      --border: #E5E5E5;
+      --shadow-soft: 0 4px 20px rgba(196, 120, 90, 0.08);
+      --shadow-medium: 0 8px 30px rgba(196, 120, 90, 0.12);
+      --shadow-strong: 0 12px 40px rgba(196, 120, 90, 0.16);
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --container-max: 1200px;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+    }
+
+    /* ============================================
+       BASE STYLES
+       ============================================ */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; font-weight: 600; }
+    h3 { font-size: 22px; font-weight: 600; }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 56px; }
+      h2 { font-size: 40px; }
+      h3 { font-size: 28px; }
+    }
+
+    p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 32px;
+      }
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(250, 250, 250, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--text-primary);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      font-size: 15px;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: var(--accent-foreground);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-dark);
+    }
+
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btn-solid {
+      background: var(--accent);
+      color: var(--accent-foreground);
+      padding: 16px 32px;
+      min-height: 52px;
+    }
+
+    .btn-solid:hover {
+      background: var(--accent-dark);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      padding: 14px 30px;
+      min-height: 52px;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    /* ============================================
+       SECTION SEPARATOR
+       ============================================ */
+    .page-separator {
+      background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
+      color: white;
+      text-align: center;
+      padding: 16px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       HOMEPAGE: HERO SECTION
+       ============================================ */
+    #home {
+      padding-top: 80px;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--success) 100%);
+      padding: 80px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 7fr 5fr;
+        gap: 64px;
+      }
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .hero-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(42, 107, 107, 0.1);
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    .hero-title {
+      color: var(--text-primary);
+      max-width: 600px;
+    }
+
+    .hero-description {
+      font-size: 18px;
+      max-width: 560px;
+      color: var(--text-secondary);
+    }
+
+    @media (min-width: 768px) {
+      .hero-description {
+        font-size: 20px;
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-laptop {
+      width: 100%;
+      max-width: 500px;
+      filter: drop-shadow(0 20px 40px rgba(196, 120, 90, 0.15));
+      transform: rotate(-2deg);
+      transition: transform 0.5s;
+    }
+
+    .hero-laptop:hover {
+      transform: rotate(0deg);
+    }
+
+    /* Decorative circles */
+    .hero-decoration-1 {
+      position: absolute;
+      top: 25%;
+      right: -50px;
+      width: 128px;
+      height: 128px;
+      background: rgba(216, 154, 127, 0.2);
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    .hero-decoration-2 {
+      position: absolute;
+      bottom: 25%;
+      left: -30px;
+      width: 96px;
+      height: 96px;
+      background: rgba(58, 133, 133, 0.2);
+      border-radius: 50%;
+      filter: blur(30px);
+      z-index: 0;
+    }
+
+    /* ============================================
+       HOMEPAGE: PRICING SECTION
+       ============================================ */
+    .pricing-section {
+      background: var(--background-white);
+      padding: 96px 0;
+    }
+
+    @media (max-width: 767px) {
+      .pricing-section {
+        padding: 64px 0;
+      }
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header h2 {
+      margin-bottom: 16px;
+    }
+
+    .section-subtext {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .pricing-card {
+      background: var(--background-white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-4px);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-strong);
+      transform: scale(1.05);
+    }
+
+    @media (min-width: 768px) {
+      .pricing-card.featured {
+        transform: scale(1.1);
+      }
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 20px;
+    }
+
+    .pricing-price {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .pricing-tagline {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .pricing-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .pricing-feature svg {
+      flex-shrink: 0;
+      margin-top: 4px;
+      color: var(--success);
+    }
+
+    .pricing-cta {
+      width: 100%;
+    }
+
+    .pricing-disclaimer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* ============================================
+       HOMEPAGE: PORTFOLIO INVITATION
+       ============================================ */
+    .portfolio-section {
+      background: var(--secondary);
+      padding: 96px 0;
+    }
+
+    @media (max-width: 767px) {
+      .portfolio-section {
+        padding: 64px 0;
+      }
+    }
+
+    .portfolio-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 64px;
+    }
+
+    .portfolio-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .portfolio-body {
+      white-space: pre-line;
+      margin-top: 24px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .portfolio-card {
+      aspect-ratio: 4/3;
+      border-radius: var(--radius-lg);
+      border: 2px dashed rgba(216, 154, 127, 0.5);
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .portfolio-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-4px);
+    }
+
+    .portfolio-icon {
+      font-size: 64px;
+      color: rgba(216, 154, 127, 0.3);
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+
+    .portfolio-card:hover .portfolio-icon {
+      color: rgba(196, 120, 90, 0.5);
+    }
+
+    .portfolio-placeholder {
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .portfolio-cta {
+      text-align: center;
+    }
+
+    /* ============================================
+       HOMEPAGE: SOCIAL PROOF STRIP
+       ============================================ */
+    .social-proof-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--background-white);
+      padding: 32px 0;
+    }
+
+    .social-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .social-proof-grid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+      }
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .proof-icon {
+      font-size: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .proof-divider {
+        width: 1px;
+        height: 24px;
+        background: var(--border);
+      }
+    }
+
+    /* ============================================
+       ABOUT PAGE: HERO
+       ============================================ */
+    #about {
+      padding-top: 80px;
+    }
+
+    .about-hero {
+      background: var(--background-white);
+      padding: 64px 0 96px;
+    }
+
+    @media (max-width: 767px) {
+      .about-hero {
+        padding: 48px 0 64px;
+      }
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .breadcrumb a {
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--accent);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 768px) {
+      .about-grid {
+        grid-template-columns: 7fr 5fr;
+        gap: 64px;
+      }
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .about-photo-wrapper {
+      position: relative;
+    }
+
+    .about-photo {
+      width: 100%;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .about-photo-accent {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: -16px;
+      bottom: -16px;
+      border: 2px solid rgba(216, 154, 127, 0.3);
+      border-radius: var(--radius-xl);
+      z-index: -1;
+    }
+
+    /* ============================================
+       ABOUT PAGE: ORIGIN STORY
+       ============================================ */
+    .origin-section {
+      background: var(--background-white);
+      padding: 96px 0;
+    }
+
+    @media (max-width: 767px) {
+      .origin-section {
+        padding: 64px 0;
+      }
+    }
+
+    .origin-content {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .origin-content h2 {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .origin-text {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* ============================================
+       ABOUT PAGE: PROCESS TIMELINE
+       ============================================ */
+    .process-section {
+      background: var(--secondary);
+      padding: 96px 0;
+    }
+
+    @media (max-width: 767px) {
+      .process-section {
+        padding: 64px 0;
+      }
+    }
+
+    .process-section h2 {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .process-desktop {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .process-desktop {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+        position: relative;
+      }
+
+      .process-line {
+        position: absolute;
+        top: 32px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: rgba(216, 154, 127, 0.3);
+      }
+    }
+
+    .process-step {
+      position: relative;
+      text-align: center;
+    }
+
+    .process-number {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      color: white;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .process-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .process-timeline {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Mobile process */
+    .process-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .process-mobile {
+        display: none;
+      }
+    }
+
+    .process-mobile-step {
+      display: flex;
+      gap: 24px;
+    }
+
+    .process-mobile-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .process-mobile-number {
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      color: white;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .process-mobile-connector {
+      width: 2px;
+      flex: 1;
+      background: rgba(216, 154, 127, 0.3);
+      margin-top: 16px;
+    }
+
+    .process-mobile-content {
+      padding-bottom: 32px;
+    }
+
+    /* ============================================
+       ABOUT PAGE: CREDENTIALS
+       ============================================ */
+    .credentials-section {
+      background: var(--background-white);
+      padding: 96px 0;
+    }
+
+    @media (max-width: 767px) {
+      .credentials-section {
+        padding: 64px 0;
+      }
+    }
+
+    .credentials-grid {
+      display: grid;
+      gap: 64px;
+    }
+
+    @media (min-width: 768px) {
+      .credentials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .credentials-column h3 {
+      margin-bottom: 32px;
+    }
+
+    .education-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .education-item {
+      display: flex;
+      gap: 16px;
+    }
+
+    .education-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .education-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(196, 120, 90, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .education-connector {
+      width: 2px;
+      flex: 1;
+      background: rgba(216, 154, 127, 0.2);
+      margin-top: 16px;
+    }
+
+    .education-content h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .education-content p {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .skills-group {
+      margin-bottom: 32px;
+    }
+
+    .skills-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .skill-design {
+      background: rgba(216, 154, 127, 0.2);
+      color: var(--primary-dark);
+    }
+
+    .skill-ai {
+      background: rgba(58, 133, 133, 0.2);
+      color: var(--accent-dark);
+    }
+
+    .skill-creative {
+      background: rgba(125, 181, 154, 0.2);
+      color: #4a7c64;
+    }
+
+    .skill-language {
+      background: var(--secondary-dark);
+      color: var(--text-primary);
+    }
+
+    /* ============================================
+       CONTACT PAGE: HEADER
+       ============================================ */
+    #contact {
+      padding-top: 80px;
+    }
+
+    .contact-header {
+      background: var(--background-white);
+      padding: 64px 0 80px;
+      text-align: center;
+    }
+
+    @media (max-width: 767px) {
+      .contact-header {
+        padding: 48px 0 64px;
+      }
+    }
+
+    .contact-header .breadcrumb {
+      justify-content: center;
+    }
+
+    .contact-header h1 {
+      margin-bottom: 16px;
+    }
+
+    /* ============================================
+       CONTACT PAGE: OPTIONS
+       ============================================ */
+    .contact-options-section {
+      background: var(--background-white);
+      padding: 0 0 64px;
+    }
+
+    .contact-options-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .contact-options-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .contact-option-card {
+      position: relative;
+      background: var(--background-white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .contact-option-card:hover {
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-4px);
+    }
+
+    .option-decorations {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+    }
+
+    .option-plus {
+      position: absolute;
+      font-size: 14px;
+      color: rgba(216, 154, 127, 0.2);
+    }
+
+    .option-plus:nth-child(1) { top: 0; left: 0; }
+    .option-plus:nth-child(2) { top: 0; right: 0; }
+    .option-plus:nth-child(3) { bottom: 0; left: 0; }
+    .option-plus:nth-child(4) { bottom: 0; right: 0; }
+
+    .option-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .option-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .option-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      white-space: pre-line;
+    }
+
+    /* ============================================
+       CONTACT PAGE: CALENDLY EMBED
+       ============================================ */
+    .calendly-section {
+      background: var(--secondary);
+      padding: 80px 0 96px;
+    }
+
+    @media (max-width: 767px) {
+      .calendly-section {
+        padding: 64px 0;
+      }
+    }
+
+    .calendly-section h2 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .calendly-subheading {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .calendly-widget {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--background-white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+    }
+
+    /* ============================================
+       CONTACT PAGE: FORM
+       ============================================ */
+    .contact-form-section {
+      background: var(--background-white);
+      padding: 64px 0 96px;
+    }
+
+    @media (max-width: 767px) {
+      .contact-form-section {
+        padding: 48px 0 64px;
+      }
+    }
+
+    .contact-form-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-form-wrapper h2 {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .form-row-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-label {
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-textarea {
+      resize: none;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .form-required {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+
+    /* ============================================
+       CONTACT PAGE: FAQ
+       ============================================ */
+    .faq-section {
+      background: var(--background-white);
+      padding: 0 0 96px;
+    }
+
+    @media (max-width: 767px) {
+      .faq-section {
+        padding: 0 0 64px;
+      }
+    }
+
+    .faq-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-wrapper h2 {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item:hover {
+      border-color: var(--primary-light);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--text-primary);
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover {
+      background: var(--secondary);
+    }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      color: var(--accent);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+    }
+
+    .faq-answer p {
+      white-space: pre-line;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .site-footer {
+      background: var(--background-white);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-link {
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+    }
+
+    .footer-column h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--accent);
+    }
+
+    .footer-coming-soon {
+      position: relative;
+      cursor: not-allowed;
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .footer-lang {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .lang-active {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .lang-inactive {
+      color: var(--text-secondary);
+      cursor: not-allowed;
+    }
+
+    /* ============================================
+       UTILITY: VISUALLY HIDDEN
+       ============================================ */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION (Shared)
+       ============================================ -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="#home" class="nav-logo">edtechvault</a>
+      <div class="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <a href="#contact" class="nav-cta">Book a Call</a>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       PAGE: HOME
+       ============================================ -->
+  <main id="home">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="hero-eyebrow">FOR TUTORS, COACHES & TEACHING BUSINESSES</span>
+            <h1 class="hero-title">Let's Build Your Online Presence</h1>
+            <p class="hero-description">
+              Professional websites that help teaching businesses attract more students. Launch in 3-7 days. No monthly fees. You own everything.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-solid">Book a Call →</a>
+              <a href="#pricing" class="btn btn-outline">See Pricing ↓</a>
+            </div>
+          </div>
+          <div class="hero-image-wrapper">
+            <div class="hero-decoration-1"></div>
+            <div class="hero-decoration-2"></div>
+            <img 
+              src="https://placehold.co/600x400/FDF6F0/C4785A?text=Dashboard+Preview" 
+              alt="Website dashboard preview showing a professional teaching business website" 
+              class="hero-laptop"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Three Packages. One Goal: More Students.</h2>
+          <p class="section-subtext">Pick what fits. Every package includes a working website you own forever.</p>
+        </div>
+        
+        <div class="pricing-grid">
+          <!-- Quick Launch -->
+          <div class="pricing-card">
+            <div class="pricing-price">$199</div>
+            <div class="pricing-tagline">Live in 3 days</div>
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Single-page professional site</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Mobile-optimized</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>AI-generated hero image</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Contact form</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Basic SEO</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>1 revision round</span>
+              </li>
+            </ul>
+            <a href="#contact" class="btn btn-outline pricing-cta">Get Started →</a>
+          </div>
+
+          <!-- Local Visibility (Featured) -->
+          <div class="pricing-card featured">
+            <span class="pricing-badge">Most Popular</span>
+            <div class="pricing-price">$399</div>
+            <div class="pricing-tagline">The complete package</div>
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Multi-section landing page</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Thank you page</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>3 custom AI images</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Google Business setup guide</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Email notifications</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>2 revision rounds</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>7-day support</span>
+              </li>
+            </ul>
+            <a href="#contact" class="btn btn-solid pricing-cta">Get Started →</a>
+          </div>
+
+          <!-- Growth System -->
+          <div class="pricing-card">
+            <div class="pricing-price">$599</div>
+            <div class="pricing-tagline">Built to scale</div>
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Everything in Local Visibility</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>A/B testing variant</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Lead magnet page</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Email sequence templates</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Analytics dashboard</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Conversion audit</span>
+              </li>
+              <li class="pricing-feature">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>14-day support + strategy call</span>
+              </li>
+            </ul>
+            <a href="#contact" class="btn btn-outline pricing-cta">Get Started →</a>
+          </div>
+        </div>
+        
+        <p class="pricing-disclaimer">All prices in USD. Payment plans available. You own everything—no monthly fees to me.</p>
+      </div>
+    </section>
+
+    <!-- Portfolio Invitation Section -->
+    <section class="portfolio-section">
+      <div class="container">
+        <div class="portfolio-header">
+          <span class="portfolio-eyebrow">PORTFOLIO</span>
+          <h2>This Section Is Waiting for You</h2>
+          <p class="portfolio-body">I'm not going to fill this with fake mockups or borrowed work. 
+Instead, I'm looking for founding clients who want to be featured here.
+
+You get my full attention. I get a success story to share.</p>
+        </div>
+        
+        <div class="portfolio-grid">
+          <div class="portfolio-card">
+            <div class="portfolio-icon">□</div>
+            <p class="portfolio-placeholder">Your Tutoring Business Could Be Here</p>
+          </div>
+          <div class="portfolio-card">
+            <div class="portfolio-icon">□</div>
+            <p class="portfolio-placeholder">Your Dance Studio Could Be Here</p>
+          </div>
+          <div class="portfolio-card">
+            <div class="portfolio-icon">□</div>
+            <p class="portfolio-placeholder">Your Coaching Practice Could Be Here</p>
+          </div>
+        </div>
+        
+        <div class="portfolio-cta">
+          <a href="#contact" class="btn btn-solid">Claim a Founding Spot →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Strip -->
+    <section class="social-proof-section">
+      <div class="container">
+        <div class="social-proof-grid">
+          <div class="proof-item">
+            <span class="proof-icon">🎓</span>
+            <span>Tongji University</span>
+          </div>
+          <span class="proof-divider" aria-hidden="true"></span>
+          <div class="proof-item">
+            <span class="proof-icon">🛠️</span>
+            <span>Figma • Builder.io • AI</span>
+          </div>
+          <span class="proof-divider" aria-hidden="true"></span>
+          <div class="proof-item">
+            <span class="proof-icon">🌏</span>
+            <span>Clients in Australia & Beyond</span>
+          </div>
+          <span class="proof-divider" aria-hidden="true"></span>
+          <div class="proof-item">
+            <span class="proof-icon">⚡</span>
+            <span>3-7 Day Delivery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Page Separator -->
+  <div class="page-separator">
+    ↓ ABOUT PAGE ↓
+  </div>
+
+  <!-- ============================================
+       PAGE: ABOUT
+       ============================================ -->
+  <main id="about">
+    
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#home">Home</a>
+          <span>/</span>
+          <span>About</span>
+        </nav>
+        
+        <div class="about-grid">
+          <div class="about-content">
+            <h1>I'm Leo Mahé</h1>
+            <p>I'm a French designer based in Shanghai, finishing my Master's at Tongji University. I specialize in building professional websites for teaching businesses—tutors, coaches, instructors, and anyone who teaches for a living.</p>
+            <p>After seeing too many talented educators stuck with broken websites or no web presence at all, I decided to change that. One teaching business at a time.</p>
+          </div>
+          <div class="about-photo-wrapper">
+            <div class="about-photo-accent"></div>
+            <img 
+              src="https://placehold.co/400x500/FDF6F0/C4785A?text=Leo+Photo" 
+              alt="Leo Mahé, web designer" 
+              class="about-photo"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Origin Story Section -->
+    <section class="origin-section">
+      <div class="container">
+        <div class="origin-content">
+          <h2>Why Teaching Businesses?</h2>
+          <div class="origin-text">
+            <p>A few years ago, I tried to find a Japanese tutor in my city. I Googled, scrolled through results, and clicked on a dozen websites. Most were broken on my phone. Some hadn't been updated since 2018. One just had a phone number and a blurry photo.</p>
+            <p>I eventually found a great tutor through word of mouth. She'd been teaching for 15 years, had dozens of happy students, and genuinely changed how I approached learning. Her website? A Facebook page with three posts from 2019.</p>
+            <p>That gap stuck with me. The people who dedicate their lives to teaching others—language tutors, music instructors, fitness coaches, wellness practitioners—often have the worst online presence. Not because they don't care, but because they're too busy actually teaching to figure out Wix.</p>
+            <p>So I decided to fix that. One teaching business at a time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Timeline Section -->
+    <section class="process-section">
+      <div class="container">
+        <h2>How We'll Work Together</h2>
+        
+        <!-- Desktop Timeline -->
+        <div class="process-desktop">
+          <div class="process-line"></div>
+          
+          <div class="process-step">
+            <div class="process-number">1</div>
+            <h3 class="process-title">Discovery Call</h3>
+            <p class="process-desc">15 minutes. You share your goals. I ask questions. We see if we're a fit.</p>
+            <span class="process-timeline">Day 0</span>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-number">2</div>
+            <h3 class="process-title">Design Draft</h3>
+            <p class="process-desc">I create the first version based on our conversation and your content.</p>
+            <span class="process-timeline">Day 1-2</span>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-number">3</div>
+            <h3 class="process-title">Build & Refine</h3>
+            <p class="process-desc">You review. I adjust. We repeat until you love it.</p>
+            <span class="process-timeline">Day 2-5</span>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-number">4</div>
+            <h3 class="process-title">Launch & Support</h3>
+            <p class="process-desc">Your site goes live. I stick around to make sure it works.</p>
+            <span class="process-timeline">Day 3-7</span>
+          </div>
+        </div>
+        
+        <!-- Mobile Timeline -->
+        <div class="process-mobile">
+          <div class="process-mobile-step">
+            <div class="process-mobile-line">
+              <div class="process-mobile-number">1</div>
+              <div class="process-mobile-connector"></div>
+            </div>
+            <div class="process-mobile-content">
+              <h3 class="process-title">Discovery Call</h3>
+              <p class="process-desc">15 minutes. You share your goals. I ask questions. We see if we're a fit.</p>
+              <span class="process-timeline">Day 0</span>
+            </div>
+          </div>
+          
+          <div class="process-mobile-step">
+            <div class="process-mobile-line">
+              <div class="process-mobile-number">2</div>
+              <div class="process-mobile-connector"></div>
+            </div>
+            <div class="process-mobile-content">
+              <h3 class="process-title">Design Draft</h3>
+              <p class="process-desc">I create the first version based on our conversation and your content.</p>
+              <span class="process-timeline">Day 1-2</span>
+            </div>
+          </div>
+          
+          <div class="process-mobile-step">
+            <div class="process-mobile-line">
+              <div class="process-mobile-number">3</div>
+              <div class="process-mobile-connector"></div>
+            </div>
+            <div class="process-mobile-content">
+              <h3 class="process-title">Build & Refine</h3>
+              <p class="process-desc">You review. I adjust. We repeat until you love it.</p>
+              <span class="process-timeline">Day 2-5</span>
+            </div>
+          </div>
+          
+          <div class="process-mobile-step">
+            <div class="process-mobile-line">
+              <div class="process-mobile-number">4</div>
+            </div>
+            <div class="process-mobile-content">
+              <h3 class="process-title">Launch & Support</h3>
+              <p class="process-desc">Your site goes live. I stick around to make sure it works.</p>
+              <span class="process-timeline">Day 3-7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section class="credentials-section">
+      <div class="container">
+        <div class="credentials-grid">
+          <!-- Education Column -->
+          <div class="credentials-column">
+            <h3>Education</h3>
+            <div class="education-list">
+              <div class="education-item">
+                <div class="education-line">
+                  <div class="education-icon">🎓</div>
+                  <div class="education-connector"></div>
+                </div>
+                <div class="education-content">
+                  <h4>Master of Design</h4>
+                  <p>Tongji University, Shanghai</p>
+                  <p>China • 2023 – Present</p>
+                </div>
+              </div>
+              
+              <div class="education-item">
+                <div class="education-line">
+                  <div class="education-icon">🎨</div>
+                  <div class="education-connector"></div>
+                </div>
+                <div class="education-content">
+                  <h4>DNSEP</h4>
+                  <p>National Diploma of Superior Artistic Expression</p>
+                  <p>France • Design Specialization</p>
+                </div>
+              </div>
+              
+              <div class="education-item">
+                <div class="education-line">
+                  <div class="education-icon">📐</div>
+                </div>
+                <div class="education-content">
+                  <h4>DNA</h4>
+                  <p>National Art Diploma</p>
+                  <p>France • Foundation in Design</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Skills Column -->
+          <div class="credentials-column">
+            <h3>What I Work With</h3>
+            
+            <div class="skills-group">
+              <div class="skills-label">Design & Development</div>
+              <div class="skills-tags">
+                <span class="skill-tag skill-design">Figma</span>
+                <span class="skill-tag skill-design">Builder.io</span>
+                <span class="skill-tag skill-design">Supabase</span>
+              </div>
+            </div>
+            
+            <div class="skills-group">
+              <div class="skills-label">AI & Automation</div>
+              <div class="skills-tags">
+                <span class="skill-tag skill-ai">Stable Diffusion</span>
+                <span class="skill-tag skill-ai">ComfyUI</span>
+                <span class="skill-tag skill-ai">n8n</span>
+              </div>
+            </div>
+            
+            <div class="skills-group">
+              <div class="skills-label">Creative Production</div>
+              <div class="skills-tags">
+                <span class="skill-tag skill-creative">Photography</span>
+                <span class="skill-tag skill-creative">Blender</span>
+                <span class="skill-tag skill-creative">Rhino 7</span>
+              </div>
+            </div>
+            
+            <div class="skills-group">
+              <div class="skills-label">Languages</div>
+              <div class="skills-tags">
+                <span class="skill-tag skill-language">🇫🇷 French • Native</span>
+                <span class="skill-tag skill-language">🇬🇧 English • Fluent</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Page Separator -->
+  <div class="page-separator">
+    ↓ CONTACT PAGE ↓
+  </div>
+
+  <!-- ============================================
+       PAGE: CONTACT
+       ============================================ -->
+  <main id="contact">
+    
+    <!-- Header Section -->
+    <section class="contact-header">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#home">Home</a>
+          <span>/</span>
+          <span>Contact</span>
+        </nav>
+        <h1>Let's Talk</h1>
+        <p class="section-subtext">Pick whatever works best for you.</p>
+      </div>
+    </section>
+
+    <!-- Contact Options Section -->
+    <section class="contact-options-section">
+      <div class="container">
+        <div class="contact-options-grid">
+          <!-- Book a Call -->
+          <div class="contact-option-card">
+            <div class="option-decorations">
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+            </div>
+            <div class="option-icon">📅</div>
+            <h3 class="option-title">Book a Discovery Call</h3>
+            <p class="option-desc">Free 15-minute video chat. No pressure. Just a conversation.</p>
+            <a href="#calendly" class="btn btn-outline">See Available Times ↓</a>
+          </div>
+          
+          <!-- Send a Message -->
+          <div class="contact-option-card">
+            <div class="option-decorations">
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+            </div>
+            <div class="option-icon">✉️</div>
+            <h3 class="option-title">Send a Message</h3>
+            <p class="option-desc">Prefer writing? Use the form below. I reply within 24 hours.</p>
+            <a href="#contact-form" class="btn btn-outline">Go to Form ↓</a>
+          </div>
+          
+          <!-- Email Directly -->
+          <div class="contact-option-card">
+            <div class="option-decorations">
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+              <span class="option-plus">+</span>
+            </div>
+            <div class="option-icon">📧</div>
+            <h3 class="option-title">Email Directly</h3>
+            <p class="option-desc">leo.mahe.professional@gmail.com
+
+Shanghai, UTC+8
+Usually same-day reply</p>
+            <button class="btn btn-outline" onclick="navigator.clipboard.writeText('leo.mahe.professional@gmail.com'); this.textContent='✓ Copied!';">Copy Email</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendly Embed Section -->
+    <section id="calendly" class="calendly-section">
+      <div class="container">
+        <h2>Book a Call</h2>
+        <p class="calendly-subheading">Let's discuss your project in a quick 30-minute discovery call.</p>
+        <div class="calendly-widget">
+          <!-- CALENDLY EMBED: https://calendly.com/leo-mahe-professional/30min -->
+          <p>Calendly widget will be embedded here<br>URL: calendly.com/leo-mahe-professional/30min</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="contact-form-section">
+      <div class="container">
+        <div class="contact-form-wrapper">
+          <h2>Send a Message</h2>
+          
+          <form>
+            <div class="form-row form-row-2">
+              <div class="form-group">
+                <label class="form-label">Name *</label>
+                <input type="text" class="form-input" required aria-required="true">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input type="email" class="form-input" required aria-required="true">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Business Name</label>
+                <input type="text" class="form-input">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Current Website (if any)</label>
+                <input type="url" class="form-input" placeholder="https://...">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">What can I help with? *</label>
+                <select class="form-select" required aria-required="true">
+                  <option value="">Select an option...</option>
+                  <option value="new-website">I need a new website</option>
+                  <option value="redesign">I need a website redesign</option>
+                  <option value="not-sure">I'm not sure yet</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Anything else you'd like me to know?</label>
+                <textarea class="form-textarea"></textarea>
+              </div>
+            </div>
+            
+            <div class="form-submit">
+              <button type="submit" class="btn btn-solid">Send Message</button>
+              <p class="form-required">* Required</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="faq-wrapper">
+          <h2>Common Questions</h2>
+          
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>How long does the whole process take?</span>
+                <svg class="faq-chevron" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>3-7 days from payment to launch, depending on your package. Quick Launch is 3 days, Local Visibility is 5, Growth System is 7. This assumes you provide your content (photos, text) promptly.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What do I need to provide?</span>
+                <svg class="faq-chevron" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Photos of yourself or your business, your logo (if you have one), and the text you want on your site. If you don't have content ready, I can help write it for an additional fee.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Do I actually own the website?</span>
+                <svg class="faq-chevron" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Yes, 100%. You own all files, code, images, and content. There are no monthly fees to me. I'll set everything up on your hosting, and you're free to make changes yourself or hire anyone else in the future.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What if I don't like the design?</span>
+                <svg class="faq-chevron" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Every package includes revision rounds (1-3 depending on tier). We'll work together until you're happy. I've never had a client not love their final result.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Can you split the payment?</span>
+                <svg class="faq-chevron" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. I can split any package into 2-3 payments. Standard is 50% deposit to start, 50% on delivery.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>I'm not in Australia—can you still help?</span>
+                <svg class="faq-chevron" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Absolutely. I work with teaching businesses worldwide. Time zones work well with Australia, Europe, UK, and North America.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What's the catch?</span>
+                <svg class="faq-chevron" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>No catch. I'm building my portfolio with real clients, so I'm motivated to do great work. The pricing is straightforward, you own everything, and I genuinely want to help teaching professionals succeed online.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER (Shared)
+       ============================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <h3>edtechvault</h3>
+          <p class="footer-tagline">Websites for teaching businesses</p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/léo-mahé-bb95772b7/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/edtechvault" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Pages Column -->
+        <div class="footer-column">
+          <h4>Pages</h4>
+          <ul class="footer-links">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#about" class="footer-link">About</a></li>
+            <li><a href="#contact" class="footer-link">Contact</a></li>
+            <li><span class="footer-link footer-coming-soon" title="Coming Soon">Portfolio</span></li>
+          </ul>
+        </div>
+        
+        <!-- Contact Column -->
+        <div class="footer-column">
+          <h4>Get in Touch</h4>
+          <ul class="footer-links">
+            <li><a href="#calendly" class="footer-link">Book a Call</a></li>
+            <li><a href="mailto:leo.mahe.professional@gmail.com" class="footer-link">Email Leo</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-info">
+          <span>© 2024 edtechvault</span>
+          <span>•</span>
+          <span>Made in Shanghai</span>
+        </div>
+        <div class="footer-lang">
+          <span>🌐</span>
+          <span class="lang-active">EN</span>
+          <span>|</span>
+          <span class="lang-inactive" title="Coming Soon">FR</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple FAQ Toggle Script -->
+  <script>
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const chevron = button.querySelector('.faq-chevron');
+        const isOpen = answer.style.display === 'block';
+        
+        // Close all other FAQs
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+        document.querySelectorAll('.faq-chevron').forEach(c => c.style.transform = 'rotate(0deg)');
+        
+        // Toggle current
+        if (!isOpen) {
+          answer.style.display = 'block';
+          chevron.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
