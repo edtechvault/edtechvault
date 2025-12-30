@@ -32,17 +32,17 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
           {/* Content - Left Column (55%) */}
           <div className="md:col-span-7 space-y-6 md:space-y-8">
             {/* Eyebrow Text */}
-            <span className="inline-block text-primary text-sm font-semibold tracking-widest uppercase">
+            <span className="inline-block text-[var(--primary)] text-sm font-semibold tracking-widest uppercase">
               {eyebrow}
             </span>
-            
+
             {/* Headline */}
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-text-primary">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-[var(--text-primary)]">
               {headline}
             </h1>
-            
+
             {/* Subheadline */}
-            <p className="text-text-secondary text-lg md:text-xl leading-relaxed max-w-lg">
+            <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed max-w-lg">
               {subheadline}
             </p>
             
