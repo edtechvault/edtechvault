@@ -28,16 +28,6 @@ export const CardNav: React.FC<CardNavProps> = ({
   brandName = 'EdTechVault',
   items = [
     {
-      label: "About",
-      bgColor: "#C4785A",
-      textColor: "#fff",
-      links: [
-        { label: "Meet Leo", ariaLabel: "About Leo Mahé", href: "/about" },
-        { label: "Why Teaching Businesses?", ariaLabel: "Origin story", href: "/about#origin" },
-        { label: "How We Work", ariaLabel: "Process timeline", href: "/about#process" }
-      ]
-    },
-    {
       label: "Services",
       bgColor: "#2A6B6B",
       textColor: "#fff",
@@ -45,6 +35,16 @@ export const CardNav: React.FC<CardNavProps> = ({
         { label: "View Packages", ariaLabel: "See pricing packages", href: "/#pricing" },
         { label: "Portfolio", ariaLabel: "View portfolio", href: "/#portfolio" },
         { label: "Claim a Founding Spot", ariaLabel: "Become a founding client", href: "/contact" }
+      ]
+    },
+    {
+      label: "About",
+      bgColor: "#C4785A",
+      textColor: "#fff",
+      links: [
+        { label: "Meet Leo", ariaLabel: "About Leo Mahé", href: "/about" },
+        { label: "Why Teaching Businesses?", ariaLabel: "Origin story", href: "/about#origin" },
+        { label: "How We Work", ariaLabel: "Process timeline", href: "/about#process" }
       ]
     },
     {
