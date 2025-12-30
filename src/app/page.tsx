@@ -22,9 +22,9 @@ const pricingContent = {
   tiers: [
     {
       id: "quick-launch",
-      name: "Quick Launch",
+      name: "Quick Launch Sprint",
       price: "199",
-      pricePeriod: "one-time",
+      pricePeriod: "deposit",
       tagline: "For new tutors testing the waters",
       color: "primary" as const,
       features: [
@@ -34,13 +34,17 @@ const pricingContent = {
         "3-day delivery",
         "1 revision round"
       ],
-      cta: { text: "Get Started", href: "/contact", variant: "outline" }
+      cta: {
+        text: "Pay Deposit",
+        href: "https://buy.stripe.com/eVqaEXewfaNk1gT0IpgEg04",
+        variant: "outline"
+      }
     },
     {
       id: "local-visibility",
-      name: "Local Visibility",
+      name: "Local Visibility Package",
       price: "399",
-      pricePeriod: "one-time",
+      pricePeriod: "deposit",
       tagline: "Perfect for established local tutors",
       label: "Most Popular",
       featured: true,
@@ -53,13 +57,17 @@ const pricingContent = {
         "5-day delivery",
         "2 revision rounds"
       ],
-      cta: { text: "Choose Plan", href: "/contact", variant: "solid" }
+      cta: {
+        text: "Pay Deposit",
+        href: "https://buy.stripe.com/5kQ3cv4VF08G2kX1MtgEg06",
+        variant: "solid"
+      }
     },
     {
       id: "growth-system",
       name: "Growth System",
       price: "599",
-      pricePeriod: "one-time",
+      pricePeriod: "deposit",
       tagline: "Complete digital student acquisition",
       color: "primary" as const,
       features: [
@@ -71,7 +79,11 @@ const pricingContent = {
         "7-day delivery",
         "3 revision rounds"
       ],
-      cta: { text: "Get Started", href: "/contact", variant: "outline" }
+      cta: {
+        text: "Pay Deposit",
+        href: "https://buy.stripe.com/00w14nfAjbRobVx1MtgEg05",
+        variant: "outline"
+      }
     }
   ]
 };
