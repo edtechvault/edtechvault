@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { Button } from '../ui/Button';
+import { cn } from '@/lib/utils';
+import { Plus } from 'lucide-react';
 
 interface PortfolioCard {
   id: string;
@@ -24,51 +26,56 @@ export const PortfolioInvitation: React.FC<PortfolioInvitationProps> = ({
   cta,
 }) => {
   return (
-    <section id="portfolio" className="bg-[var(--secondary)] py-16 md:py-24 lg:py-32">
+    <section id="portfolio" className="bg-white py-24 md:py-32">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-6">
-            <span className="inline-block text-[var(--accent)] text-sm font-semibold tracking-wider uppercase">
-              {eyebrow}
-            </span>
-            <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)]">
-              {heading}
-            </h2>
-            <div className="text-[var(--text-secondary)] text-lg leading-relaxed whitespace-pre-line">
-              {body}
+        {/* Header content */}
+        <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
+          <span className="inline-block text-[var(--accent)] text-sm font-semibold tracking-wider uppercase">
+            {eyebrow}
+          </span>
+          <h2 className="font-heading font-semibold text-4xl md:text-5xl text-[var(--text-primary)]">
+            {heading}
+          </h2>
+          <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed">
+            {body}
+          </p>
+        </div>
+
+        {/* Portfolio Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {cards.map((card, index) => (
+            <div
+              key={card.id}
+              className={cn(
+                "relative bg-white rounded-xl h-[200px] flex items-center justify-center",
+                "border-2 border-dashed border-[var(--primary)]/30",
+                "transition-all duration-300 hover:border-solid hover:border-[var(--primary)] hover:shadow-soft group",
+                index === 1 && "lg:rotate-2" // Slight rotation on middle card
+              )}
+            >
+              <p className="text-[var(--muted-foreground)] text-center font-medium">
+                {card.placeholderText}
+              </p>
+
+              {/* Decorative corner elements (L-shapes) */}
+              <div className="absolute top-3 left-3 w-3 h-3 border-l-2 border-t-2 border-[var(--primary)]/30 group-hover:border-[var(--primary)]/50 transition-colors" />
+              <div className="absolute top-3 right-3 w-3 h-3 border-r-2 border-t-2 border-[var(--primary)]/30 group-hover:border-[var(--primary)]/50 transition-colors" />
+              <div className="absolute bottom-3 left-3 w-3 h-3 border-l-2 border-b-2 border-[var(--primary)]/30 group-hover:border-[var(--primary)]/50 transition-colors" />
+              <div className="absolute bottom-3 right-3 w-3 h-3 border-r-2 border-b-2 border-[var(--primary)]/30 group-hover:border-[var(--primary)]/50 transition-colors" />
+
+              {/* Optional: Small plus sign in center of corners if we wanted but L-shapes are cleaner for this spec */}
             </div>
-            <Button variant="solid" size="large" href={cta.href}>
-              {cta.text} →
-            </Button>
-          </div>
-          
-          {/* Portfolio Cards */}
-          <div className="grid gap-4">
-            {cards.map((card, index) => (
-              <div
-                key={card.id}
-                className={`
-                  relative bg-[var(--background-white)] rounded-xl p-8 
-                  border-2 border-dashed border-[var(--primary-light)]/40
-                  transition-all duration-300 hover:border-[var(--primary)] hover:shadow-[var(--shadow-soft)]
-                  ${index === 1 ? 'lg:translate-x-8' : ''}
-                `}
-              >
-                <div className="flex items-center justify-center min-h-[100px]">
-                  <p className="text-[var(--text-secondary)] text-center font-medium">
-                    {card.placeholderText}
-                  </p>
-                </div>
-                
-                {/* Decorative corners */}
-                <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-[var(--primary-light)]/30 rounded-tl" />
-                <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-[var(--primary-light)]/30 rounded-tr" />
-                <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-[var(--primary-light)]/30 rounded-bl" />
-                <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-[var(--primary-light)]/30 rounded-br" />
-              </div>
-            ))}
-          </div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center space-y-4">
+          <Button variant="solid" size="lg" href={cta.href}>
+            {cta.text}
+          </Button>
+          <p className="text-[var(--text-secondary)] text-sm font-medium">
+            Limited spots &bull; Priority pricing &bull; Featured placement
+          </p>
         </div>
       </div>
     </section>
