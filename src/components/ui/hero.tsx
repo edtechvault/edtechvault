@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import HeroBadge from "@/components/ui/hero-badge";
