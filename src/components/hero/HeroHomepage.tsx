@@ -201,7 +201,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
 
               <button
                 onClick={() => handleScrollTo(secondaryCTA.href)}
-                className="inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-semibold rounded-xl border-2 border-[var(--accent)] text-[var(--accent)] bg-transparent hover:bg-[var(--accent)] hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 active:scale-[0.98]"
+                className="inline-flex items-center justify-center h-12 px-8 py-4 text-base md:text-lg font-semibold rounded-xl border-2 border-[var(--accent)] text-[var(--accent)] bg-transparent hover:bg-[var(--accent)] hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 active:scale-[0.98]"
               >
                 {secondaryCTA.text}
               </button>
