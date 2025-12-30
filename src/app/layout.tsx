@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { CardNav } from '@/components/navigation/CardNav';
 import './globals.css';
 
 export const metadata: Metadata = {
