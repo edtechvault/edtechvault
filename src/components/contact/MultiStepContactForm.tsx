@@ -90,19 +90,23 @@ export const MultiStepContactForm: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      const { error } = await supabase.from('contacts').insert([{
+        name: formData.name,
+        email: formData.email,
+        project_type: formData.projectType,
+        timeline: formData.timeline,
+        budget: formData.budget,
+        message: formData.message,
+        created_at: new Date().toISOString(),
+      }]);
 
-      if (response.ok) {
-        setIsSuccess(true);
-        setFormData(INITIAL_FORM_DATA);
-      } else {
-        alert('Something went wrong. Please try again or email leo@edtechvault.com directly.');
-      }
+      if (error) throw error;
+
+      setIsSuccess(true);
+      setFormData(INITIAL_FORM_DATA);
+      setCurrentStep(1);
     } catch (error) {
+      console.error('Form submission error:', error);
       alert('Something went wrong. Please try again or email leo@edtechvault.com directly.');
     } finally {
       setIsSubmitting(false);
