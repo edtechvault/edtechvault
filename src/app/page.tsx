@@ -18,55 +18,60 @@ const heroContent = {
 };
 
 const pricingContent = {
-  heading: "Bootstrap Compatible Responsive Pricing Tables",
+  heading: "Simple, Transparent Pricing",
   tiers: [
     {
-      id: "basic-pack",
-      name: "BasicPack 2020",
-      price: "7.99",
-      tagline: "Made for starters",
-      label: "Fixed Price",
-      color: "purple" as const,
+      id: "quick-launch",
+      name: "Quick Launch",
+      price: "199",
+      pricePeriod: "one-time",
+      tagline: "For new tutors testing the waters",
+      color: "primary" as const,
       features: [
-        { label: "Bandwith", value: "50 GB" },
-        { label: "Add-On Domains", value: "10" },
-        { label: "SSD Storage", value: "250 GB" },
-        { label: "Mail Adresses", value: "25" },
-        { label: "Support", value: "Only Mail" }
+        "1-page website",
+        "Mobile responsive",
+        "Contact form",
+        "3-day delivery",
+        "1 revision round"
       ],
-      cta: { text: "Get Started", href: "#" }
+      cta: { text: "Get Started", href: "/contact", variant: "outline" }
     },
     {
-      id: "extended-pack",
-      name: "ExtendedPack 2020",
-      price: "9.99",
-      tagline: "Made for experienced users",
-      label: "Fixed Price",
-      color: "turquoise" as const,
+      id: "local-visibility",
+      name: "Local Visibility",
+      price: "399",
+      pricePeriod: "one-time",
+      tagline: "Perfect for established local tutors",
+      label: "Most Popular",
+      featured: true,
+      color: "teal" as const,
       features: [
-        { label: "Bandwith", value: "150 GB" },
-        { label: "Add-On Domains", value: "25" },
-        { label: "SSD Storage", value: "500 GB" },
-        { label: "Mail Adresses", value: "50" },
-        { label: "Support", value: "Mail/Phone" }
+        "3-page website",
+        "Local SEO setup",
+        "Google Business integration",
+        "Booking calendar",
+        "5-day delivery",
+        "2 revision rounds"
       ],
-      cta: { text: "Get Started", href: "#" }
+      cta: { text: "Choose Plan", href: "/contact", variant: "solid" }
     },
     {
-      id: "pros-pack",
-      name: "ProsPack 2020",
-      price: "12.99",
-      tagline: "Made for professionals/agencies",
-      label: "Fixed Price",
-      color: "red" as const,
+      id: "growth-system",
+      name: "Growth System",
+      price: "599",
+      pricePeriod: "one-time",
+      tagline: "Complete digital student acquisition",
+      color: "primary" as const,
       features: [
-        { label: "Bandwith", value: "250 GB" },
-        { label: "Add-On Domains", value: "50" },
-        { label: "SSD Storage", value: "1 TB" },
-        { label: "Mail Adresses", value: "75" },
-        { label: "Support", value: "7/24" }
+        "5-page website",
+        "Blog setup",
+        "Email capture",
+        "Analytics dashboard",
+        "Social media links",
+        "7-day delivery",
+        "3 revision rounds"
       ],
-      cta: { text: "Get Started", href: "#" }
+      cta: { text: "Get Started", href: "/contact", variant: "outline" }
     }
   ]
 };
