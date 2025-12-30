@@ -32,27 +32,31 @@ export const CardNav: React.FC<CardNavProps> = ({
       bgColor: "#C4785A",
       textColor: "#fff",
       links: [
-        { label: "Company", ariaLabel: "About Company", href: "/about" },
-        { label: "Careers", ariaLabel: "About Careers", href: "/about" }
+        { label: "Meet Leo", ariaLabel: "About Leo Mahé", href: "/about" },
+        { label: "Why Teaching Businesses?", ariaLabel: "Origin story", href: "/about#origin" },
+        { label: "How We Work", ariaLabel: "Process timeline", href: "/about#process" }
       ]
     },
     {
-      label: "Projects",
+      label: "Services",
       bgColor: "#2A6B6B",
       textColor: "#fff",
       links: [
-        { label: "Featured", ariaLabel: "Featured Projects", href: "#portfolio" },
-        { label: "Case Studies", ariaLabel: "Project Case Studies", href: "#portfolio" }
+        { label: "View Packages", ariaLabel: "See pricing packages", href: "/#pricing" },
+        { label: "Quick Launch ($199)", ariaLabel: "Quick Launch package", href: "/#pricing" },
+        { label: "Local Visibility ($399)", ariaLabel: "Local Visibility package", href: "/#pricing" },
+        { label: "Growth System ($599)", ariaLabel: "Growth System package", href: "/#pricing" }
       ]
     },
     {
-      label: "Contact",
+      label: "Get Started",
       bgColor: "#7DB59A",
       textColor: "#fff",
       links: [
-        { label: "Email", ariaLabel: "Email us", href: "/contact" },
-        { label: "Twitter", ariaLabel: "Twitter", href: "https://twitter.com" },
-        { label: "LinkedIn", ariaLabel: "LinkedIn", href: "https://linkedin.com" }
+        { label: "Book a Call", ariaLabel: "Book discovery call", href: "/contact#calendly" },
+        { label: "Send a Message", ariaLabel: "Contact form", href: "/contact#contact-form" },
+        { label: "Email Leo", ariaLabel: "Email directly", href: "mailto:leo@edtechvault.com" },
+        { label: "FAQ", ariaLabel: "Frequently asked questions", href: "/contact#faq" }
       ]
     }
   ]
