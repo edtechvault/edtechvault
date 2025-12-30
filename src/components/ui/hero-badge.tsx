@@ -25,9 +25,9 @@ const HeroBadge = ({
 }: HeroBadgeProps) => {
   const badgeClasses = cn(
     "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium transition-colors",
-    variant === "default" && "bg-primary text-primary-foreground",
-    variant === "outline" && "border border-input bg-background hover:bg-accent",
-    variant === "ghost" && "hover:bg-accent",
+    variant === "default" && "bg-primary text-white",
+    variant === "outline" && "border border-primary/20 bg-white hover:bg-secondary",
+    variant === "ghost" && "hover:bg-secondary",
     size === "sm" && "px-2 py-0.5 text-xs",
     size === "lg" && "px-4 py-1.5 text-base",
     className
