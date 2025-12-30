@@ -136,7 +136,7 @@ export const CardNav: React.FC<CardNavProps> = ({
                         boxShadow: '0 4px 20px rgba(196, 120, 90, 0.12)',
                       }}
                     >
-                      <h3 className="text-white text-2xl font-semibold mb-6">
+                      <h3 className="text-white text-2xl font-semibold mb-6" style={{ fontFamily: 'Outfit' }}>
                         {item.label}
                       </h3>
                       
