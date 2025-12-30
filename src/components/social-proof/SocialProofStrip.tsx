@@ -13,44 +13,44 @@ interface SocialProofStripProps {
 // Default logos representing technologies and platforms Leo works with
 const defaultLogos: Logo[] = [
   {
-    src: 'https://cdn.builder.io/api/v1/image/assets%2Fplugins%2F1%2Fe86f07eeb4eb4c0faee2d4819ac0ad88',
+    src: 'https://cdn.simpleicons.org/nextdotjs/000000',
     alt: 'Next.js',
-    gradient: { from: '#000000', via: '#1a1a1a', to: '#000000' },
+    gradient: { from: '#000000', via: '#1a1a1a', to: '#333333' },
   },
   {
-    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F3e8c2f6e8f8e4f0f8e8c2f6e8f8e4f0f',
+    src: 'https://cdn.simpleicons.org/tailwindcss/06B6D4',
     alt: 'Tailwind CSS',
     gradient: { from: '#0ea5e9', via: '#38bdf8', to: '#0ea5e9' },
   },
   {
-    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Fsupabase-logo',
+    src: 'https://cdn.simpleicons.org/supabase/3ECF8E',
     alt: 'Supabase',
     gradient: { from: '#3ecf8e', via: '#1fa871', to: '#3ecf8e' },
   },
   {
-    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Ffigma-logo',
+    src: 'https://cdn.simpleicons.org/figma/F24E1E',
     alt: 'Figma',
     gradient: { from: '#f24e1e', via: '#a259ff', to: '#1abcfe' },
   },
   {
-    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Fbuilder-logo',
-    alt: 'Builder.io',
-    gradient: { from: '#6b46c1', via: '#8b5cf6', to: '#6b46c1' },
-  },
-  {
-    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Ftypescript-logo',
+    src: 'https://cdn.simpleicons.org/typescript/3178C6',
     alt: 'TypeScript',
     gradient: { from: '#3178c6', via: '#5199d8', to: '#3178c6' },
   },
   {
-    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Freact-logo',
+    src: 'https://cdn.simpleicons.org/react/61DAFB',
     alt: 'React',
     gradient: { from: '#61dafb', via: '#149eca', to: '#61dafb' },
   },
   {
-    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Fcalendly-logo',
-    alt: 'Calendly',
-    gradient: { from: '#006bff', via: '#0099ff', to: '#006bff' },
+    src: 'https://cdn.simpleicons.org/vercel/000000',
+    alt: 'Vercel',
+    gradient: { from: '#000000', via: '#1a1a1a', to: '#333333' },
+  },
+  {
+    src: 'https://cdn.simpleicons.org/googlechrome/4285F4',
+    alt: 'Web Technologies',
+    gradient: { from: '#4285f4', via: '#5a95f5', to: '#4285f4' },
   },
 ];
 
