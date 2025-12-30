@@ -81,7 +81,7 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
             }}
           >
             <div
-              className="flex w-max items-center gap-4 py-4 pr-4 hover:[animation-play-state:paused] transition-all duration-300 ease-in-out"
+              className="flex w-max items-start gap-6 py-6 pr-6 hover:[animation-play-state:paused] transition-all duration-300 ease-in-out"
               style={{
                 animation: `marquee ${animationDuration} linear infinite`,
               }}
