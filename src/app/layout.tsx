@@ -39,6 +39,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-screen bg-[var(--background)]">
+        <CardNav theme="dark" />
         {children}
       </body>
     </html>
