@@ -29,7 +29,7 @@ export const CardNav: React.FC<CardNavProps> = ({
   items = [
     {
       label: "About",
-      bgColor: "#1a1625",
+      bgColor: "#C4785A",
       textColor: "#fff",
       links: [
         { label: "Company", ariaLabel: "About Company", href: "/about" },
@@ -37,8 +37,8 @@ export const CardNav: React.FC<CardNavProps> = ({
       ]
     },
     {
-      label: "Projects", 
-      bgColor: "#221c30",
+      label: "Projects",
+      bgColor: "#2A6B6B",
       textColor: "#fff",
       links: [
         { label: "Featured", ariaLabel: "Featured Projects", href: "#portfolio" },
@@ -47,7 +47,7 @@ export const CardNav: React.FC<CardNavProps> = ({
     },
     {
       label: "Contact",
-      bgColor: "#2d2639", 
+      bgColor: "#7DB59A",
       textColor: "#fff",
       links: [
         { label: "Email", ariaLabel: "Email us", href: "/contact" },
