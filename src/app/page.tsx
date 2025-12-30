@@ -1,65 +1,109 @@
-import Image from "next/image";
+import { HeroHomepage } from '@/components/hero/HeroHomepage';
+import { PricingTable } from '@/components/pricing/PricingTable';
+import { PortfolioInvitation } from '@/components/portfolio/PortfolioInvitation';
+import { SocialProofStrip } from '@/components/social-proof/SocialProofStrip';
+import { Footer } from '@/components/layout/Footer';
+
+// Content data from handoff
+const heroContent = {
+  eyebrow: "FOR TUTORS, COACHES & TEACHING BUSINESSES",
+  headline: "Websites That Attract Students—Built in Days, Not Months",
+  subheadline: "You teach. I build. No tech headaches. No monthly fees. Just a professional online presence that works as hard as you do.",
+  primaryCTA: { text: "See Packages", href: "/contact" },
+  secondaryCTA: { text: "View Pricing", href: "#pricing" },
+  laptopMockup: {
+    src: "https://placehold.co/600x400/FDF6F0/C4785A?text=Laptop+Mockup",
+    alt: "Website dashboard preview on laptop"
+  }
+};
+
+const pricingContent = {
+  heading: "Three Packages. One Goal: More Students.",
+  subtext: "Pick what fits. Every package includes a working website you own forever.",
+  tiers: [
+    {
+      id: "quick-launch",
+      name: "Quick Launch",
+      price: 199,
+      tagline: "Live in 3 days",
+      features: ["Single-page professional site", "Mobile-optimized", "AI-generated hero image", "Contact form", "Basic SEO", "1 revision round"],
+      cta: { text: "Get Started", href: "/contact" }
+    },
+    {
+      id: "local-visibility",
+      name: "Local Visibility",
+      price: 399,
+      tagline: "The complete package",
+      badge: "Most Popular",
+      featured: true,
+      features: ["Multi-section landing page", "Thank you page", "3 custom AI images", "Google Business setup guide", "Email notifications", "2 revision rounds", "7-day support"],
+      cta: { text: "Get Started", href: "/contact" }
+    },
+    {
+      id: "growth-system",
+      name: "Growth System",
+      price: 599,
+      tagline: "Built to scale",
+      features: ["Everything in Local Visibility", "A/B testing variant", "Lead magnet page", "Email sequence templates", "Analytics dashboard", "Conversion audit", "14-day support", "Strategy call included"],
+      cta: { text: "Get Started", href: "/contact" }
+    }
+  ],
+  disclaimer: "All prices in USD. Payment plans available. You own everything—no monthly fees to me."
+};
+
+const portfolioContent = {
+  eyebrow: "PORTFOLIO",
+  heading: "This Section Is Waiting for You",
+  body: "I'm not going to fill this with fake mockups or borrowed work.\nInstead, I'm looking for founding clients who want to be featured here.\n\nYou get my full attention. I get a success story to share.",
+  cards: [
+    { id: "1", placeholderText: "Your Tutoring Business Could Be Here" },
+    { id: "2", placeholderText: "Your Dance Studio Could Be Here" },
+    { id: "3", placeholderText: "Your Coaching Practice Could Be Here" }
+  ],
+  cta: { text: "Claim a Founding Spot", href: "/contact" }
+};
+
+const socialProofContent = {
+  items: [
+    { icon: "🎓", text: "Tongji University" },
+    { icon: "🛠️", text: "Figma • Builder.io • AI" },
+    { icon: "🌍", text: "Clients in Australia & Beyond" },
+    { icon: "⚡", text: "3-7 Day Delivery" }
+  ]
+};
+
+const footerContent = {
+  brand: { name: "edtechvault", tagline: "Websites for teaching businesses" },
+  social_links: [
+    { platform: "LinkedIn", href: "https://linkedin.com/in/leomahe" },
+    { platform: "Instagram", href: "https://instagram.com/edtechvault" }
+  ],
+  page_links: [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+    { href: "/portfolio", label: "Portfolio", coming_soon: true }
+  ],
+  contact_links: [
+    { href: "/contact", label: "Book a Call" },
+    { href: "mailto:leo@edtechvault.com", label: "Email Leo" }
+  ],
+  copyright: "© 2024 edtechvault",
+  location: "Made in Shanghai",
+  languages: [
+    { code: "en", label: "EN", active: true },
+    { code: "fr", label: "FR", active: false, coming_soon: true }
+  ]
+};
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      <HeroHomepage {...heroContent} />
+      <PricingTable {...pricingContent} />
+      <PortfolioInvitation {...portfolioContent} />
+      <SocialProofStrip {...socialProofContent} />
+      <Footer {...footerContent} />
+    </main>
   );
 }
