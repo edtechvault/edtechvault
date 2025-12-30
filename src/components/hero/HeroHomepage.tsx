@@ -209,7 +209,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
           </div>
 
           {/* Visual - Right Column (45%) */}
-          <div className="md:col-span-5 relative h-80 md:h-[400px]">
+          <div className="md:col-span-5 relative h-96 md:h-[550px]">
             <div className="relative h-full flex items-center justify-center md:justify-end">
               <img
                 src={laptopMockup.src}
