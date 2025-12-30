@@ -1,4 +1,4 @@
-import { HeroAbout } from '@/components/hero/HeroAbout';
+import { Hero } from '@/components/ui/hero';
 import { OriginStory } from '@/components/about/OriginStory';
 import { ProcessTimeline } from '@/components/about/ProcessTimeline';
 import { CredentialsGrid } from '@/components/about/CredentialsGrid';
@@ -80,9 +80,38 @@ const footerContent = {
 };
 
 export default function AboutPage() {
+  const heroContentFormatted = {
+    pill: {
+      text: "About Me",
+      variant: "outline" as const,
+    },
+    content: {
+      title: "I'm",
+      titleHighlight: "Leo Mahé",
+      description: heroContent.intro.join(" "),
+      primaryAction: {
+        href: "/contact",
+        text: "Get Started",
+      },
+      secondaryAction: {
+        href: "#origin",
+        text: "My Story",
+      }
+    },
+    preview: (
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-2xl">
+        <img
+          src={heroContent.photo.src}
+          alt={heroContent.photo.alt}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    )
+  };
+
   return (
     <main>
-      <HeroAbout {...heroContent} />
+      <Hero {...heroContentFormatted} />
       <OriginStory {...originStoryContent} />
       <ProcessTimeline {...processContent} />
       <CredentialsGrid {...credentialsContent} />
