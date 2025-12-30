@@ -1,15 +1,36 @@
-import { ContactHeader } from '@/components/contact/ContactHeader';
+import { Hero } from '@/components/ui/hero';
 import { ContactOptions } from '@/components/contact/ContactOptions';
 import { CalendlyEmbed } from '@/components/contact/CalendlyEmbed';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { FAQAccordion } from '@/components/contact/FAQAccordion';
 import { Footer } from '@/components/layout/Footer';
+import Image from 'next/image';
 
 // Content data from handoff
-const headerContent = {
-  breadcrumb: { items: [{ label: "Home", href: "/" }, { label: "Contact" }] },
-  headline: "Let's Talk",
-  subtext: "Pick whatever works best for you."
+const heroContent = {
+  content: {
+    title: "Let's Talk",
+    description: "Pick whatever works best for you. Whether you prefer a quick call, sending a message, or emailing directly — I'm here to help bring your teaching business online.",
+    primaryAction: {
+      href: "#calendly",
+      text: "Book a Call"
+    },
+    secondaryAction: {
+      href: "#contact-form",
+      text: "Send a Message"
+    }
+  },
+  preview: (
+    <div className="relative w-full aspect-square max-w-[500px] rounded-3xl overflow-hidden shadow-lg">
+      <Image
+        src="https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F00cb2272c3af4057b1c42a0885c7727b?format=webp&width=800"
+        alt="Learning experience designer planning a project"
+        fill
+        className="object-cover"
+        priority
+      />
+    </div>
+  )
 };
 
 const optionsContent = {
@@ -73,7 +94,7 @@ const footerContent = {
 export default function ContactPage() {
   return (
     <main>
-      <ContactHeader {...headerContent} />
+      <Hero {...heroContent} />
       <ContactOptions {...optionsContent} />
       <CalendlyEmbed {...calendlyContent} />
       <ContactForm {...formContent} />
