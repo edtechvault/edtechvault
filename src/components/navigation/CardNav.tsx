@@ -94,15 +94,11 @@ export const CardNav: React.FC<CardNavProps> = ({
 
             {/* Brand Logo */}
             <Link href="/" className="brand-logo flex items-center gap-2">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 2L4 9V23L16 30L28 23V9L16 2Z" fill="url(#gradient)" />
-                <defs>
-                  <linearGradient id="gradient" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#6366F1" />
-                    <stop offset="1" stopColor="#8B5CF6" />
-                  </linearGradient>
-                </defs>
-              </svg>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F5f787c1589c7444c8aaa7fc358b2077e?format=webp&width=800"
+                alt="EdTechVault Logo"
+                className="w-8 h-8"
+              />
               <span className="text-white font-semibold text-lg hidden sm:block">{brandName}</span>
             </Link>
 
