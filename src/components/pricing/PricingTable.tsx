@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { trackPurchaseClick } from '@/lib/tracking';
 
 export interface PricingTier {
   id: string;
@@ -49,6 +50,19 @@ export const PricingTable: React.FC<PricingTableProps> = ({
   heading,
   tiers,
 }) => {
+  const handlePurchaseClick = async (tier: PricingTier, e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Only track if it's a Stripe link
+    if (tier.cta.href.includes('stripe.com')) {
+      // Don't prevent default - let the link work normally
+      // Track asynchronously in the background
+      trackPurchaseClick({
+        packageName: tier.name,
+        packageTier: tier.id,
+        stripeLink: tier.cta.href,
+      }).catch(err => console.error('Failed to track click:', err));
+    }
+  };
+
   return (
     <section id="pricing" className="bg-[#FAFAFA] py-24 md:py-32 px-4 font-body">
       <div className="max-w-[1200px] mx-auto">
@@ -127,6 +141,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({
                   {/* Call-to-Action Button */}
                   <a
                     href={tier.cta.href}
+                    onClick={(e) => handlePurchaseClick(tier, e)}
                     className={cn(
                       "block w-full py-3 px-4 rounded text-center font-medium text-sm transition-colors duration-300 no-underline",
                       tier.cta.variant === 'outline' ? variant.buttonOutline : variant.buttonBg
