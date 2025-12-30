@@ -96,6 +96,7 @@ export default function ContactPage() {
   return (
     <main>
       <Hero {...heroContent} />
+      <ContactOptions {...optionsContent} />
       <MultiStepContactForm />
       <CalendlyEmbed {...calendlyContent} />
       <ContactForm {...formContent} />
