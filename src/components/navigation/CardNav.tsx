@@ -99,7 +99,7 @@ export const CardNav: React.FC<CardNavProps> = ({
                 alt="EdTechVault Logo"
                 className="w-8 h-8"
               />
-              <span className="text-white font-semibold text-lg hidden sm:block">{brandName}</span>
+              <span className="text-white font-semibold text-lg hidden sm:block font-heading">{brandName}</span>
             </Link>
 
             {/* Get Started CTA */}
