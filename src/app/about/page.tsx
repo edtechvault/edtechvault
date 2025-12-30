@@ -99,7 +99,7 @@ export default function AboutPage() {
       }
     },
     preview: (
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-2xl">
+      <div className="relative aspect-square w-full max-w-[450px] mx-auto overflow-hidden rounded-full border-[12px] border-primary shadow-2xl">
         <img
           src={heroContent.photo.src}
           alt={heroContent.photo.alt}
