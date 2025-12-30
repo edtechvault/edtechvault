@@ -69,24 +69,24 @@ export const PricingTable: React.FC<PricingTableProps> = ({
             return (
               <div
                 key={tier.id}
-                className={cn(
-                  "bg-white rounded transition-shadow duration-300 hover:shadow-medium flex flex-col overflow-hidden"
-                )}
+                className="bg-white flex flex-col transition-all duration-300 hover:shadow-medium"
                 style={{ boxShadow: '0px 1px 10px -6px rgba(0, 0, 0, .15)' }}
               >
-                {/* Pricing Label */}
-                <div
-                  className="px-3 py-1 text-xs font-medium rounded inline-block m-8 mb-0"
-                  style={{
-                    backgroundColor: variant.labelBg,
-                    color: variant.labelText,
-                  }}
-                >
-                  {tier.label || 'Fixed Price'}
+                {/* Pricing Label - Top of card */}
+                <div className="px-8 pt-8">
+                  <div
+                    className="px-2 py-1 text-xs font-medium rounded inline-block"
+                    style={{
+                      backgroundColor: variant.labelBg,
+                      color: variant.labelText,
+                    }}
+                  >
+                    {tier.label || 'Fixed Price'}
+                  </div>
                 </div>
 
                 {/* Card Content */}
-                <div className="p-8 flex flex-col flex-grow">
+                <div className="px-8 pt-6 pb-8 flex flex-col flex-grow">
                   {/* Plan Name */}
                   <h3 className="text-[#3b3b3b] font-heading font-medium text-2xl mb-2">
                     {tier.name}
@@ -98,12 +98,11 @@ export const PricingTable: React.FC<PricingTableProps> = ({
                   </p>
 
                   {/* Features List */}
-                  <div className="mb-10 flex-grow">
-                    <div className="space-y-2">
+                  <div className="mb-8 flex-grow">
+                    <div className="space-y-3">
                       {tier.features.map((feature, index) => (
-                        <div key={index} className="flex justify-between text-sm text-[#B3B3B3]">
-                          <span>{feature}</span>
-                          <span style={{ color: '#3b3b3b' }} className="font-medium">•</span>
+                        <div key={index} className="flex justify-between items-center text-sm">
+                          <span className="text-[#B3B3B3]">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -111,10 +110,10 @@ export const PricingTable: React.FC<PricingTableProps> = ({
 
                   {/* Price Section */}
                   <div
-                    className="mb-10 text-center font-medium"
+                    className="mb-8 text-center font-medium"
                     style={{ color: variant.priceText }}
                   >
-                    <div className="flex items-baseline justify-center">
+                    <div className="flex items-baseline justify-center gap-1">
                       <span className="text-2xl">$</span>
                       <span className="text-6xl font-heading font-medium tracking-tight">{tier.price}</span>
                     </div>
