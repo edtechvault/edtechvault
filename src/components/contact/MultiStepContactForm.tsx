@@ -617,7 +617,10 @@ export const MultiStepContactForm: React.FC = () => {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
                           <div className="font-semibold text-lg text-[var(--text-primary)]">{option.label}</div>
-                          <div className="font-bold text-[var(--primary)]">{option.price}</div>
+                          <div className="font-bold text-[var(--primary)]">
+                            {option.price}
+                            {(option as any).deposit && <span className="text-xs font-normal text-[var(--text-secondary)] ml-1">{(option as any).deposit}</span>}
+                          </div>
                         </div>
                         <ul className="space-y-1">
                           {option.features.map((feature, idx) => (
