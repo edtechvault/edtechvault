@@ -207,11 +207,12 @@ export const CardNav: React.FC<CardNavProps> = ({
         }
 
         .menu-card {
-          transition: transform 0.2s ease;
+          transition: all 0.2s ease;
         }
 
         .menu-card:hover {
           transform: translateY(-4px);
+          box-shadow: 0 8px 30px rgba(196, 120, 90, 0.16) !important;
         }
       `}</style>
     </>
