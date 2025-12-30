@@ -26,7 +26,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   };
 
   return (
-    <section className="bg-[var(--background)] py-16 md:py-24">
+    <section id="faq" className="bg-[var(--background)] py-16 md:py-24">
       <div className="max-w-[800px] mx-auto px-6">
         <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)] text-center mb-12">
           {heading}
