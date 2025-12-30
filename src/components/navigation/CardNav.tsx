@@ -115,59 +115,67 @@ export const CardNav: React.FC<CardNavProps> = ({
             </Link>
           </div>
         </nav>
-      </header>
 
-      {/* Full Screen Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#0A0A0F] pt-16 overflow-y-auto">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {items.map((item) => (
-                <div
-                  key={item.label}
-                  className="menu-card rounded-2xl p-8 min-h-[240px] flex flex-col"
-                  style={{
-                    backgroundColor: item.bgColor,
-                  }}
-                >
-                  <h3 className="text-white text-2xl font-semibold mb-8">
-                    {item.label}
-                  </h3>
-                  
-                  <nav className="flex flex-col gap-3">
-                    {item.links.map((link) => (
-                      <Link
-                        key={link.label}
-                        href={link.href || '#'}
-                        aria-label={link.ariaLabel}
-                        className="menu-link flex items-center gap-2 text-white/90 hover:text-white transition-colors group"
-                        onClick={toggleMenu}
-                      >
-                        <svg 
-                          width="16" 
-                          height="16" 
-                          viewBox="0 0 16 16" 
-                          fill="none" 
-                          className="transition-transform group-hover:translate-x-1"
-                        >
-                          <path 
-                            d="M6 3L11 8L6 13" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        <span className="text-base">{link.label}</span>
-                      </Link>
-                    ))}
-                  </nav>
+        {/* Dropdown Menu (appears below header, not full screen) */}
+        {isMenuOpen && (
+          <div className="menu-dropdown-container bg-white border-t border-gray-200 shadow-2xl">
+            <div 
+              className="menu-dotted-bg py-12"
+              style={{
+                backgroundImage: 'radial-gradient(circle, #d1d5db 1px, transparent 1px)',
+                backgroundSize: '20px 20px'
+              }}
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {items.map((item) => (
+                    <div
+                      key={item.label}
+                      className="menu-card rounded-2xl p-8 min-h-[200px] flex flex-col shadow-lg"
+                      style={{
+                        backgroundColor: item.bgColor,
+                      }}
+                    >
+                      <h3 className="text-white text-2xl font-semibold mb-6">
+                        {item.label}
+                      </h3>
+                      
+                      <nav className="flex flex-col gap-3">
+                        {item.links.map((link) => (
+                          <Link
+                            key={link.label}
+                            href={link.href || '#'}
+                            aria-label={link.ariaLabel}
+                            className="menu-link flex items-center gap-2 text-white/90 hover:text-white transition-colors group"
+                            onClick={toggleMenu}
+                          >
+                            <svg 
+                              width="16" 
+                              height="16" 
+                              viewBox="0 0 16 16" 
+                              fill="none" 
+                              className="transition-transform group-hover:translate-x-1"
+                            >
+                              <path 
+                                d="M6 3L11 8L6 13" 
+                                stroke="currentColor" 
+                                strokeWidth="2" 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                            <span className="text-base">{link.label}</span>
+                          </Link>
+                        ))}
+                      </nav>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </header>
 
       {/* Spacer to prevent content from going under fixed header */}
       <div className="h-16"></div>
@@ -180,6 +188,21 @@ export const CardNav: React.FC<CardNavProps> = ({
           background-color: white;
           border-radius: 2px;
           transition: all 0.3s ease;
+        }
+
+        .menu-dropdown-container {
+          animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         .menu-card {
