@@ -105,7 +105,8 @@ export const CardNav: React.FC<CardNavProps> = ({
             {/* Get Started CTA */}
             <Link
               href="/contact"
-              className="cta-button px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg transition-colors"
+              className="cta-button px-6 py-3 bg-[#2A6B6B] hover:bg-[#3A8585] text-white font-semibold rounded-xl transition-all hover:shadow-lg"
+              style={{ fontFamily: 'Inter' }}
             >
               Get Started
             </Link>
