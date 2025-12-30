@@ -12,7 +12,7 @@ const heroContent = {
   primaryCTA: { text: "See Packages", href: "/contact" },
   secondaryCTA: { text: "View Pricing", href: "#pricing" },
   laptopMockup: {
-    src: "https://placehold.co/600x400/FDF6F0/C4785A?text=Laptop+Mockup",
+    src: "https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F0fd590c17bae430695ec6e9e02319e6f?format=webp&width=800",
     alt: "Website dashboard preview on laptop"
   }
 };
