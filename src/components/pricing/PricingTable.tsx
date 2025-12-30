@@ -3,11 +3,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-export interface PricingFeature {
-  label: string;
-  value: string;
-}
-
 export interface PricingTier {
   id: string;
   name: string;
