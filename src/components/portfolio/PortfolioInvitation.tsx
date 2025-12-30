@@ -24,7 +24,7 @@ export const PortfolioInvitation: React.FC<PortfolioInvitationProps> = ({
   cta,
 }) => {
   return (
-    <section className="bg-[var(--secondary)] py-16 md:py-24 lg:py-32">
+    <section id="portfolio" className="bg-[var(--secondary)] py-16 md:py-24 lg:py-32">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
