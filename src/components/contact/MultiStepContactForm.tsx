@@ -647,9 +647,9 @@ export const MultiStepContactForm: React.FC = () => {
                 </label>
                 <div className="grid gap-3">
                   {[
-                    { value: 'asap', label: 'ASAP (Within 1 week)', icon: '⚡' },
-                    { value: '2-4-weeks', label: '2-4 Weeks', icon: '📅' },
-                    { value: '1-2-months', label: '1-2 Months', icon: '🗓️' },
+                    { value: '3-days', label: '3-Day Delivery (Quick Launch)', icon: '⚡' },
+                    { value: '5-days', label: '5-Day Delivery (Local Visibility)', icon: '📅' },
+                    { value: '7-days', label: '7-Day Delivery (Growth System)', icon: '🗓️' },
                     { value: 'flexible', label: 'Flexible Timeline', icon: '🕐' }
                   ].map((option) => (
                     <label
