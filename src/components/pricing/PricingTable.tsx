@@ -76,12 +76,11 @@ export const PricingTable: React.FC<PricingTableProps> = ({
               >
                 {/* Pricing Label */}
                 <div
-                  className="px-8 pt-8 pb-2 inline-block w-fit"
+                  className="px-3 py-1 text-xs font-medium rounded inline-block m-8 mb-0"
                   style={{
                     backgroundColor: variant.labelBg,
                     color: variant.labelText,
                   }}
-                  className="px-3 py-1 text-xs font-medium rounded inline-block"
                 >
                   {tier.label || 'Fixed Price'}
                 </div>
