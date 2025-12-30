@@ -3,7 +3,6 @@
 import React from 'react';
 import { Button } from '../ui/Button';
 import { cn } from '@/lib/utils';
-import { Plus } from 'lucide-react';
 
 interface PortfolioCard {
   id: string;
