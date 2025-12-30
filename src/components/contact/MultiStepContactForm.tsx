@@ -564,30 +564,33 @@ export const MultiStepContactForm: React.FC = () => {
                 </label>
                 <div className="grid gap-4">
                   {[
-                    { 
-                      value: 'quick-launch', 
-                      label: 'Quick Launch', 
-                      price: '$800',
+                    {
+                      value: 'quick-launch',
+                      label: 'Quick Launch Sprint',
+                      price: '$199',
+                      deposit: 'deposit',
+                      icon: '⚡',
+                      features: ['1-page website', 'Mobile responsive', 'Contact form', '3-day delivery']
+                    },
+                    {
+                      value: 'local-visibility',
+                      label: 'Local Visibility Package',
+                      price: '$399',
+                      deposit: 'deposit',
                       icon: '🚀',
-                      features: ['Single page site', '3-day turnaround', 'Mobile responsive']
+                      features: ['3-page website', 'Local SEO setup', 'Google Business integration', '5-day delivery']
                     },
-                    { 
-                      value: 'local-visibility', 
-                      label: 'Local Visibility', 
-                      price: '$1,800',
-                      icon: '📍',
-                      features: ['Multi-page site', 'SEO optimization', '5-day turnaround']
-                    },
-                    { 
-                      value: 'growth-system', 
-                      label: 'Growth System', 
-                      price: '$3,200',
+                    {
+                      value: 'growth-system',
+                      label: 'Growth System',
+                      price: '$599',
+                      deposit: 'deposit',
                       icon: '📈',
-                      features: ['Full marketing suite', 'Booking system', '7-day turnaround']
+                      features: ['5-page website', 'Blog setup', 'Email capture', '7-day delivery']
                     },
-                    { 
-                      value: 'custom', 
-                      label: 'Custom Quote', 
+                    {
+                      value: 'custom',
+                      label: 'Custom Quote',
                       price: 'Let\'s Discuss',
                       icon: '💬',
                       features: ['Tailored solution', 'Flexible timeline', 'Custom features']
