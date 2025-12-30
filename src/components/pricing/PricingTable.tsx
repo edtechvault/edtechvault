@@ -52,7 +52,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({
   tiers,
 }) => {
   return (
-    <section id="pricing" className="bg-[#e6e6e6] py-20 px-4">
+    <section id="pricing" className="bg-[#e6e6e6] py-20 px-4 font-rubik">
       <div className="max-w-[1200px] mx-auto">
         {/* Section Header */}
         <div className="mb-12">
