@@ -26,60 +26,175 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   };
 
   return (
-    <section id="faq" className="bg-[var(--background)] py-16 md:py-24">
-      <div className="max-w-[800px] mx-auto px-6">
-        <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)] text-center mb-12">
+    <section id="faq" className="faq-section">
+      <div className="faq-container">
+        <h2 className="faq-heading">
           {heading}
         </h2>
-        
-        <div className="space-y-4">
+
+        <div className="accordion">
           {items.map((item) => {
             const isOpen = openItems.includes(item.id);
-            
+
             return (
               <div
                 key={item.id}
-                className="bg-[var(--background-white)] rounded-xl border border-[var(--border)] overflow-hidden shadow-[var(--shadow-soft)]"
+                className="accordion-item"
               >
                 <button
+                  id={`accordion-button-${item.id}`}
                   onClick={() => toggleItem(item.id)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[var(--secondary)]/50 transition-colors"
+                  className="accordion-button"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-semibold text-[var(--text-primary)] pr-4">
+                  <span className="accordion-title">
                     {item.question}
                   </span>
-                  <svg
-                    className={`w-5 h-5 text-[var(--accent)] flex-shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                  <span className="accordion-icon" aria-hidden="true"></span>
                 </button>
-                
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? 'max-h-96' : 'max-h-0'
-                  }`}
-                >
-                  <div className="px-6 pb-5 text-[var(--text-secondary)] leading-relaxed">
-                    {item.answer}
-                  </div>
+
+                <div className="accordion-content">
+                  <p>{item.answer}</p>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      <style jsx>{`
+        .faq-section {
+          background: var(--background);
+          padding: 64px 24px;
+        }
+
+        @media (min-width: 768px) {
+          .faq-section {
+            padding: 96px 24px;
+          }
+        }
+
+        .faq-container {
+          margin: 0 auto;
+          max-width: 768px;
+        }
+
+        .faq-heading {
+          font-family: 'Outfit', sans-serif;
+          font-weight: 600;
+          font-size: 28px;
+          color: var(--text-primary);
+          text-align: center;
+          margin-bottom: 48px;
+        }
+
+        @media (min-width: 768px) {
+          .faq-heading {
+            font-size: 40px;
+          }
+        }
+
+        .accordion-item {
+          border-bottom: 1px solid #e5e5e5;
+        }
+
+        .accordion-item .accordion-button[aria-expanded='true'] {
+          border-bottom: 1px solid var(--accent);
+        }
+
+        .accordion-button {
+          position: relative;
+          display: block;
+          text-align: left;
+          width: 100%;
+          padding: 1em 0;
+          color: #7288a2;
+          font-size: 1.15rem;
+          font-weight: 400;
+          border: none;
+          background: none;
+          outline: none;
+          cursor: pointer;
+          transition: color 200ms ease;
+        }
+
+        .accordion-button:hover,
+        .accordion-button:focus {
+          color: var(--accent);
+        }
+
+        .accordion-button .accordion-title {
+          display: block;
+          padding: 1em 3em 1em 0;
+        }
+
+        .accordion-button .accordion-icon {
+          display: inline-block;
+          position: absolute;
+          top: 18px;
+          right: 0;
+          width: 22px;
+          height: 22px;
+          border: 1px solid currentColor;
+          border-radius: 22px;
+          transition: border-color 200ms ease;
+        }
+
+        .accordion-button .accordion-icon::before {
+          display: block;
+          position: absolute;
+          content: '';
+          top: 9px;
+          left: 5px;
+          width: 10px;
+          height: 2px;
+          background: currentColor;
+          transition: background-color 200ms ease;
+        }
+
+        .accordion-button .accordion-icon::after {
+          display: block;
+          position: absolute;
+          content: '';
+          top: 5px;
+          left: 9px;
+          width: 2px;
+          height: 10px;
+          background: currentColor;
+          transition: width 200ms ease, background-color 200ms ease;
+        }
+
+        .accordion-button[aria-expanded='true'] {
+          color: var(--accent);
+        }
+
+        .accordion-button[aria-expanded='true'] .accordion-icon::after {
+          width: 0;
+        }
+
+        .accordion-button[aria-expanded='true'] + .accordion-content {
+          opacity: 1;
+          max-height: 500px;
+          transition: opacity 200ms linear, max-height 200ms linear;
+          will-change: opacity, max-height;
+        }
+
+        .accordion-content {
+          opacity: 0;
+          max-height: 0;
+          overflow: hidden;
+          transition: opacity 200ms linear, max-height 200ms linear;
+          will-change: opacity, max-height;
+        }
+
+        .accordion-content p {
+          font-size: 1rem;
+          font-weight: 300;
+          margin: 2em 0;
+          color: var(--text-secondary);
+          line-height: 1.6;
+        }
+      `}</style>
     </section>
   );
 };
