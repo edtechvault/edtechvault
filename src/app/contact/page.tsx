@@ -44,7 +44,7 @@ const optionsContent = {
 const calendlyContent = {
   heading: "Book a Call",
   subheading: "Let's discuss your project in a quick 15-minute discovery call.",
-  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_EMBED_URL || "https://calendly.com/leo-mahe-professional/30min",
+  calendlyUrl: process.env.CALENDLY_EMBED_URL || "https://calendly.com/leo-mahe-professional/30min",
   height: 700
 };
 
