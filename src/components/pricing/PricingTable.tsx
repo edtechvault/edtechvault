@@ -35,7 +35,7 @@ const colorVariants = {
     buttonOutline: 'border-2 border-[#C4785A] text-[#C4785A] hover:bg-[#C4785A] hover:text-white',
   },
   teal: {
-    labelBg: 'bg-[#2A6B6B]',
+    labelBg: 'bg-[#C4785A]', // Most Popular badge usually in primary color
     labelText: 'text-white',
     priceText: 'text-[#2A6B6B]',
     buttonBg: 'bg-[#2A6B6B] hover:bg-[#1A5151]',
