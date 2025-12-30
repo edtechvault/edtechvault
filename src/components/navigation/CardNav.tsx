@@ -117,11 +117,10 @@ export const CardNav: React.FC<CardNavProps> = ({
         {isMenuOpen && (
           <div className="menu-dropdown-container bg-[#FDF6F0] border-t border-[#E5E5E5] shadow-2xl">
             <div
-              className="menu-dotted-bg py-12"
+              className="menu-dotted-bg py-12 relative"
               style={{
-                backgroundImage: 'radial-gradient(circle, #C4785A 1px, transparent 1px)',
-                backgroundSize: '20px 20px',
-                opacity: 0.15
+                backgroundImage: 'radial-gradient(circle, rgba(196, 120, 90, 0.15) 1px, transparent 1px)',
+                backgroundSize: '20px 20px'
               }}
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
