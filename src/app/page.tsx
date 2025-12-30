@@ -18,37 +18,57 @@ const heroContent = {
 };
 
 const pricingContent = {
-  heading: "Three Packages. One Goal: More Students.",
-  subtext: "Pick what fits. Every package includes a working website you own forever.",
+  heading: "Bootstrap Compatible Responsive Pricing Tables",
   tiers: [
     {
-      id: "quick-launch",
-      name: "Quick Launch",
-      price: 199,
-      tagline: "Live in 3 days",
-      features: ["Single-page professional site", "Mobile-optimized", "AI-generated hero image", "Contact form", "Basic SEO", "1 revision round"],
-      cta: { text: "Get Started", href: "/contact" }
+      id: "basic-pack",
+      name: "BasicPack 2020",
+      price: "7.99",
+      tagline: "Made for starters",
+      label: "Fixed Price",
+      color: "purple" as const,
+      features: [
+        { label: "Bandwith", value: "50 GB" },
+        { label: "Add-On Domains", value: "10" },
+        { label: "SSD Storage", value: "250 GB" },
+        { label: "Mail Adresses", value: "25" },
+        { label: "Support", value: "Only Mail" }
+      ],
+      cta: { text: "Get Started", href: "#" }
     },
     {
-      id: "local-visibility",
-      name: "Local Visibility",
-      price: 399,
-      tagline: "The complete package",
-      badge: "Most Popular",
-      featured: true,
-      features: ["Multi-section landing page", "Thank you page", "3 custom AI images", "Google Business setup guide", "Email notifications", "2 revision rounds", "7-day support"],
-      cta: { text: "Get Started", href: "/contact" }
+      id: "extended-pack",
+      name: "ExtendedPack 2020",
+      price: "9.99",
+      tagline: "Made for experienced users",
+      label: "Fixed Price",
+      color: "turquoise" as const,
+      features: [
+        { label: "Bandwith", value: "150 GB" },
+        { label: "Add-On Domains", value: "25" },
+        { label: "SSD Storage", value: "500 GB" },
+        { label: "Mail Adresses", value: "50" },
+        { label: "Support", value: "Mail/Phone" }
+      ],
+      cta: { text: "Get Started", href: "#" }
     },
     {
-      id: "growth-system",
-      name: "Growth System",
-      price: 599,
-      tagline: "Built to scale",
-      features: ["Everything in Local Visibility", "A/B testing variant", "Lead magnet page", "Email sequence templates", "Analytics dashboard", "Conversion audit", "14-day support", "Strategy call included"],
-      cta: { text: "Get Started", href: "/contact" }
+      id: "pros-pack",
+      name: "ProsPack 2020",
+      price: "12.99",
+      tagline: "Made for professionals/agencies",
+      label: "Fixed Price",
+      color: "red" as const,
+      features: [
+        { label: "Bandwith", value: "250 GB" },
+        { label: "Add-On Domains", value: "50" },
+        { label: "SSD Storage", value: "1 TB" },
+        { label: "Mail Adresses", value: "75" },
+        { label: "Support", value: "7/24" }
+      ],
+      cta: { text: "Get Started", href: "#" }
     }
-  ],
-  disclaimer: "All prices in USD. Payment plans available. You own everything—no monthly fees to me."
+  ]
 };
 
 const portfolioContent = {
