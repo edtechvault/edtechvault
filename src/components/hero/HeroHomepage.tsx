@@ -171,9 +171,9 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
       <canvas ref={canvasRef} className="absolute inset-0 z-10" />
 
       <div className="relative z-20 max-w-[1200px] mx-auto px-6 py-16 md:py-24 w-full">
-        <div className="flex flex-col gap-12 md:gap-16 items-start">
-          {/* Content - Now stacked */}
-          <div className="max-w-2xl space-y-6 md:space-y-8">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+          {/* Content - Left Column (55%) */}
+          <div className="md:col-span-7 space-y-6 md:space-y-8">
             {/* Eyebrow Text */}
             <span className="inline-block text-[var(--primary)] text-sm font-semibold tracking-widest uppercase">
               {eyebrow}
@@ -185,7 +185,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
             </h1>
 
             {/* Subheadline */}
-            <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed">
+            <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed max-w-lg">
               {subheadline}
             </p>
 
@@ -208,13 +208,13 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
             </div>
           </div>
 
-          {/* Visual - Now below the buttons */}
-          <div className="relative w-full max-w-4xl h-80 md:h-[480px]">
-            <div className="relative h-full flex items-center justify-start">
+          {/* Visual - Right Column (45%) */}
+          <div className="md:col-span-5 relative h-80 md:h-[400px]">
+            <div className="relative h-full flex items-center justify-center md:justify-end">
               <img
                 src={laptopMockup.src}
                 alt={laptopMockup.alt}
-                className="w-full h-full object-contain object-left"
+                className="w-full h-full object-contain"
                 loading="eager"
               />
             </div>
