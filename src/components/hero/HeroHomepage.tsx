@@ -26,55 +26,68 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
   };
 
   return (
-    <section className="relative bg-[var(--background)] overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24 lg:py-32">
-        <div className="grid md:grid-cols-12 gap-12 items-start">
-          {/* Content - Left 60% */}
+    <section className="bg-white overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+          {/* Content - Left Column (55%) */}
           <div className="md:col-span-7 space-y-6 md:space-y-8">
-            <span className="inline-block text-[var(--accent)] text-sm font-semibold tracking-wider uppercase">
+            {/* Eyebrow Text */}
+            <span className="inline-block text-primary text-sm font-semibold tracking-widest uppercase">
               {eyebrow}
             </span>
             
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-[56px] leading-tight text-[var(--text-primary)]">
+            {/* Headline */}
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-text-primary">
               {headline}
             </h1>
             
-            <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed max-w-[560px]">
+            {/* Subheadline */}
+            <p className="text-text-secondary text-lg md:text-xl leading-relaxed max-w-lg">
               {subheadline}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button variant="solid" size="large" href={primaryCTA.href}>
-                {primaryCTA.text} →
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button
+                variant="solid"
+                size="large"
+                href={primaryCTA.href}
+              >
+                {primaryCTA.text}
               </Button>
               
-              <Button
-                variant="outline"
-                size="large"
+              <button
                 onClick={() => handleScrollTo(secondaryCTA.href)}
+                className="inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-semibold rounded-xl border-2 border-accent text-accent bg-transparent hover:bg-accent hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 active:scale-[0.98]"
               >
-                {secondaryCTA.text} ↓
-              </Button>
+                {secondaryCTA.text}
+              </button>
             </div>
           </div>
           
-          {/* Laptop Mockup - Right 40% */}
-          <div className="md:col-span-5 relative">
-            <div 
-              className="relative transform rotate-[2deg] md:rotate-0 lg:-rotate-[2deg] transition-transform hover:rotate-0 duration-500"
-              style={{ filter: 'drop-shadow(0 20px 40px rgba(196, 120, 90, 0.15))' }}
-            >
+          {/* Visual - Right Column (45%) */}
+          <div className="md:col-span-5 relative h-96 md:h-[500px]">
+            {/* Decorative Circle - Top Right */}
+            <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-20 -z-10" style={{ backgroundColor: 'var(--primary)' }} />
+            
+            {/* Decorative Rounded Rectangle - Bottom Left */}
+            <div className="absolute -bottom-16 -left-16 w-32 h-48 rounded-3xl opacity-20 -z-10" style={{ backgroundColor: 'var(--primary)' }} />
+            
+            {/* Decorative Circle - Center */}
+            <div className="absolute top-1/2 -right-12 w-24 h-24 rounded-full opacity-20 -z-10" style={{ backgroundColor: 'var(--primary)' }} />
+            
+            {/* Laptop Mockup Image */}
+            <div className="relative h-full flex items-center justify-center">
               <img
                 src={laptopMockup.src}
                 alt={laptopMockup.alt}
-                className="w-full h-auto"
+                className="w-full h-full object-cover rounded-lg"
+                style={{
+                  boxShadow: '0 20px 40px rgba(45, 45, 45, 0.15)',
+                }}
                 loading="eager"
               />
             </div>
-            
-            {/* Decorative shapes */}
-            <div className="absolute -z-10 top-1/4 -right-12 w-32 h-32 bg-[var(--primary-light)]/20 rounded-full blur-3xl" />
-            <div className="absolute -z-10 bottom-1/4 -left-8 w-24 h-24 bg-[var(--accent-light)]/20 rounded-full blur-2xl" />
           </div>
         </div>
       </div>
