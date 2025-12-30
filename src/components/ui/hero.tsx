@@ -16,11 +16,13 @@ interface HeroContentProps {
     href: string;
     text: string;
     icon?: React.ReactNode;
+    variant?: "default" | "solid" | "destructive" | "outline" | "secondary" | "ghost" | "link";
   };
   secondaryAction?: {
     href: string;
     text: string;
     icon?: React.ReactNode;
+    variant?: "default" | "solid" | "destructive" | "outline" | "secondary" | "ghost" | "link";
   };
 }
 
@@ -62,7 +64,7 @@ function HeroContent({
           <Link
             href={primaryAction.href}
             className={cn(
-              buttonVariants({ size: "lg" }),
+              buttonVariants({ variant: primaryAction.variant || "solid", size: "lg" }),
               "gap-2 w-full sm:w-auto justify-center"
             )}
           >
@@ -74,7 +76,7 @@ function HeroContent({
           <Link
             href={secondaryAction.href}
             className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
+              buttonVariants({ variant: secondaryAction.variant || "outline", size: "lg" }),
               "gap-2 w-full sm:w-auto justify-center"
             )}
           >
