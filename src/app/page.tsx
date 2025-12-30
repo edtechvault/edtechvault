@@ -88,15 +88,6 @@ const portfolioContent = {
   cta: { text: "Become a Founding Client", href: "/contact" }
 };
 
-const socialProofContent = {
-  items: [
-    { icon: "🎓", text: "Tongji University" },
-    { icon: "🛠️", text: "Figma • Builder.io • AI" },
-    { icon: "🌍", text: "Clients in Australia & Beyond" },
-    { icon: "⚡", text: "3-7 Day Delivery" }
-  ]
-};
-
 const footerContent = {
   brand: { name: "edtechvault", tagline: "Websites for teaching businesses" },
   social_links: [
@@ -127,7 +118,7 @@ export default function Home() {
       <HeroHomepage {...heroContent} />
       <PricingTable {...pricingContent} />
       <PortfolioInvitation {...portfolioContent} />
-      <SocialProofStrip {...socialProofContent} />
+      <SocialProofStrip />
       <Footer {...footerContent} />
     </main>
   );
