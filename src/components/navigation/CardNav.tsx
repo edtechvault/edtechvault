@@ -29,7 +29,7 @@ export const CardNav: React.FC<CardNavProps> = ({
   items = [
     {
       label: "About",
-      bgColor: "#0D0716",
+      bgColor: "#1a1625",
       textColor: "#fff",
       links: [
         { label: "Company", ariaLabel: "About Company", href: "/about" },
@@ -38,7 +38,7 @@ export const CardNav: React.FC<CardNavProps> = ({
     },
     {
       label: "Projects", 
-      bgColor: "#170D27",
+      bgColor: "#221c30",
       textColor: "#fff",
       links: [
         { label: "Featured", ariaLabel: "Featured Projects", href: "#portfolio" },
@@ -47,7 +47,7 @@ export const CardNav: React.FC<CardNavProps> = ({
     },
     {
       label: "Contact",
-      bgColor: "#271E37", 
+      bgColor: "#2d2639", 
       textColor: "#fff",
       links: [
         { label: "Email", ariaLabel: "Email us", href: "/contact" },
@@ -58,15 +58,9 @@ export const CardNav: React.FC<CardNavProps> = ({
   ]
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setOpenDropdown(null);
-  };
-
-  const toggleDropdown = (label: string) => {
-    setOpenDropdown(openDropdown === label ? null : label);
   };
 
   return (
@@ -74,18 +68,28 @@ export const CardNav: React.FC<CardNavProps> = ({
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0F] border-b border-gray-800">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Hamburger Menu Button */}
+            {/* Hamburger/Close Menu Button */}
             <button
               onClick={toggleMenu}
-              className="hamburger-btn p-2 rounded-lg hover:bg-gray-800 transition-colors"
+              className="hamburger-btn p-2 rounded-lg hover:bg-gray-800 transition-colors relative w-10 h-10"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
-              <div className="w-6 h-5 flex flex-col justify-between">
-                <span className={`hamburger-line ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`hamburger-line ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`hamburger-line ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-              </div>
+              {isMenuOpen ? (
+                // X Close Icon
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              ) : (
+                // Hamburger Icon
+                <div className="w-6 h-5 flex flex-col justify-between absolute inset-0 m-auto">
+                  <span className="hamburger-line"></span>
+                  <span className="hamburger-line"></span>
+                  <span className="hamburger-line"></span>
+                </div>
+              )}
             </button>
 
             {/* Brand Logo */}
@@ -113,56 +117,56 @@ export const CardNav: React.FC<CardNavProps> = ({
         </nav>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Full Screen Menu Overlay */}
       {isMenuOpen && (
-        <>
-          <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 backdrop-blur-sm"
-            onClick={toggleMenu}
-          ></div>
-          
-          <div className="mobile-menu fixed top-16 left-0 right-0 z-40 bg-[#0A0A0F] border-b border-gray-800 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto">
-            <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="fixed inset-0 z-40 bg-[#0A0A0F] pt-16 overflow-y-auto">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {items.map((item) => (
-                <div key={item.label} className="mb-4">
-                  <button
-                    onClick={() => toggleDropdown(item.label)}
-                    className="menu-section-btn w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all hover:bg-gray-800"
-                    style={{
-                      backgroundColor: openDropdown === item.label ? item.bgColor : 'transparent',
-                      color: item.textColor,
-                    }}
-                  >
-                    <span className="font-medium text-base">{item.label}</span>
-                    <span 
-                      className={`text-xs transition-transform duration-300 ${
-                        openDropdown === item.label ? 'rotate-180' : ''
-                      }`}
-                    >
-                      ▼
-                    </span>
-                  </button>
-
-                  {openDropdown === item.label && (
-                    <div className="menu-dropdown mt-2 ml-4 space-y-1 animate-slideDown">
-                      {item.links.map((link) => (
-                        <Link
-                          key={link.label}
-                          href={link.href || '#'}
-                          aria-label={link.ariaLabel}
-                          className="block px-4 py-2.5 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all text-sm"
-                          onClick={toggleMenu}
+                <div
+                  key={item.label}
+                  className="menu-card rounded-2xl p-8 min-h-[240px] flex flex-col"
+                  style={{
+                    backgroundColor: item.bgColor,
+                  }}
+                >
+                  <h3 className="text-white text-2xl font-semibold mb-8">
+                    {item.label}
+                  </h3>
+                  
+                  <nav className="flex flex-col gap-3">
+                    {item.links.map((link) => (
+                      <Link
+                        key={link.label}
+                        href={link.href || '#'}
+                        aria-label={link.ariaLabel}
+                        className="menu-link flex items-center gap-2 text-white/90 hover:text-white transition-colors group"
+                        onClick={toggleMenu}
+                      >
+                        <svg 
+                          width="16" 
+                          height="16" 
+                          viewBox="0 0 16 16" 
+                          fill="none" 
+                          className="transition-transform group-hover:translate-x-1"
                         >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                          <path 
+                            d="M6 3L11 8L6 13" 
+                            stroke="currentColor" 
+                            strokeWidth="2" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <span className="text-base">{link.label}</span>
+                      </Link>
+                    ))}
+                  </nav>
                 </div>
               ))}
             </div>
           </div>
-        </>
+        </div>
       )}
 
       {/* Spacer to prevent content from going under fixed header */}
@@ -176,6 +180,14 @@ export const CardNav: React.FC<CardNavProps> = ({
           background-color: white;
           border-radius: 2px;
           transition: all 0.3s ease;
+        }
+
+        .menu-card {
+          transition: transform 0.2s ease;
+        }
+
+        .menu-card:hover {
+          transform: translateY(-4px);
         }
       `}</style>
     </>
