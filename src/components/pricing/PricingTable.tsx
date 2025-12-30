@@ -2,109 +2,125 @@
 
 import React from 'react';
 import { Button } from '../ui/Button';
+import { cn } from '@/lib/utils';
 
-interface PricingTier {
+export interface PricingFeature {
+  label: string;
+  value: string;
+}
+
+export interface PricingTier {
   id: string;
   name: string;
-  price: number;
+  price: string | number;
   tagline: string;
-  badge?: string;
-  features: string[];
+  label: string;
+  color: 'purple' | 'turquoise' | 'red';
+  features: PricingFeature[];
   cta: { text: string; href: string };
   featured?: boolean;
 }
 
 interface PricingTableProps {
   heading: string;
-  subtext: string;
   tiers: PricingTier[];
-  disclaimer: string;
 }
+
+const colorVariants = {
+  purple: {
+    labelBg: 'bg-[#cad2ff]',
+    labelText: 'text-[#627afe]',
+    priceText: 'text-[#627afe]',
+    buttonBg: 'bg-[#627afe] hover:bg-[#546dfe]',
+  },
+  turquoise: {
+    labelBg: 'bg-[#b9edee]',
+    labelText: 'text-[#44cdd2]',
+    priceText: 'text-[#44cdd2]',
+    buttonBg: 'bg-[#44cdd2] hover:bg-[#2dbcc4]',
+  },
+  red: {
+    labelBg: 'bg-[#ffc4c4]',
+    labelText: 'text-[#ff5e5e]',
+    priceText: 'text-[#ff5e5e]',
+    buttonBg: 'bg-[#ff5e5e] hover:bg-[#f23c3c]',
+  },
+};
 
 export const PricingTable: React.FC<PricingTableProps> = ({
   heading,
-  subtext,
   tiers,
-  disclaimer,
 }) => {
   return (
-    <section id="pricing" className="bg-[var(--background-white)] py-16 md:py-24 lg:py-32">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section id="pricing" className="bg-[#e6e6e6] py-20 px-4">
+      <div className="max-w-[1200px] mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16 space-y-4">
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)]">
+        <div className="mb-12">
+          <h2 className="bg-[#0D1440] shadow-[0px_1px_10px_-6px_rgba(0,0,0,0.15)] p-4 mb-0 text-white font-medium uppercase rounded text-base tracking-wide">
             {heading}
           </h2>
-          <p className="text-[var(--text-secondary)] text-lg max-w-[600px] mx-auto">
-            {subtext}
-          </p>
         </div>
         
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {tiers.map((tier) => (
-            <div
-              key={tier.id}
-              className={`
-                relative bg-[var(--background-white)] rounded-2xl p-8
-                border-2 transition-all duration-300
-                ${tier.featured 
-                  ? 'border-[var(--primary)] shadow-[var(--shadow-strong)] scale-100 md:scale-[1.05] lg:scale-110' 
-                  : 'border-gray-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] hover:-translate-y-1'
-                }
-              `}
-            >
-              {/* Featured Badge */}
-              {tier.badge && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="inline-block bg-[var(--success)] text-white text-sm font-semibold px-4 py-1 rounded-full">
-                    {tier.badge}
-                  </span>
-                </div>
-              )}
-              
-              <div className="space-y-6">
-                {/* Tier Name */}
-                <h3 className="font-heading font-semibold text-xl text-[var(--text-primary)]">
-                  {tier.name}
-                </h3>
-                
-                {/* Price */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {tiers.map((tier) => {
+            const variant = colorVariants[tier.color] || colorVariants.purple;
+            
+            return (
+              <div
+                key={tier.id}
+                className="bg-white shadow-[0px_1px_10px_-6px_rgba(0,0,0,0.15)] p-8 rounded transition-all duration-300 hover:shadow-[0px_1px_10px_-4px_rgba(0,0,0,0.15)] flex flex-col"
+              >
+                {/* Table Head */}
                 <div>
-                  <div className="text-4xl font-bold text-[var(--text-primary)]">${tier.price}</div>
-                  <div className="text-[var(--text-secondary)] mt-1">{tier.tagline}</div>
+                  <div className={cn(
+                    "rounded-[2px] px-2 py-1 mb-4 inline-block text-[12px] font-medium uppercase",
+                    variant.labelBg,
+                    variant.labelText
+                  )}>
+                    {tier.label}
+                  </div>
+                  <h2 className="text-[#3b3b3b] text-2xl font-medium mb-1">
+                    {tier.name}
+                  </h2>
+                  <h5 className="text-[#B3B3B3] text-sm font-normal">
+                    {tier.tagline}
+                  </h5>
                 </div>
                 
                 {/* Features */}
-                <ul className="space-y-3">
-                  {tier.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3 text-[var(--text-secondary)]">
-                      <svg className="w-5 h-5 text-[var(--success)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-8 flex-grow">
+                  <div className="space-y-2">
+                    {tier.features.map((feature, index) => (
+                      <div key={index} className="text-sm text-[#B3B3B3] flex justify-between items-center">
+                        <span>{feature.label}</span>
+                        <span className="text-[#3b3b3b] font-medium">{feature.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
                 
-                {/* CTA */}
-                <Button
-                  variant={tier.featured ? 'solid' : 'outline'}
-                  size="large"
+                {/* Price */}
+                <div className={cn("mt-8 text-center font-medium", variant.priceText)}>
+                  <span className="text-2xl mr-1">$</span>
+                  <span className="text-[64px] tracking-[-2px] leading-none">{tier.price}</span>
+                  <span className="text-[#3b3b3b] font-medium text-base ml-1">/month</span>
+                </div>
+                
+                {/* Button */}
+                <a
                   href={tier.cta.href}
-                  className="w-full"
+                  className={cn(
+                    "block text-white mt-8 p-3 rounded-[2px] text-center font-medium transition-all duration-300 hover:no-underline",
+                    variant.buttonBg
+                  )}
                 >
-                  {tier.cta.text} →
-                </Button>
+                  {tier.cta.text}
+                </a>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-        
-        {/* Disclaimer */}
-        <p className="text-center text-sm text-[var(--text-secondary)]">
-          {disclaimer}
-        </p>
       </div>
     </section>
   );
