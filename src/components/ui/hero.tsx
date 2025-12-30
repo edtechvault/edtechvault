@@ -33,6 +33,16 @@ function HeroContent({
   primaryAction,
   secondaryAction,
 }: HeroContentProps) {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col space-y-4">
       <motion.h1
@@ -63,6 +73,7 @@ function HeroContent({
         {primaryAction && (
           <Link
             href={primaryAction.href}
+            onClick={(e) => handleSmoothScroll(e, primaryAction.href)}
             className={cn(
               buttonVariants({ variant: primaryAction.variant || "solid", size: "lg" }),
               "gap-2 w-full sm:w-auto justify-center"
@@ -75,6 +86,7 @@ function HeroContent({
         {secondaryAction && (
           <Link
             href={secondaryAction.href}
+            onClick={(e) => handleSmoothScroll(e, secondaryAction.href)}
             className={cn(
               buttonVariants({ variant: secondaryAction.variant || "outline", size: "lg" }),
               "gap-2 w-full sm:w-auto justify-center"
