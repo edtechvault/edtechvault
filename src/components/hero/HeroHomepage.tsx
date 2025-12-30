@@ -28,7 +28,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
   return (
     <section className="bg-white overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
-        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-end">
           {/* Content - Left Column (55%) */}
           <div className="md:col-span-7 space-y-6 md:space-y-8">
             {/* Eyebrow Text */}
@@ -66,7 +66,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
           </div>
           
           {/* Visual - Right Column (45%) */}
-          <div className="md:col-span-5 relative h-96 md:h-[500px]">
+          <div className="md:col-span-5 relative h-80 md:h-[340px] mb-2">
             {/* Decorative Circle - Top Right */}
             <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-20 -z-10" style={{ backgroundColor: 'var(--primary)' }} />
             
@@ -81,7 +81,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
               <img
                 src={laptopMockup.src}
                 alt={laptopMockup.alt}
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-contain rounded-lg"
                 style={{
                   boxShadow: '0 20px 40px rgba(45, 45, 45, 0.15)',
                 }}
