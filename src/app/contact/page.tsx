@@ -1,4 +1,5 @@
 import { Hero } from '@/components/ui/hero';
+import { ContactOptions } from '@/components/contact/ContactOptions';
 import { MultiStepContactForm } from '@/components/contact/MultiStepContactForm';
 import { CalendlyEmbed } from '@/components/contact/CalendlyEmbed';
 import { ContactForm } from '@/components/contact/ContactForm';
