@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { createClient } from '@supabase/supabase-js';
+import Stripe from 'stripe';
 
 // Initialize Supabase with service role for server-side operations
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
+
+// Initialize Stripe (only needed if you have a secret key for verification)
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2024-12-18.acacia' })
+  : null;
 
 // Package mapping based on Stripe price/product IDs
 // You'll need to update these with your actual Stripe price IDs
@@ -35,10 +41,30 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  let event: Stripe.Event;
+
   try {
-    // Note: In production, you should verify the webhook signature
-    // using Stripe's webhook secret. For now, we'll parse the event directly.
-    const event = JSON.parse(body);
+    // Verify webhook signature if secret is configured
+    if (process.env.STRIPE_WEBHOOK_SECRET && stripe) {
+      try {
+        event = stripe.webhooks.constructEvent(
+          body,
+          signature,
+          process.env.STRIPE_WEBHOOK_SECRET
+        );
+        console.log('✅ Webhook signature verified');
+      } catch (err) {
+        console.error('⚠️ Webhook signature verification failed:', err);
+        return NextResponse.json(
+          { error: 'Invalid signature' },
+          { status: 400 }
+        );
+      }
+    } else {
+      // Fallback: parse without verification (not recommended for production)
+      console.warn('⚠️ Webhook signature verification skipped - set STRIPE_WEBHOOK_SECRET');
+      event = JSON.parse(body) as Stripe.Event;
+    }
 
     // Handle the checkout.session.completed event
     if (event.type === 'checkout.session.completed') {
