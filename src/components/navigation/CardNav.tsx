@@ -129,9 +129,11 @@ export const CardNav: React.FC<CardNavProps> = ({
                   {items.map((item) => (
                     <div
                       key={item.label}
-                      className="menu-card rounded-2xl p-8 min-h-[200px] flex flex-col shadow-lg"
+                      className="menu-card p-8 min-h-[200px] flex flex-col"
                       style={{
                         backgroundColor: item.bgColor,
+                        borderRadius: '16px',
+                        boxShadow: '0 4px 20px rgba(196, 120, 90, 0.12)',
                       }}
                     >
                       <h3 className="text-white text-2xl font-semibold mb-6">
