@@ -13,7 +13,7 @@ const heroContent = {
     "Before this, I studied design in France and worked on everything from brand identities to spatial installations. But what excites me most is helping independent professionals—tutors, coaches, instructors—get online without the usual headaches."
   ],
   photo: {
-    src: "https://placehold.co/500x600/FDF6F0/C4785A?text=Leo+Photo",
+    src: "https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F49305038341a477383aa7f1b5ff5d5d9?format=webp&width=800",
     alt: "Leo Mahé portrait"
   }
 };
