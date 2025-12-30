@@ -104,13 +104,13 @@ interface HeroProps {
 const Hero = ({ pill, content, preview }: HeroProps) => {
   return (
     <div className="container relative overflow-hidden">
-      <div className="flex min-h-[calc(100vh-64px)] flex-col lg:flex-row items-center py-8 px-4 md:px-8 lg:px-12">
+      <div className="flex min-h-[calc(100vh-64px)] flex-col lg:flex-row items-center justify-center py-8 px-4 md:px-8 lg:px-12 gap-8 lg:gap-16 mx-auto max-w-[1400px]">
         <div className="flex flex-col gap-4 w-full lg:max-w-2xl">
           {pill && <HeroBadge {...pill} />}
           <HeroContent {...content} />
         </div>
         {preview && (
-          <div className="w-full lg:max-w-xl lg:pl-16 mt-12 lg:mt-0">
+          <div className="w-full lg:max-w-xl mt-12 lg:mt-0">
             {preview}
           </div>
         )}
