@@ -115,7 +115,7 @@ export const CardNav: React.FC<CardNavProps> = ({
 
         {/* Dropdown Menu (appears below header, not full screen) */}
         {isMenuOpen && (
-          <div className="menu-dropdown-container bg-white border-t border-gray-200 shadow-2xl">
+          <div className="menu-dropdown-container bg-[#FDF6F0] border-t border-[#E5E5E5] shadow-2xl">
             <div 
               className="menu-dotted-bg py-12"
               style={{
