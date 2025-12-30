@@ -171,9 +171,9 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
       <canvas ref={canvasRef} className="absolute inset-0 z-10" />
 
       <div className="relative z-20 max-w-[1200px] mx-auto px-6 py-16 md:py-24 w-full">
-        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center md:items-end">
-          {/* Content - Left Column (55%) */}
-          <div className="md:col-span-7 space-y-6 md:space-y-8">
+        <div className="flex flex-col gap-12 md:gap-16 items-start">
+          {/* Content - Now stacked */}
+          <div className="max-w-2xl space-y-6 md:space-y-8">
             {/* Eyebrow Text */}
             <span className="inline-block text-[var(--primary)] text-sm font-semibold tracking-widest uppercase">
               {eyebrow}
@@ -185,10 +185,10 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
             </h1>
 
             {/* Subheadline */}
-            <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed max-w-lg">
+            <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed">
               {subheadline}
             </p>
-            
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
@@ -198,7 +198,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
               >
                 {primaryCTA.text}
               </Button>
-              
+
               <button
                 onClick={() => handleScrollTo(secondaryCTA.href)}
                 className="inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-semibold rounded-xl border-2 border-[var(--accent)] text-[var(--accent)] bg-transparent hover:bg-[var(--accent)] hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 active:scale-[0.98]"
@@ -207,15 +207,14 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
               </button>
             </div>
           </div>
-          
-          {/* Visual - Right Column (45%) */}
-          <div className="md:col-span-5 relative h-80 md:h-[340px] mb-2">
-            {/* Laptop Mockup Image */}
-            <div className="relative h-full flex items-center justify-center">
+
+          {/* Visual - Now below the buttons */}
+          <div className="relative w-full max-w-4xl h-80 md:h-[480px]">
+            <div className="relative h-full flex items-center justify-start">
               <img
                 src={laptopMockup.src}
                 alt={laptopMockup.alt}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain object-left"
                 loading="eager"
               />
             </div>
