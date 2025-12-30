@@ -79,13 +79,13 @@ const pricingContent = {
 const portfolioContent = {
   eyebrow: "PORTFOLIO",
   heading: "This Section Is Waiting for You",
-  body: "I'm not going to fill this with fake mockups or borrowed work.\nInstead, I'm looking for founding clients who want to be featured here.\n\nYou get my full attention. I get a success story to share.",
+  body: "I'm building my portfolio with real results from real educators. Want to be featured here—with a link to your new site and your success story?",
   cards: [
-    { id: "1", placeholderText: "Your Tutoring Business Could Be Here" },
-    { id: "2", placeholderText: "Your Dance Studio Could Be Here" },
-    { id: "3", placeholderText: "Your Coaching Practice Could Be Here" }
+    { id: "1", placeholderText: "Your Project Here" },
+    { id: "2", placeholderText: "Your Project Here" },
+    { id: "3", placeholderText: "Your Project Here" }
   ],
-  cta: { text: "Claim a Founding Spot", href: "/contact" }
+  cta: { text: "Become a Founding Client", href: "/contact" }
 };
 
 const socialProofContent = {
