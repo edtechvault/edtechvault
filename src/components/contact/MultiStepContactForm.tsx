@@ -329,7 +329,7 @@ export const MultiStepContactForm: React.FC = () => {
                     { value: 'tier1', label: 'Quick Launch ($800)', icon: '💰' },
                     { value: 'tier2', label: 'Local Visibility ($1,800)', icon: '💰💰' },
                     { value: 'tier3', label: 'Growth System ($3,200)', icon: '💰💰💰' },
-                    { value: 'discuss\', label: \'Let\'s Discuss\', icon: \'💬' }
+                    { value: 'discuss', label: 'Let\'s Discuss', icon: '💬' }
                   ].map((option) => (
                     <label
                       key={option.value}
