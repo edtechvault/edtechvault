@@ -43,9 +43,8 @@ export const CardNav: React.FC<CardNavProps> = ({
       textColor: "#fff",
       links: [
         { label: "View Packages", ariaLabel: "See pricing packages", href: "/#pricing" },
-        { label: "Quick Launch ($199)", ariaLabel: "Quick Launch package", href: "/#pricing" },
-        { label: "Local Visibility ($399)", ariaLabel: "Local Visibility package", href: "/#pricing" },
-        { label: "Growth System ($599)", ariaLabel: "Growth System package", href: "/#pricing" }
+        { label: "Portfolio", ariaLabel: "View portfolio", href: "/#portfolio" },
+        { label: "Claim a Founding Spot", ariaLabel: "Become a founding client", href: "/contact" }
       ]
     },
     {
