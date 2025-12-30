@@ -102,7 +102,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
         imgData.data[i] = v;
         imgData.data[i + 1] = v;
         imgData.data[i + 2] = v;
-        imgData.data[i + 3] = 12;
+        imgData.data[i + 3] = 8; // Very subtle noise
       }
       nCtx.putImageData(imgData, 0, 0);
     };
@@ -114,14 +114,16 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
 
       const pulsingOpacity = Math.min(1, beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.4));
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `rgba(0,255,255,0)`);
-      gradient.addColorStop(0.2, `rgba(0,255,255,${pulsingOpacity * 0.5})`);
-      gradient.addColorStop(0.5, `rgba(0,255,255,${pulsingOpacity})`);
-      gradient.addColorStop(0.8, `rgba(0,255,255,${pulsingOpacity * 0.5})`);
-      gradient.addColorStop(1, `rgba(0,255,255,0)`);
+
+      // Using Warm Terracotta (196, 120, 90) for the beams
+      gradient.addColorStop(0, `rgba(196, 120, 90, 0)`);
+      gradient.addColorStop(0.2, `rgba(196, 120, 90, ${pulsingOpacity * 0.4})`);
+      gradient.addColorStop(0.5, `rgba(196, 120, 90, ${pulsingOpacity * 0.7})`);
+      gradient.addColorStop(0.8, `rgba(196, 120, 90, ${pulsingOpacity * 0.4})`);
+      gradient.addColorStop(1, `rgba(196, 120, 90, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = `blur(${2 + beam.layer * 2}px)`;
+      ctx.filter = `blur(${4 + beam.layer * 3}px)`;
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
     };
@@ -130,8 +132,9 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
       if (!canvas || !ctx) return;
 
       const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, "#050505");
-      gradient.addColorStop(1, "#111111");
+      // Using Off-White (#FAFAFA) and Soft Cream (#FDF6F0) for the background
+      gradient.addColorStop(0, "#FAFAFA");
+      gradient.addColorStop(1, "#FDF6F0");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -162,7 +165,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
   };
 
   return (
-    <section className="relative overflow-hidden bg-black min-h-[600px] md:min-h-[800px] flex items-center">
+    <section className="relative overflow-hidden bg-[#FAFAFA] min-h-[600px] md:min-h-[800px] flex items-center">
       {/* Background Animation */}
       <canvas ref={noiseRef} className="absolute inset-0 z-0 pointer-events-none" />
       <canvas ref={canvasRef} className="absolute inset-0 z-10" />
@@ -177,12 +180,12 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
             </span>
 
             {/* Headline */}
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-white">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-[var(--text-primary)]">
               {headline}
             </h1>
 
             {/* Subheadline */}
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-lg">
+            <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed max-w-lg">
               {subheadline}
             </p>
             
