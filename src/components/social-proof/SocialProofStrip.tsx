@@ -1,67 +1,73 @@
 'use client';
 
 import React from 'react';
-import {
-  GraduationCap,
-  Wrench,
-  Globe,
-  Clock,
-  LucideIcon
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
-
-export interface SocialProofItem {
-  icon: LucideIcon;
-  text: string;
-}
+import { MarqueeLogoScroller, Logo } from '@/components/ui/MarqueeLogoScroller';
 
 interface SocialProofStripProps {
-  items?: SocialProofItem[];
+  title?: string;
+  description?: string;
+  logos?: Logo[];
+  speed?: 'normal' | 'slow' | 'fast';
 }
 
-const defaultIndicators: SocialProofItem[] = [
+// Default logos representing technologies and platforms Leo works with
+const defaultLogos: Logo[] = [
   {
-    icon: GraduationCap,
-    text: "Tongji University, Shanghai",
+    src: 'https://cdn.builder.io/api/v1/image/assets%2Fplugins%2F1%2Fe86f07eeb4eb4c0faee2d4819ac0ad88',
+    alt: 'Next.js',
+    gradient: { from: '#000000', via: '#1a1a1a', to: '#000000' },
   },
   {
-    icon: Wrench,
-    text: "Figma • Builder.io • AI-Powered",
+    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F3e8c2f6e8f8e4f0f8e8c2f6e8f8e4f0f',
+    alt: 'Tailwind CSS',
+    gradient: { from: '#0ea5e9', via: '#38bdf8', to: '#0ea5e9' },
   },
   {
-    icon: Globe,
-    text: "Clients worldwide",
+    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Fsupabase-logo',
+    alt: 'Supabase',
+    gradient: { from: '#3ecf8e', via: '#1fa871', to: '#3ecf8e' },
   },
   {
-    icon: Clock,
-    text: "3–7 day delivery",
+    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Ffigma-logo',
+    alt: 'Figma',
+    gradient: { from: '#f24e1e', via: '#a259ff', to: '#1abcfe' },
+  },
+  {
+    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Fbuilder-logo',
+    alt: 'Builder.io',
+    gradient: { from: '#6b46c1', via: '#8b5cf6', to: '#6b46c1' },
+  },
+  {
+    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Ftypescript-logo',
+    alt: 'TypeScript',
+    gradient: { from: '#3178c6', via: '#5199d8', to: '#3178c6' },
+  },
+  {
+    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Freact-logo',
+    alt: 'React',
+    gradient: { from: '#61dafb', via: '#149eca', to: '#61dafb' },
+  },
+  {
+    src: 'https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2Fcalendly-logo',
+    alt: 'Calendly',
+    gradient: { from: '#006bff', via: '#0099ff', to: '#006bff' },
   },
 ];
 
-export const SocialProofStrip: React.FC<SocialProofStripProps> = ({ items = defaultIndicators }) => {
+export const SocialProofStrip: React.FC<SocialProofStripProps> = ({
+  title = 'Built with Industry-Leading Tools',
+  description = 'Professional websites powered by modern technology and AI-driven design.',
+  logos = defaultLogos,
+  speed = 'normal',
+}) => {
   return (
-    <section className="w-full bg-[#FDF6F0] border-y border-[#C4785A]/10 py-6 md:py-8">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center">
-          {items.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row items-center gap-3 md:gap-4 text-center md:text-left group"
-              >
-                <div className="p-2 rounded-full bg-[#C4785A]/5 group-hover:bg-[#C4785A]/10 transition-colors">
-                  <Icon size={24} className="text-[#C4785A]" strokeWidth={2} />
-                </div>
-                <span className="text-[#6B6B6B] text-sm md:text-base font-medium leading-tight max-w-[180px] md:max-w-none">
-                  {item.text}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+    <MarqueeLogoScroller
+      title={title}
+      description={description}
+      logos={logos}
+      speed={speed}
+      className="bg-[var(--secondary)] border-y border-[var(--primary)]/10 mx-auto max-w-[1200px] my-24 md:my-32"
+    />
   );
 };
 
