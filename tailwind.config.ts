@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         heading: ['Outfit', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif'],
       },
       colors: {
         primary: {
