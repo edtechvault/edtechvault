@@ -71,7 +71,7 @@ export const CardNav: React.FC<CardNavProps> = ({
             {/* Hamburger/Close Menu Button */}
             <button
               onClick={toggleMenu}
-              className="hamburger-btn p-2 rounded-lg hover:bg-gray-800 transition-colors relative w-10 h-10"
+              className="hamburger-btn p-2 rounded-lg hover:bg-[#3D3D3D] transition-colors relative w-10 h-10"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
