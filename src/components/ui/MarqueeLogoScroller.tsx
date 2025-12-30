@@ -90,26 +90,34 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
               {[...logos, ...logos].map((logo, index) => (
                 <div
                   key={index}
-                  className="group relative h-24 w-40 shrink-0 flex items-center justify-center rounded-lg bg-secondary/70 overflow-hidden"
+                  className="group shrink-0 flex flex-col items-center gap-3"
                 >
-                  {/* Gradient background revealed on hover */}
-                  <div
-                    style={
-                      {
-                        '--from': logo.gradient.from,
-                        '--via': logo.gradient.via,
-                        '--to': logo.gradient.to,
-                      } as React.CSSProperties
-                    }
-                    className="absolute inset-0 scale-150 opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-100 bg-gradient-to-br from-[var(--from)] via-[var(--via)] to-[var(--to)]"
-                  />
+                  {/* Logo Card */}
+                  <div className="relative h-24 w-40 flex items-center justify-center rounded-lg bg-secondary/70 overflow-hidden">
+                    {/* Gradient background revealed on hover */}
+                    <div
+                      style={
+                        {
+                          '--from': logo.gradient.from,
+                          '--via': logo.gradient.via,
+                          '--to': logo.gradient.to,
+                        } as React.CSSProperties
+                      }
+                      className="absolute inset-0 scale-150 opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-100 bg-gradient-to-br from-[var(--from)] via-[var(--via)] to-[var(--to)]"
+                    />
 
-                  {/* Logo Image */}
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="relative h-3/4 w-auto object-contain"
-                  />
+                    {/* Logo Image */}
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="relative h-3/4 w-auto object-contain"
+                    />
+                  </div>
+
+                  {/* Logo Name */}
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                    {logo.alt}
+                  </span>
                 </div>
               ))}
             </div>
