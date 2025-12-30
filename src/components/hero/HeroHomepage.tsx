@@ -67,24 +67,12 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
           
           {/* Visual - Right Column (45%) */}
           <div className="md:col-span-5 relative h-80 md:h-[340px] mb-2">
-            {/* Decorative Circle - Top Right */}
-            <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-20 -z-10" style={{ backgroundColor: 'var(--primary)' }} />
-            
-            {/* Decorative Rounded Rectangle - Bottom Left */}
-            <div className="absolute -bottom-16 -left-16 w-32 h-48 rounded-3xl opacity-20 -z-10" style={{ backgroundColor: 'var(--primary)' }} />
-            
-            {/* Decorative Circle - Center */}
-            <div className="absolute top-1/2 -right-12 w-24 h-24 rounded-full opacity-20 -z-10" style={{ backgroundColor: 'var(--primary)' }} />
-            
             {/* Laptop Mockup Image */}
             <div className="relative h-full flex items-center justify-center">
               <img
                 src={laptopMockup.src}
                 alt={laptopMockup.alt}
-                className="w-full h-full object-contain rounded-lg"
-                style={{
-                  boxShadow: '0 20px 40px rgba(45, 45, 45, 0.15)',
-                }}
+                className="w-full h-full object-contain"
                 loading="eager"
               />
             </div>
