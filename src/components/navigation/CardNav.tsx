@@ -148,6 +148,7 @@ export const CardNav: React.FC<CardNavProps> = ({
                             aria-label={link.ariaLabel}
                             className="menu-link flex items-center gap-2 text-white/90 hover:text-white transition-colors group"
                             onClick={toggleMenu}
+                            style={{ fontFamily: 'Inter' }}
                           >
                             <svg 
                               width="16" 
