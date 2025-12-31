@@ -174,7 +174,7 @@ export const MultiStepContactForm: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <section className="bg-[var(--background-white)] py-16 md:py-24">
+      <section id="contact-form" className="bg-[var(--background-white)] py-16 md:py-24">
         <div className="max-w-[800px] mx-auto px-6">
           <div className="text-center space-y-6 bg-[var(--secondary)] rounded-3xl p-12 shadow-[var(--shadow-soft)]">
             <div className="text-6xl mb-4">✓</div>
@@ -198,7 +198,7 @@ export const MultiStepContactForm: React.FC = () => {
   }
 
   return (
-    <section className="bg-[var(--background-white)] py-16 md:py-24">
+    <section id="contact-form" className="bg-[var(--background-white)] py-16 md:py-24">
       <div className="max-w-[1000px] mx-auto px-6">
         {/* Step Indicators */}
         <div className="mb-12 overflow-x-auto pb-4">
