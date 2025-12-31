@@ -37,7 +37,7 @@ const pricingContent = {
       cta: {
         text: "Pay Deposit",
         href: "https://buy.stripe.com/eVqaEXewfaNk1gT0IpgEg04",
-        variant: "outline"
+        variant: "outline" as const
       }
     },
     {
@@ -60,7 +60,7 @@ const pricingContent = {
       cta: {
         text: "Pay Deposit",
         href: "https://buy.stripe.com/5kQ3cv4VF08G2kX1MtgEg06",
-        variant: "solid"
+        variant: "solid" as const
       }
     },
     {
@@ -82,7 +82,7 @@ const pricingContent = {
       cta: {
         text: "Pay Deposit",
         href: "https://buy.stripe.com/00w14nfAjbRobVx1MtgEg05",
-        variant: "outline"
+        variant: "outline" as const
       }
     }
   ]

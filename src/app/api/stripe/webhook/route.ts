@@ -75,12 +75,15 @@ export async function POST(request: NextRequest) {
       const firstItem = lineItems[0];
       
       // Try to determine package from metadata or price ID
-      let packageInfo = PACKAGE_MAPPING[session.metadata?.price_id] || 
-                        PACKAGE_MAPPING[firstItem?.price?.id];
+      const priceIdFromMetadata = session.metadata?.price_id;
+      const priceIdFromItem = firstItem?.price?.id;
+
+      let packageInfo = (priceIdFromMetadata && PACKAGE_MAPPING[priceIdFromMetadata]) ||
+                        (priceIdFromItem && PACKAGE_MAPPING[priceIdFromItem]);
 
       // Fallback: try to infer from amount
       if (!packageInfo) {
-        const amount = session.amount_total;
+        const amount = session.amount_total ?? 0;
         if (amount >= 50000) packageInfo = { name: 'Growth System', tier: 'growth-system' };
         else if (amount >= 30000) packageInfo = { name: 'Local Visibility Package', tier: 'local-visibility' };
         else packageInfo = { name: 'Quick Launch Sprint', tier: 'quick-launch' };
@@ -100,7 +103,7 @@ export async function POST(request: NextRequest) {
         metadata: {
           session_metadata: session.metadata,
           customer_details: session.customer_details,
-          line_items: lineItems.map((item: any) => ({
+          line_items: lineItems.map((item: Stripe.LineItem) => ({
             description: item.description,
             amount: item.amount_total,
             quantity: item.quantity,
@@ -130,8 +133,9 @@ export async function POST(request: NextRequest) {
     console.log('Received webhook event:', event.type);
     return NextResponse.json({ received: true });
 
-  } catch (error) {
-    console.error('Webhook error:', error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Webhook error:', errorMessage);
     return NextResponse.json(
       { error: 'Webhook processing failed' },
       { status: 500 }

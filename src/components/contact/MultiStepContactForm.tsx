@@ -65,6 +65,16 @@ const steps = [
   { id: 6, title: 'Requirements', icon: '📋' }
 ];
 
+// Type for budget options
+interface BudgetOption {
+  value: string;
+  label: string;
+  price: string;
+  deposit?: string;
+  icon: string;
+  features: string[];
+}
+
 export const MultiStepContactForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
@@ -156,7 +166,6 @@ export const MultiStepContactForm: React.FC = () => {
         color_preference: formData.colorPreference || null,
         inspiration_url: formData.inspirationUrl || null,
         budget: formData.budget,
-        timeline: formData.timeline,
         special_features: formData.specialFeatures.length > 0 ? formData.specialFeatures.join(', ') : null,
         message: formData.additionalInfo || null,
         created_at: new Date().toISOString(),
@@ -185,7 +194,7 @@ export const MultiStepContactForm: React.FC = () => {
               Message Sent!
             </h3>
             <p className="text-[var(--text-secondary)] text-lg">
-              Thanks for reaching out! I'll get back to you within 24 hours.
+              Thanks for reaching out! I&apos;ll get back to you within 24 hours.
             </p>
             <Button
               variant="outline"
@@ -246,7 +255,7 @@ export const MultiStepContactForm: React.FC = () => {
           {currentStep === 1 && (
             <div className="space-y-6">
               <h3 className="font-heading font-semibold text-2xl text-[var(--text-primary)] mb-6">
-                Let's start with your contact details
+                Let&apos;s start with your contact details
               </h3>
 
               <div className="form-group">
@@ -558,7 +567,7 @@ export const MultiStepContactForm: React.FC = () => {
           {currentStep === 5 && (
             <div className="space-y-6">
               <h3 className="font-heading font-semibold text-2xl text-[var(--text-primary)] mb-6">
-                What's your budget?
+                What&apos;s your budget?
               </h3>
 
               <div className="form-group">
@@ -566,7 +575,7 @@ export const MultiStepContactForm: React.FC = () => {
                   Select a Package <span className="text-[var(--primary)]">*</span>
                 </label>
                 <div className="grid gap-4">
-                  {[
+                  {([
                     {
                       value: 'quick-launch',
                       label: 'Quick Launch Sprint',
@@ -598,7 +607,7 @@ export const MultiStepContactForm: React.FC = () => {
                       icon: '💬',
                       features: ['Tailored solution', 'Flexible timeline', 'Custom features']
                     }
-                  ].map((option) => (
+                  ] as BudgetOption[]).map((option) => (
                     <label
                       key={option.value}
                       className={cn(
@@ -622,7 +631,7 @@ export const MultiStepContactForm: React.FC = () => {
                           <div className="font-semibold text-lg text-[var(--text-primary)]">{option.label}</div>
                           <div className="font-bold text-[var(--primary)]">
                             {option.price}
-                            {(option as any).deposit && <span className="text-xs font-normal text-[var(--text-secondary)] ml-1">{(option as any).deposit}</span>}
+                            {option.deposit && <span className="text-xs font-normal text-[var(--text-secondary)] ml-1">{option.deposit}</span>}
                           </div>
                         </div>
                         <ul className="space-y-1">
