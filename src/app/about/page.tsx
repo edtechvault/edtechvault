@@ -21,9 +21,9 @@ const heroContent = {
 const originStoryContent = {
   heading: "Why Teaching Businesses?",
   paragraphs: [
-    "A few years ago, I tried to find a Japanese tutor in my city. I Googled, scrolled through results, and clicked on a dozen websites. Most were broken on my phone. Some hadn't been updated since 2018. One just had a phone number and a blurry photo.",
-    "I eventually found a great tutor through word of mouth. She'd been teaching for 15 years, had dozens of happy students, and genuinely changed how I approached learning. Her website? A Facebook page with three posts from 2019.",
-    "That gap stuck with me. The people who dedicate their lives to teaching others—language tutors, music instructors, fitness coaches, wellness practitioners—often have the worst online presence. Not because they don't care, but because they're too busy actually teaching to figure out Wix.",
+    "A few years ago, I tried to find a Muay Thai coach in my city. I Googled, scrolled through results, and clicked on a dozen websites. Most were broken on my phone. Some hadn't been updated since 2018. One just had an address and a blurry photo.",
+    "I eventually found a great coach through word of mouth. He'd been teaching for 15 years, had dozens of loyal students, and genuinely changed how I approached training. His website? An old Facebook page with a few posts from years ago.",
+    "That gap stuck with me. The people who dedicate their lives to teaching others—coaches, trainers, instructors—often have the worst online presence. Not because they don't care, but because they're too busy actually teaching to figure out websites, SEO, or visibility.",
     "So I decided to fix that. One teaching business at a time."
   ]
 };
