@@ -113,11 +113,12 @@ interface HeroProps {
   };
   content: HeroContentProps;
   preview?: React.ReactNode;
+  className?: string;
 }
 
-const Hero = ({ pill, content, preview }: HeroProps) => {
+const Hero = ({ pill, content, preview, className }: HeroProps) => {
   return (
-    <div className="w-full relative overflow-hidden bg-[var(--background-white)]">
+    <div className={cn("w-full relative overflow-hidden bg-[var(--background-white)]", className)}>
       <div className="flex min-h-[calc(100vh-64px)] flex-col lg:flex-row items-center justify-center py-16 md:py-24 px-6 md:px-12 lg:px-16 gap-12 lg:gap-16 mx-auto max-w-[1200px]">
         <div className="flex flex-col gap-4 w-full lg:flex-1">
           {pill && <HeroBadge {...pill} />}
