@@ -81,10 +81,6 @@ const footerContent = {
 
 export default function AboutPage() {
   const heroContentFormatted = {
-    pill: {
-      text: "About Me",
-      variant: "outline" as const,
-    },
     content: {
       title: "I'm",
       titleHighlight: "Leo Mahé",
