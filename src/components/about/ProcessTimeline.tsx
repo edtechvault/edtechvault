@@ -19,7 +19,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({
   steps,
 }) => {
   return (
-    <section className="bg-[var(--background-white)] py-16 md:py-24">
+    <section id="process" className="bg-[var(--background-white)] py-16 md:py-24">
       <div className="max-w-[1000px] mx-auto px-6">
         <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)] text-center mb-12 md:mb-16">
           {heading}

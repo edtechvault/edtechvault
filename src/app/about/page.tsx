@@ -1,4 +1,4 @@
-import { HeroAbout } from '@/components/hero/HeroAbout';
+import { Hero } from '@/components/ui/hero';
 import { OriginStory } from '@/components/about/OriginStory';
 import { ProcessTimeline } from '@/components/about/ProcessTimeline';
 import { CredentialsGrid } from '@/components/about/CredentialsGrid';
@@ -13,7 +13,7 @@ const heroContent = {
     "Before this, I studied design in France and worked on everything from brand identities to spatial installations. But what excites me most is helping independent professionals—tutors, coaches, instructors—get online without the usual headaches."
   ],
   photo: {
-    src: "https://placehold.co/500x600/FDF6F0/C4785A?text=Leo+Photo",
+    src: "https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F49305038341a477383aa7f1b5ff5d5d9?format=webp&width=800",
     alt: "Leo Mahé portrait"
   }
 };
@@ -21,9 +21,9 @@ const heroContent = {
 const originStoryContent = {
   heading: "Why Teaching Businesses?",
   paragraphs: [
-    "A few years ago, I tried to find a Japanese tutor in my city. I Googled, scrolled through results, and clicked on a dozen websites. Most were broken on my phone. Some hadn't been updated since 2018. One just had a phone number and a blurry photo.",
-    "I eventually found a great tutor through word of mouth. She'd been teaching for 15 years, had dozens of happy students, and genuinely changed how I approached learning. Her website? A Facebook page with three posts from 2019.",
-    "That gap stuck with me. The people who dedicate their lives to teaching others—language tutors, music instructors, fitness coaches, wellness practitioners—often have the worst online presence. Not because they don't care, but because they're too busy actually teaching to figure out Wix.",
+    "A few years ago, I tried to find a Muay Thai coach in my city. I Googled, scrolled through results, and clicked on a dozen websites. Most were broken on my phone. Some hadn't been updated since 2018. One just had an address and a blurry photo.",
+    "I eventually found a great coach through word of mouth. He'd been teaching for 15 years, had dozens of loyal students, and genuinely changed how I approached training. His website? An old Facebook page with a few posts from years ago.",
+    "That gap stuck with me. The people who dedicate their lives to teaching others—coaches, trainers, instructors—often have the worst online presence. Not because they don't care, but because they're too busy actually teaching to figure out websites, SEO, or visibility.",
     "So I decided to fix that. One teaching business at a time."
   ]
 };
@@ -80,9 +80,34 @@ const footerContent = {
 };
 
 export default function AboutPage() {
+  const heroContentFormatted = {
+    content: {
+      title: "I'm",
+      titleHighlight: "Leo Mahé",
+      description: heroContent.intro.join(" "),
+      primaryAction: {
+        href: "/contact",
+        text: "Get Started",
+      },
+      secondaryAction: {
+        href: "#origin",
+        text: "My Story",
+      }
+    },
+    preview: (
+      <div className="relative aspect-square w-full max-w-[450px] mx-auto overflow-hidden rounded-full border-[12px] border-primary shadow-2xl">
+        <img
+          src={heroContent.photo.src}
+          alt={heroContent.photo.alt}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    )
+  };
+
   return (
     <main>
-      <HeroAbout {...heroContent} />
+      <Hero {...heroContentFormatted} />
       <OriginStory {...originStoryContent} />
       <ProcessTimeline {...processContent} />
       <CredentialsGrid {...credentialsContent} />

@@ -11,22 +11,35 @@ const config: Config = {
       fontFamily: {
         heading: ['Outfit', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif'],
       },
       colors: {
         primary: {
           DEFAULT: '#C4785A',
           light: '#D89A7F',
           dark: '#A45C42',
+          foreground: '#FFFFFF',
         },
         secondary: {
           DEFAULT: '#FDF6F0',
           dark: '#F5E8DC',
+          foreground: '#2D2D2D',
         },
         accent: {
           DEFAULT: '#2A6B6B',
           light: '#3A8585',
           dark: '#1A5151',
+          foreground: '#FFFFFF',
         },
+        muted: {
+          DEFAULT: '#6B6B6B',
+          foreground: '#9CA3AF',
+        },
+        background: '#FAFAFA',
+        foreground: '#2D2D2D',
+        border: '#E5E5E5',
+        input: '#E5E5E5',
+        ring: '#2A6B6B',
         success: '#7DB59A',
         warning: '#F59E0B',
         error: '#EF4444',

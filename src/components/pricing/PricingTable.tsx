@@ -1,110 +1,159 @@
 'use client';
 
 import React from 'react';
-import { Button } from '../ui/Button';
+import { cn } from '@/lib/utils';
+import { trackPurchaseClick } from '@/lib/tracking';
 
-interface PricingTier {
+export interface PricingTier {
   id: string;
   name: string;
-  price: number;
+  price: string | number;
+  pricePeriod?: string;
   tagline: string;
-  badge?: string;
+  label?: string;
+  color: 'primary' | 'teal' | 'accent';
   features: string[];
-  cta: { text: string; href: string };
+  cta: { text: string; href: string; variant?: 'outline' | 'solid' };
   featured?: boolean;
 }
 
 interface PricingTableProps {
-  heading: string;
-  subtext: string;
+  heading?: string;
   tiers: PricingTier[];
-  disclaimer: string;
 }
+
+const colorVariants = {
+  primary: {
+    labelBg: '#E8C7B6',
+    labelText: '#C4785A',
+    priceText: '#C4785A',
+    buttonBg: 'bg-[#C4785A] text-white hover:bg-[#A45C42]',
+    buttonOutline: 'border border-[#C4785A] text-[#C4785A] hover:bg-[#C4785A] hover:text-white',
+  },
+  teal: {
+    labelBg: '#C4D3D3',
+    labelText: '#2A6B6B',
+    priceText: '#2A6B6B',
+    buttonBg: 'bg-[#2A6B6B] text-white hover:bg-[#1A5151]',
+    buttonOutline: 'border border-[#2A6B6B] text-[#2A6B6B] hover:bg-[#2A6B6B] hover:text-white',
+  },
+  accent: {
+    labelBg: '#D7E4DB',
+    labelText: '#7DB59A',
+    priceText: '#7DB59A',
+    buttonBg: 'bg-[#7DB59A] text-white hover:bg-[#5F927A]',
+    buttonOutline: 'border border-[#7DB59A] text-[#7DB59A] hover:bg-[#7DB59A] hover:text-white',
+  },
+};
 
 export const PricingTable: React.FC<PricingTableProps> = ({
   heading,
-  subtext,
   tiers,
-  disclaimer,
 }) => {
+  const handlePurchaseClick = async (tier: PricingTier, e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Only track if it's a Stripe link
+    if (tier.cta.href.includes('stripe.com')) {
+      // Don't prevent default - let the link work normally
+      // Track asynchronously in the background
+      trackPurchaseClick({
+        packageName: tier.name,
+        packageTier: tier.id,
+        stripeLink: tier.cta.href,
+      }).catch(err => console.error('Failed to track click:', err));
+    }
+  };
+
   return (
-    <section id="pricing" className="bg-[var(--background-white)] py-16 md:py-24 lg:py-32">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section id="pricing" className="bg-[#FAFAFA] py-24 md:py-32 px-4 font-body">
+      <div className="max-w-[1200px] mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16 space-y-4">
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)]">
-            {heading}
-          </h2>
-          <p className="text-[var(--text-secondary)] text-lg max-w-[600px] mx-auto">
-            {subtext}
-          </p>
-        </div>
-        
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {tiers.map((tier) => (
-            <div
-              key={tier.id}
-              className={`
-                relative bg-[var(--background-white)] rounded-2xl p-8
-                border-2 transition-all duration-300
-                ${tier.featured 
-                  ? 'border-[var(--primary)] shadow-[var(--shadow-strong)] scale-100 md:scale-[1.05] lg:scale-110' 
-                  : 'border-gray-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] hover:-translate-y-1'
-                }
-              `}
-            >
-              {/* Featured Badge */}
-              {tier.badge && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="inline-block bg-[var(--success)] text-white text-sm font-semibold px-4 py-1 rounded-full">
-                    {tier.badge}
-                  </span>
+        {heading && (
+          <div className="mb-20 text-center">
+            <h2 className="text-[#2D2D2D] font-heading font-bold text-3xl md:text-4xl mb-4">
+              {heading}
+            </h2>
+          </div>
+        )}
+
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {tiers.map((tier) => {
+            const variant = colorVariants[tier.color] || colorVariants.primary;
+
+            return (
+              <div
+                key={tier.id}
+                className="bg-white flex flex-col transition-all duration-300 hover:shadow-medium"
+                style={{ boxShadow: '0px 1px 10px -6px rgba(0, 0, 0, .15)' }}
+              >
+                {/* Pricing Label - Top of card */}
+                <div className="px-8 pt-8">
+                  <div
+                    className="px-2 py-1 text-xs font-medium rounded inline-block"
+                    style={{
+                      backgroundColor: variant.labelBg,
+                      color: variant.labelText,
+                    }}
+                  >
+                    {tier.label || 'Fixed Price'}
+                  </div>
                 </div>
-              )}
-              
-              <div className="space-y-6">
-                {/* Tier Name */}
-                <h3 className="font-heading font-semibold text-xl text-[var(--text-primary)]">
-                  {tier.name}
-                </h3>
-                
-                {/* Price */}
-                <div>
-                  <div className="text-4xl font-bold text-[var(--text-primary)]">${tier.price}</div>
-                  <div className="text-[var(--text-secondary)] mt-1">{tier.tagline}</div>
+
+                {/* Card Content */}
+                <div className="px-8 pt-6 pb-8 flex flex-col flex-grow">
+                  {/* Plan Name */}
+                  <h3 className="text-[#3b3b3b] font-heading font-medium text-2xl mb-2">
+                    {tier.name}
+                  </h3>
+
+                  {/* Plan Tagline */}
+                  <p className="text-[#B3B3B3] text-sm font-normal mb-8">
+                    {tier.tagline}
+                  </p>
+
+                  {/* Features List */}
+                  <div className="mb-8 flex-grow">
+                    <div className="space-y-3">
+                      {tier.features.map((feature, index) => (
+                        <div key={index} className="flex justify-between items-center text-sm">
+                          <span className="text-[#B3B3B3]">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Price Section */}
+                  <div
+                    className="mb-8 text-center font-medium"
+                    style={{ color: variant.priceText }}
+                  >
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-2xl">$</span>
+                      <span className="text-6xl font-heading font-medium tracking-tight">{tier.price}</span>
+                    </div>
+                    {tier.pricePeriod && (
+                      <div className="text-[#3b3b3b] font-medium text-sm mt-2">
+                        {tier.pricePeriod}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Call-to-Action Button */}
+                  <a
+                    href={tier.cta.href}
+                    onClick={(e) => handlePurchaseClick(tier, e)}
+                    className={cn(
+                      "block w-full py-3 px-4 rounded text-center font-medium text-sm transition-colors duration-300 no-underline",
+                      tier.cta.variant === 'outline' ? variant.buttonOutline : variant.buttonBg
+                    )}
+                  >
+                    {tier.cta.text}
+                  </a>
                 </div>
-                
-                {/* Features */}
-                <ul className="space-y-3">
-                  {tier.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3 text-[var(--text-secondary)]">
-                      <svg className="w-5 h-5 text-[var(--success)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                {/* CTA */}
-                <Button
-                  variant={tier.featured ? 'solid' : 'outline'}
-                  size="large"
-                  href={tier.cta.href}
-                  className="w-full"
-                >
-                  {tier.cta.text} →
-                </Button>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-        
-        {/* Disclaimer */}
-        <p className="text-center text-sm text-[var(--text-secondary)]">
-          {disclaimer}
-        </p>
       </div>
     </section>
   );

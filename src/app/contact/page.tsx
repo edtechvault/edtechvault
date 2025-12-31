@@ -1,15 +1,36 @@
-import { ContactHeader } from '@/components/contact/ContactHeader';
+import { Hero } from '@/components/ui/hero';
 import { ContactOptions } from '@/components/contact/ContactOptions';
+import { MultiStepContactForm } from '@/components/contact/MultiStepContactForm';
 import { CalendlyEmbed } from '@/components/contact/CalendlyEmbed';
-import { ContactForm } from '@/components/contact/ContactForm';
 import { FAQAccordion } from '@/components/contact/FAQAccordion';
 import { Footer } from '@/components/layout/Footer';
+import Image from 'next/image';
 
 // Content data from handoff
-const headerContent = {
-  breadcrumb: { items: [{ label: "Home", href: "/" }, { label: "Contact" }] },
-  headline: "Let's Talk",
-  subtext: "Pick whatever works best for you."
+const heroContent = {
+  content: {
+    title: "Let's Talk",
+    description: "Pick whatever works best for you. Whether you prefer a quick call, sending a message, or emailing directly — I'm here to help bring your teaching business online.",
+    primaryAction: {
+      href: "#calendly",
+      text: "Book a Call"
+    },
+    secondaryAction: {
+      href: "#contact-form",
+      text: "Send a Message"
+    }
+  },
+  preview: (
+    <div className="relative w-full aspect-square max-w-[500px] rounded-3xl overflow-hidden">
+      <Image
+        src="https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F05fdee05a33943699b22cfed2becbf2f?format=webp&width=800"
+        alt="Learning experience designer planning a project"
+        fill
+        className="object-cover"
+        priority
+      />
+    </div>
+  )
 };
 
 const optionsContent = {
@@ -23,14 +44,8 @@ const optionsContent = {
 const calendlyContent = {
   heading: "Book a Call",
   subheading: "Let's discuss your project in a quick 15-minute discovery call.",
-  calendlyUrl: "https://calendly.com/leomahe/15min",
+  calendlyUrl: process.env.CALENDLY_EMBED_URL || "https://calendly.com/leo-mahe-professional/30min",
   height: 700
-};
-
-const formContent = {
-  heading: "Send a Message",
-  submitButtonText: "Send Message →",
-  successMessage: "Thanks for reaching out! I'll get back to you within 24 hours."
 };
 
 const faqContent = {
@@ -73,10 +88,10 @@ const footerContent = {
 export default function ContactPage() {
   return (
     <main>
-      <ContactHeader {...headerContent} />
+      <Hero {...heroContent} className="bg-transparent" />
       <ContactOptions {...optionsContent} />
+      <MultiStepContactForm />
       <CalendlyEmbed {...calendlyContent} />
-      <ContactForm {...formContent} />
       <FAQAccordion {...faqContent} />
       <Footer {...footerContent} />
     </main>

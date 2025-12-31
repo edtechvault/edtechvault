@@ -12,64 +12,92 @@ const heroContent = {
   primaryCTA: { text: "See Packages", href: "/contact" },
   secondaryCTA: { text: "View Pricing", href: "#pricing" },
   laptopMockup: {
-    src: "https://placehold.co/600x400/FDF6F0/C4785A?text=Laptop+Mockup",
+    src: "https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F0fd590c17bae430695ec6e9e02319e6f?format=webp&width=800",
     alt: "Website dashboard preview on laptop"
   }
 };
 
 const pricingContent = {
-  heading: "Three Packages. One Goal: More Students.",
-  subtext: "Pick what fits. Every package includes a working website you own forever.",
+  heading: "Simple, Transparent Pricing",
   tiers: [
     {
       id: "quick-launch",
-      name: "Quick Launch",
-      price: 199,
-      tagline: "Live in 3 days",
-      features: ["Single-page professional site", "Mobile-optimized", "AI-generated hero image", "Contact form", "Basic SEO", "1 revision round"],
-      cta: { text: "Get Started", href: "/contact" }
+      name: "Quick Launch Sprint",
+      price: "199",
+      pricePeriod: "deposit",
+      tagline: "For new tutors testing the waters",
+      color: "primary" as const,
+      features: [
+        "1-page website",
+        "Mobile responsive",
+        "Contact form",
+        "3-day delivery",
+        "1 revision round"
+      ],
+      cta: {
+        text: "Pay Deposit",
+        href: "https://buy.stripe.com/eVqaEXewfaNk1gT0IpgEg04",
+        variant: "outline"
+      }
     },
     {
       id: "local-visibility",
-      name: "Local Visibility",
-      price: 399,
-      tagline: "The complete package",
-      badge: "Most Popular",
+      name: "Local Visibility Package",
+      price: "399",
+      pricePeriod: "deposit",
+      tagline: "Perfect for established local tutors",
+      label: "Most Popular",
       featured: true,
-      features: ["Multi-section landing page", "Thank you page", "3 custom AI images", "Google Business setup guide", "Email notifications", "2 revision rounds", "7-day support"],
-      cta: { text: "Get Started", href: "/contact" }
+      color: "teal" as const,
+      features: [
+        "3-page website",
+        "Local SEO setup",
+        "Google Business integration",
+        "Booking calendar",
+        "5-day delivery",
+        "2 revision rounds"
+      ],
+      cta: {
+        text: "Pay Deposit",
+        href: "https://buy.stripe.com/5kQ3cv4VF08G2kX1MtgEg06",
+        variant: "solid"
+      }
     },
     {
       id: "growth-system",
       name: "Growth System",
-      price: 599,
-      tagline: "Built to scale",
-      features: ["Everything in Local Visibility", "A/B testing variant", "Lead magnet page", "Email sequence templates", "Analytics dashboard", "Conversion audit", "14-day support", "Strategy call included"],
-      cta: { text: "Get Started", href: "/contact" }
+      price: "599",
+      pricePeriod: "deposit",
+      tagline: "Complete digital student acquisition",
+      color: "primary" as const,
+      features: [
+        "5-page website",
+        "Blog setup",
+        "Email capture",
+        "Analytics dashboard",
+        "Social media links",
+        "7-day delivery",
+        "3 revision rounds"
+      ],
+      cta: {
+        text: "Pay Deposit",
+        href: "https://buy.stripe.com/00w14nfAjbRobVx1MtgEg05",
+        variant: "outline"
+      }
     }
-  ],
-  disclaimer: "All prices in USD. Payment plans available. You own everything—no monthly fees to me."
+  ]
 };
 
 const portfolioContent = {
   eyebrow: "PORTFOLIO",
   heading: "This Section Is Waiting for You",
-  body: "I'm not going to fill this with fake mockups or borrowed work.\nInstead, I'm looking for founding clients who want to be featured here.\n\nYou get my full attention. I get a success story to share.",
+  body: "I'm building my portfolio with real results from real educators. Want to be featured here—with a link to your new site and your success story?",
   cards: [
-    { id: "1", placeholderText: "Your Tutoring Business Could Be Here" },
-    { id: "2", placeholderText: "Your Dance Studio Could Be Here" },
-    { id: "3", placeholderText: "Your Coaching Practice Could Be Here" }
+    { id: "1", placeholderText: "Your Project Here" },
+    { id: "2", placeholderText: "Your Project Here" },
+    { id: "3", placeholderText: "Your Project Here" }
   ],
-  cta: { text: "Claim a Founding Spot", href: "/contact" }
-};
-
-const socialProofContent = {
-  items: [
-    { icon: "🎓", text: "Tongji University" },
-    { icon: "🛠️", text: "Figma • Builder.io • AI" },
-    { icon: "🌍", text: "Clients in Australia & Beyond" },
-    { icon: "⚡", text: "3-7 Day Delivery" }
-  ]
+  cta: { text: "Become a Founding Client", href: "/contact" }
 };
 
 const footerContent = {
@@ -102,7 +130,7 @@ export default function Home() {
       <HeroHomepage {...heroContent} />
       <PricingTable {...pricingContent} />
       <PortfolioInvitation {...portfolioContent} />
-      <SocialProofStrip {...socialProofContent} />
+      <SocialProofStrip />
       <Footer {...footerContent} />
     </main>
   );

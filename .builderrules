@@ -1,0 +1,54 @@
+## Strategic Positioning
+**"Learning Experience Designer specializing in professional websites for teaching businesses"**
+
+A warm, approachable, community-focused website that positions Leo as a specialist. The site must convert visitors to **discovery call bookings** (primary) or **direct package purchases** (secondary), while building multilingual architecture for future French expansion.
+
+## Page Purposes (Distinct Roles)
+
+| Page | Unique Purpose | What It Does NOT Do |
+|------|----------------|---------------------|
+| **Homepage** | Sell the offer — value proposition, pricing, urgency | Does NOT go deep on Leo's story or host booking |
+| **About** | Build trust — personal story, process, full credentials | Does NOT repeat pricing or push hard CTAs |
+| **Contact** | Convert — all booking/contact methods, handle objections | Does NOT sell; assumes visitor is ready |
+# 🎨 DESIGN SYSTEM
+
+## Visual Direction: Warm Community
+
+| Element | Specification |
+|---------|---------------|
+| **Overall Feel** | Friendly, approachable, trustworthy, personal |
+| **Personality** | Like a knowledgeable friend who happens to be an expert |
+| **Avoid** | Corporate coldness, generic SaaS aesthetic, overly playful |
+
+## Color Palette
+
+| Role | Color | Hex | Usage |
+|------|-------|-----|-------|
+| **Primary** | Warm Terracotta | `#C4785A` | Headlines, key accents |
+| **Secondary** | Soft Cream | `#FDF6F0` | Backgrounds, cards |
+| **Accent** | Deep Teal | `#2A6B6B` | CTAs, links, buttons |
+| **Text Primary** | Charcoal | `#2D2D2D` | Body text, headings |
+| **Text Secondary** | Warm Gray | `#6B6B6B` | Captions, secondary info |
+| **Background** | Off-White | `#FAFAFA` | Page background |
+| **Success** | Sage Green | `#7DB59A` | Confirmations, badges |
+
+## Typography
+
+| Element | Font | Weight | Size (Desktop/Mobile) |
+|---------|------|--------|----------------------|
+| **H1** | Outfit | Bold 700 | 56px / 36px |
+| **H2** | Outfit | SemiBold 600 | 40px / 28px |
+| **H3** | Outfit | Medium 500 | 28px / 22px |
+| **Body** | Inter | Regular 400 | 18px / 16px |
+| **Small/Caption** | Inter | Regular 400 | 14px / 13px |
+| **Button** | Inter | SemiBold 600 | 16px / 15px |
+
+## Component Styling
+
+| Component | Style |
+|-----------|-------|
+| **Border Radius** | 16px (cards), 12px (buttons), 8px (inputs) |
+| **Shadows** | Soft, warm: `0 4px 20px rgba(196, 120, 90, 0.08)` |
+| **Spacing Scale** | 8px base: 8, 16, 24, 32, 48, 64, 96, 128 |
+| **Max Content Width** | 1200px |
+| **Section Padding** | 96px vertical (desktop), 64px (mobile) |
