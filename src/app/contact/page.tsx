@@ -95,7 +95,7 @@ const footerContent = {
 export default function ContactPage() {
   return (
     <main>
-      <Hero {...heroContent} />
+      <Hero {...heroContent} className="bg-transparent" />
       <ContactOptions {...optionsContent} />
       <MultiStepContactForm />
       <CalendlyEmbed {...calendlyContent} />
