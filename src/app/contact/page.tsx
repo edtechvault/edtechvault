@@ -2,7 +2,6 @@ import { Hero } from '@/components/ui/hero';
 import { ContactOptions } from '@/components/contact/ContactOptions';
 import { MultiStepContactForm } from '@/components/contact/MultiStepContactForm';
 import { CalendlyEmbed } from '@/components/contact/CalendlyEmbed';
-import { ContactForm } from '@/components/contact/ContactForm';
 import { FAQAccordion } from '@/components/contact/FAQAccordion';
 import { Footer } from '@/components/layout/Footer';
 import Image from 'next/image';
@@ -49,12 +48,6 @@ const calendlyContent = {
   height: 700
 };
 
-const formContent = {
-  heading: "Send a Message",
-  submitButtonText: "Send Message →",
-  successMessage: "Thanks for reaching out! I'll get back to you within 24 hours."
-};
-
 const faqContent = {
   heading: "Common Questions",
   items: [
@@ -99,7 +92,6 @@ export default function ContactPage() {
       <ContactOptions {...optionsContent} />
       <MultiStepContactForm />
       <CalendlyEmbed {...calendlyContent} />
-      <ContactForm {...formContent} />
       <FAQAccordion {...faqContent} />
       <Footer {...footerContent} />
     </main>
