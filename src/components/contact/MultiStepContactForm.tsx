@@ -30,7 +30,8 @@ interface FormData {
   // Budget
   budget: string;
   // Requirements
-  timeline: string;
+  country: string;
+  city: string;
   specialFeatures: string[];
   additionalInfo: string;
 }
@@ -49,7 +50,8 @@ const INITIAL_FORM_DATA: FormData = {
   colorPreference: '',
   inspirationUrl: '',
   budget: '',
-  timeline: '',
+  country: '',
+  city: '',
   specialFeatures: [],
   additionalInfo: ''
 };
@@ -116,7 +118,8 @@ export const MultiStepContactForm: React.FC = () => {
     }
 
     if (step === 6) {
-      if (!formData.timeline) newErrors.timeline = 'Please select a timeline';
+      if (!formData.country.trim()) newErrors.country = 'Please enter your country';
+      if (!formData.city.trim()) newErrors.city = 'Please enter your city';
     }
 
     setErrors(newErrors);
