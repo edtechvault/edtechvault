@@ -22,7 +22,7 @@ const heroContent = {
     }
   },
   preview: (
-    <div className="relative w-full aspect-square max-w-[500px] rounded-3xl overflow-hidden" style={{ boxShadow: 'var(--shadow-medium)' }}>
+    <div className="relative w-full aspect-square max-w-[500px] rounded-3xl overflow-hidden">
       <Image
         src="https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F05fdee05a33943699b22cfed2becbf2f?format=webp&width=800"
         alt="Learning experience designer planning a project"
