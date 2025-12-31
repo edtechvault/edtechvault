@@ -651,40 +651,38 @@ export const MultiStepContactForm: React.FC = () => {
               </h3>
 
               <div className="form-group">
-                <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">
-                  When do you need it? <span className="text-[var(--primary)]">*</span>
+                <label htmlFor="country" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
+                  Country <span className="text-[var(--primary)]">*</span>
                 </label>
-                <div className="grid gap-3">
-                  {[
-                    { value: '3-days', label: '3-Day Delivery (Quick Launch)', icon: '⚡' },
-                    { value: '5-days', label: '5-Day Delivery (Local Visibility)', icon: '📅' },
-                    { value: '7-days', label: '7-Day Delivery (Growth System)', icon: '🗓️' },
-                    { value: 'flexible', label: 'Flexible Timeline', icon: '🕐' }
-                  ].map((option) => (
-                    <label
-                      key={option.value}
-                      className={cn(
-                        'flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all',
-                        formData.timeline === option.value
-                          ? 'border-[var(--primary)] bg-[var(--primary-light)]'
-                          : 'border-gray-300 hover:border-[var(--primary-light)]'
-                      )}
-                    >
-                      <input
-                        type="radio"
-                        name="timeline"
-                        value={option.value}
-                        checked={formData.timeline === option.value}
-                        onChange={(e) => updateFormData('timeline', e.target.value)}
-                        className="sr-only"
-                      />
-                      <span className="text-2xl">{option.icon}</span>
-                      <span className="font-medium text-[var(--text-primary)]">{option.label}</span>
-                    </label>
-                  ))}
-                </div>
-                {errors.timeline && (
-                  <p className="mt-1 text-sm text-red-500">{errors.timeline}</p>
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  value={formData.country}
+                  onChange={(e) => updateFormData('country', e.target.value)}
+                  placeholder="e.g., United States, France, Australia"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 focus:border-[var(--primary)] focus:outline-none transition-colors"
+                />
+                {errors.country && (
+                  <p className="mt-1 text-sm text-red-500">{errors.country}</p>
+                )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="city" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
+                  City <span className="text-[var(--primary)]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={formData.city}
+                  onChange={(e) => updateFormData('city', e.target.value)}
+                  placeholder="e.g., New York, Paris, Sydney"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 focus:border-[var(--primary)] focus:outline-none transition-colors"
+                />
+                {errors.city && (
+                  <p className="mt-1 text-sm text-red-500">{errors.city}</p>
                 )}
               </div>
 
