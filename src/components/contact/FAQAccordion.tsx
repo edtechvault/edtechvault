@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { BackgroundEllipses } from '../ui/BackgroundEllipses';
 
 interface FAQItem {
   id: string;
@@ -26,175 +27,50 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   };
 
   return (
-    <section id="faq" className="faq-section">
-      <div className="faq-container">
-        <h2 className="faq-heading">
+    <section id="faq" className="relative bg-[var(--background)] py-16 md:py-24">
+      <BackgroundEllipses sections={['faq']} />
+      <div className="relative z-10 max-w-[900px] mx-auto px-6">
+        <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)] mb-12 text-center">
           {heading}
         </h2>
 
-        <div className="accordion">
+        <div className="space-y-6">
           {items.map((item) => {
             const isOpen = openItems.includes(item.id);
 
             return (
               <div
                 key={item.id}
-                className="accordion-item"
+                className="border-b border-gray-200 pb-6"
               >
                 <button
                   id={`accordion-button-${item.id}`}
                   onClick={() => toggleItem(item.id)}
-                  className="accordion-button"
+                  className="relative w-full text-left py-4 px-0 bg-transparent border-none outline-none cursor-pointer transition-colors duration-200 text-[#7288a2] hover:text-[var(--accent)] focus:text-[var(--accent)]"
                   aria-expanded={isOpen}
                 >
-                  <span className="accordion-title">
+                  <span className="block pr-10 font-medium text-lg">
                     {item.question}
                   </span>
-                  <span className="accordion-icon" aria-hidden="true"></span>
+                  <span 
+                    className="absolute top-4 right-0 w-6 h-6 border border-current rounded-full transition-colors duration-200"
+                    aria-hidden="true"
+                  >
+                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-0.5 bg-current"></span>
+                    <span className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-0.5 h-3 bg-current transition-all duration-200 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                  </span>
                 </button>
 
-                <div className="accordion-content">
-                  <p>{item.answer}</p>
+                <div className={`transition-all duration-200 overflow-hidden ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-[var(--text-secondary)] text-base leading-relaxed mt-4 mb-6">
+                    {item.answer}
+                  </p>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
-
-      <style jsx>{`
-        .faq-section {
-          background: var(--background);
-          padding: 64px 24px;
-        }
-
-        @media (min-width: 768px) {
-          .faq-section {
-            padding: 96px 24px;
-          }
-        }
-
-        .faq-container {
-          margin: 0 auto;
-          max-width: 768px;
-        }
-
-        .faq-heading {
-          font-family: 'Outfit', sans-serif;
-          font-weight: 600;
-          font-size: 28px;
-          color: var(--text-primary);
-          text-align: center;
-          margin-bottom: 48px;
-        }
-
-        @media (min-width: 768px) {
-          .faq-heading {
-            font-size: 40px;
-          }
-        }
-
-        .accordion-item {
-          border-bottom: 1px solid #e5e5e5;
-        }
-
-        .accordion-item .accordion-button[aria-expanded='true'] {
-          border-bottom: 1px solid var(--accent);
-        }
-
-        .accordion-button {
-          position: relative;
-          display: block;
-          text-align: left;
-          width: 100%;
-          padding: 1em 0;
-          color: #7288a2;
-          font-size: 1.15rem;
-          font-weight: 400;
-          border: none;
-          background: none;
-          outline: none;
-          cursor: pointer;
-          transition: color 200ms ease;
-        }
-
-        .accordion-button:hover,
-        .accordion-button:focus {
-          color: var(--accent);
-        }
-
-        .accordion-button .accordion-title {
-          display: block;
-          padding: 1em 3em 1em 0;
-        }
-
-        .accordion-button .accordion-icon {
-          display: inline-block;
-          position: absolute;
-          top: 18px;
-          right: 0;
-          width: 22px;
-          height: 22px;
-          border: 1px solid currentColor;
-          border-radius: 22px;
-          transition: border-color 200ms ease;
-        }
-
-        .accordion-button .accordion-icon::before {
-          display: block;
-          position: absolute;
-          content: '';
-          top: 9px;
-          left: 5px;
-          width: 10px;
-          height: 2px;
-          background: currentColor;
-          transition: background-color 200ms ease;
-        }
-
-        .accordion-button .accordion-icon::after {
-          display: block;
-          position: absolute;
-          content: '';
-          top: 5px;
-          left: 9px;
-          width: 2px;
-          height: 10px;
-          background: currentColor;
-          transition: width 200ms ease, background-color 200ms ease;
-        }
-
-        .accordion-button[aria-expanded='true'] {
-          color: var(--accent);
-        }
-
-        .accordion-button[aria-expanded='true'] .accordion-icon::after {
-          width: 0;
-        }
-
-        .accordion-button[aria-expanded='true'] + .accordion-content {
-          opacity: 1;
-          max-height: 500px;
-          transition: opacity 200ms linear, max-height 200ms linear;
-          will-change: opacity, max-height;
-        }
-
-        .accordion-content {
-          opacity: 0;
-          max-height: 0;
-          overflow: hidden;
-          transition: opacity 200ms linear, max-height 200ms linear;
-          will-change: opacity, max-height;
-        }
-
-        .accordion-content p {
-          font-size: 1rem;
-          font-weight: 300;
-          margin: 2em 0;
-          color: var(--text-secondary);
-          line-height: 1.6;
-        }
-      `}</style>
     </section>
   );
 };

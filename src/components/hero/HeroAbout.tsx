@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { BackgroundEllipses } from '../ui/BackgroundEllipses';
 
 interface HeroAboutProps {
   breadcrumb: { items: Array<{ label: string; href?: string }> };
@@ -17,7 +18,8 @@ export const HeroAbout: React.FC<HeroAboutProps> = ({
   photo,
 }) => {
   return (
-    <section className="bg-[var(--secondary)]">
+    <section className="relative bg-[var(--background-white)] overflow-hidden">
+      <BackgroundEllipses sections={['hero']} />
       <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
         {/* Breadcrumb */}
         <nav className="mb-8" aria-label="Breadcrumb">
@@ -51,19 +53,21 @@ export const HeroAbout: React.FC<HeroAboutProps> = ({
           </div>
           
           {/* Photo - Right Column */}
-          <div className="md:col-span-5">
+          <div className="md:col-span-5 relative z-10">
             <div className="relative max-w-[400px] mx-auto md:ml-auto md:mr-0">
               {/* Decorative border offset behind image */}
               <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border-4 border-[var(--primary)] rounded-2xl" />
               
               {/* Main photo */}
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-[var(--shadow-medium)]">
-                <img 
-                  src={photo.src} 
-                  alt={photo.alt} 
-                  className="w-full h-full object-cover" 
-                  loading="eager"
-                />
+              <div className="relative w-full overflow-hidden rounded-2xl shadow-[var(--shadow-medium)]">
+                <div className="relative pb-[125%]"> {/* 4:5 aspect ratio - 4/5 = 0.8 = 80%, but we need 5/4 = 125% for height */}
+                  <img 
+                    src={photo.src} 
+                    alt={photo.alt} 
+                    className="absolute inset-0 w-full h-full object-cover" 
+                    loading="eager"
+                  />
+                </div>
               </div>
             </div>
           </div>

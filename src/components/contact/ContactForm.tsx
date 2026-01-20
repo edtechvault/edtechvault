@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Button } from '../ui/Button';
+import { BackgroundEllipses } from '../ui/BackgroundEllipses';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -20,6 +21,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   submitButtonText,
   successMessage,
 }) => {
+  console.log('ContactForm rendering with BackgroundEllipses');
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -70,8 +72,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
   if (isSuccess) {
     return (
-      <section id="contact-form" className="bg-[var(--background-white)] py-16 md:py-24">
-        <div className="max-w-[600px] mx-auto px-6 text-center space-y-6">
+      <section id="contact-form" className="relative bg-[var(--background-white)] py-16 md:py-24">
+        <BackgroundEllipses sections={['contact-form']} />
+        <div className="relative z-10 max-w-[600px] mx-auto px-6 text-center space-y-6">
           <div className="text-6xl">✅</div>
           <h2 className="font-heading font-semibold text-2xl text-[var(--text-primary)]">Got it!</h2>
           <p className="text-[var(--text-secondary)] text-lg">{successMessage}</p>
@@ -81,8 +84,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   }
 
   return (
-    <section id="contact-form" className="bg-[var(--background-white)] py-16 md:py-24">
-      <div className="max-w-[700px] mx-auto px-6">
+    <section id="contact-form" className="relative bg-[var(--background-white)] py-16 md:py-24">
+      <BackgroundEllipses sections={['contact-form']} />
+      <div className="relative z-10 max-w-[700px] mx-auto px-6">
         <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)] mb-12 text-center">
           {heading}
         </h2>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { BackgroundEllipses } from '../ui/BackgroundEllipses';
 
 interface ContactHeaderProps {
   breadcrumb: { items: Array<{ label: string; href?: string }> };
@@ -13,9 +14,11 @@ export const ContactHeader: React.FC<ContactHeaderProps> = ({
   headline,
   subtext,
 }) => {
+  console.log('ContactHeader rendering with BackgroundEllipses');
   return (
-    <section className="bg-[var(--background-white)]">
-      <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
+    <section className="relative bg-[var(--background-white)] py-16 md:py-24">
+      <BackgroundEllipses sections={['contact-header']} />
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         {/* Breadcrumb */}
         <nav className="mb-8" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">

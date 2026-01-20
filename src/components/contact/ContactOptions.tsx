@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
+import { BackgroundEllipses } from '../ui/BackgroundEllipses';
 
 interface ContactOption {
   id: string;
@@ -34,8 +35,9 @@ export const ContactOptions: React.FC<ContactOptionsProps> = ({ options }) => {
   };
 
   return (
-    <section className="bg-[var(--background-white)] py-16 md:py-24">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section className="relative bg-[var(--background-white)] py-16 md:py-24">
+      <BackgroundEllipses sections={['contact-options']} />
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-8">
           {options.map((option) => (
             <div
