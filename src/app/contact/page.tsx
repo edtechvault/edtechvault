@@ -37,7 +37,7 @@ const optionsContent = {
   options: [
     { id: "call", icon: "📅", label: "Book a Discovery Call", description: "Free 15-minute video chat. No pressure. Just a conversation.", cta: { text: "See Available Times ↓", action: "scroll" as const, target: "#calendly" } },
     { id: "message", icon: "✉️", label: "Send a Message", description: "Prefer writing? Use the form below. I reply within 24 hours.", cta: { text: "Go to Form ↓", action: "scroll" as const, target: "#contact-form" } },
-    { id: "email", icon: "📧", label: "Email Directly", description: "leo@edtechvault.com\n\nShanghai, UTC+8\nUsually same-day reply", cta: { text: "Copy Email", action: "copy" as const, target: "leo@edtechvault.com" } }
+    { id: "email", icon: "📧", label: "Email Directly", description: "leo.mahe.professional@gmail.com\n\nShanghai, UTC+8\nUsually same-day reply", cta: { text: "Copy Email", action: "copy" as const, target: "leo.mahe.professional@gmail.com" } }
   ]
 };
 
@@ -64,8 +64,7 @@ const faqContent = {
 const footerContent = {
   brand: { name: "edtechvault", tagline: "Websites for teaching businesses" },
   social_links: [
-    { platform: "LinkedIn", href: "https://linkedin.com/in/leomahe" },
-    { platform: "Instagram", href: "https://instagram.com/edtechvault" }
+    { platform: "LinkedIn", href: "https://www.linkedin.com/in/léo-mahé-bb95772b7/" }
   ],
   page_links: [
     { href: "/", label: "Home" },
@@ -75,7 +74,7 @@ const footerContent = {
   ],
   contact_links: [
     { href: "/contact", label: "Book a Call" },
-    { href: "mailto:leo@edtechvault.com", label: "Email Leo" }
+    { href: "mailto:leo.mahe.professional@gmail.com", label: "Email Leo" }
   ],
   copyright: "© 2024 edtechvault",
   location: "Made in Shanghai",

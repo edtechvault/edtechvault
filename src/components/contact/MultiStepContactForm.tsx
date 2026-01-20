@@ -178,7 +178,7 @@ export const MultiStepContactForm: React.FC = () => {
       setCurrentStep(1);
     } catch (error) {
       console.error('Form submission error:', error);
-      alert('Something went wrong. Please try again or email leo@edtechvault.com directly.');
+      alert('Something went wrong. Please try again or email leo.mahe.professional@gmail.com directly.');
     } finally {
       setIsSubmitting(false);
     }
