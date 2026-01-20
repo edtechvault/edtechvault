@@ -1,14 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
 import { Button } from '../ui/Button';
 import { BackgroundEllipses } from '../ui/BackgroundEllipses';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 interface ContactFormProps {
   heading: string;
@@ -76,7 +71,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <BackgroundEllipses sections={['contact-form']} />
         <div className="relative z-10 max-w-[600px] mx-auto px-6 text-center space-y-6">
           <div className="text-6xl">✅</div>
-          <h2 className="font-heading font-semibold text-2xl text-[var(--text-primary)]">Got it!</h2>
+          <h2 className="font-heading font-semibold text-2xl md:text-3xl text-[var(--text-primary)]">Got it!</h2>
           <p className="text-[var(--text-secondary)] text-lg">{successMessage}</p>
         </div>
       </section>
@@ -99,7 +94,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 type="text"
                 value={formData.name || ''}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className={`w-full px-4 py-3 rounded-lg border-2 transition-colors focus:outline-none ${errors.name ? 'border-red-500' : 'border-gray-200 focus:border-[var(--accent)]'}`}
+                className={`w-full px-4 py-3 rounded-lg border-2 transition-colors focus:outline-none ${errors.name ? 'border-red-500' : 'border-[var(--border)] focus:border-[var(--accent)]'}`}
                 aria-required="true"
                 aria-invalid={!!errors.name}
               />
@@ -111,7 +106,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 type="email"
                 value={formData.email || ''}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className={`w-full px-4 py-3 rounded-lg border-2 transition-colors focus:outline-none ${errors.email ? 'border-red-500' : 'border-gray-200 focus:border-[var(--accent)]'}`}
+                className={`w-full px-4 py-3 rounded-lg border-2 transition-colors focus:outline-none ${errors.email ? 'border-red-500' : 'border-[var(--border)] focus:border-[var(--accent)]'}`}
                 aria-required="true"
                 aria-invalid={!!errors.email}
               />
@@ -125,7 +120,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
               type="text"
               value={formData.business_name || ''}
               onChange={(e) => setFormData({ ...formData, business_name: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[var(--accent)] focus:outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-lg border-2 border-[var(--border)] focus:border-[var(--accent)] focus:outline-none transition-colors"
             />
           </div>
           
@@ -136,7 +131,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
               value={formData.current_website || ''}
               onChange={(e) => setFormData({ ...formData, current_website: e.target.value })}
               placeholder="https://..."
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[var(--accent)] focus:outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-lg border-2 border-[var(--border)] focus:border-[var(--accent)] focus:outline-none transition-colors"
             />
           </div>
           
@@ -145,25 +140,25 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             <select
               value={formData.help_with || ''}
               onChange={(e) => setFormData({ ...formData, help_with: e.target.value })}
-              className={`w-full px-4 py-3 rounded-lg border-2 transition-colors focus:outline-none ${errors.help_with ? 'border-red-500' : 'border-gray-200 focus:border-[var(--accent)]'}`}
+              className={`w-full px-4 py-3 rounded-lg border-2 transition-colors focus:outline-none ${errors.help_with ? 'border-red-500' : 'border-[var(--border)] focus:border-[var(--accent)]'}`}
               aria-required="true"
             >
               <option value="">Select an option...</option>
               <option value="new-website">I need a new website</option>
               <option value="redesign">I need a website redesign</option>
-              <option value="not-sure">I&apos;m not sure yet</option>
+              <option value="not-sure">I'm not sure yet</option>
               <option value="other">Something else</option>
             </select>
             {errors.help_with && <p className="text-red-500 text-sm mt-1">{errors.help_with}</p>}
           </div>
           
           <div>
-            <label className="block text-[var(--text-primary)] font-medium mb-2">Anything else you&apos;d like me to know?</label>
+            <label className="block text-[var(--text-primary)] font-medium mb-2">Anything else you'd like me to know?</label>
             <textarea
               value={formData.message || ''}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={4}
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"
+              className="w-full px-4 py-3 rounded-lg border-2 border-[var(--border)] focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"
             />
           </div>
           

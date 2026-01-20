@@ -61,13 +61,17 @@ export const SocialProofStrip: React.FC<SocialProofStripProps> = ({
   speed = 'normal',
 }) => {
   return (
-    <MarqueeLogoScroller
-      title={title}
-      description={description}
-      logos={logos}
-      speed={speed}
-      className="bg-[var(--secondary)] border-y border-[var(--primary)]/10 mx-auto max-w-[1200px] my-24 md:my-32"
-    />
+    <section className="bg-[var(--secondary)] py-16 md:py-24 border-t border-b border-[var(--primary)]/10">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <MarqueeLogoScroller
+          title={title}
+          description={description}
+          logos={logos}
+          speed={speed}
+          className="bg-[var(--secondary)] mx-auto"
+        />
+      </div>
+    </section>
   );
 };
 

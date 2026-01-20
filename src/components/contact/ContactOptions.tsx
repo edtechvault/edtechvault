@@ -42,7 +42,7 @@ export const ContactOptions: React.FC<ContactOptionsProps> = ({ options }) => {
           {options.map((option) => (
             <div
               key={option.id}
-              className="relative bg-[var(--background-white)] rounded-2xl p-8 border-2 border-gray-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] hover:-translate-y-1 transition-all duration-300"
+              className="relative bg-[var(--background-white)] rounded-2xl p-8 border-2 border-[var(--border)] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] hover:-translate-y-1 transition-all duration-300"
             >
               {/* Decorative Plus Icons */}
               <div className="absolute top-4 left-4 text-[var(--primary-light)]/20 text-sm">+</div>
@@ -53,7 +53,7 @@ export const ContactOptions: React.FC<ContactOptionsProps> = ({ options }) => {
               <div className="relative text-center space-y-4">
                 <div className="text-5xl mb-4">{option.icon}</div>
                 <h3 className="font-heading font-semibold text-xl text-[var(--text-primary)]">{option.label}</h3>
-                <p className="text-[var(--text-secondary)] text-sm leading-relaxed whitespace-pre-line">{option.description}</p>
+                <p className="text-[var(--text-secondary)] text-base leading-relaxed whitespace-pre-line">{option.description}</p>
                 
                 {option.cta.action === 'link' ? (
                   <Button variant="outline" size="medium" href={option.cta.target} className="w-full">

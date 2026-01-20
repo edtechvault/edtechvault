@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { BackgroundEllipses } from '../ui/BackgroundEllipses';
+import Image from 'next/image';
 
 interface HeroAboutProps {
   breadcrumb: { items: Array<{ label: string; href?: string }> };
@@ -39,7 +40,7 @@ export const HeroAbout: React.FC<HeroAboutProps> = ({
           </ol>
         </nav>
         
-        <div className="grid md:grid-cols-12 gap-12 items-start">
+        <div className="grid md:grid-cols-12 gap-8 items-start">
           {/* Content - Left Column */}
           <div className="md:col-span-7 space-y-6">
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-[56px] text-[var(--text-primary)] leading-tight">
@@ -61,11 +62,12 @@ export const HeroAbout: React.FC<HeroAboutProps> = ({
               {/* Main photo */}
               <div className="relative w-full overflow-hidden rounded-2xl shadow-[var(--shadow-medium)]">
                 <div className="relative pb-[125%]"> {/* 4:5 aspect ratio - 4/5 = 0.8 = 80%, but we need 5/4 = 125% for height */}
-                  <img 
+                  <Image 
                     src={photo.src} 
                     alt={photo.alt} 
+                    width={600}
+                    height={400}
                     className="absolute inset-0 w-full h-full object-cover" 
-                    loading="eager"
                   />
                 </div>
               </div>

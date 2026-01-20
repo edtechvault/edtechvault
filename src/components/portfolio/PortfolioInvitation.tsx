@@ -25,14 +25,14 @@ export const PortfolioInvitation: React.FC<PortfolioInvitationProps> = ({
   cta,
 }) => {
   return (
-    <section id="portfolio" className="bg-white py-24 md:py-32">
+    <section id="portfolio" className="bg-[var(--background-white)] py-16 md:py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header content */}
-        <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
+        <div className="max-w-3xl mx-auto text-center mb-16 space-y-6">
           <span className="inline-block text-[var(--accent)] text-sm font-semibold tracking-wider uppercase">
             {eyebrow}
           </span>
-          <h2 className="font-heading font-semibold text-4xl md:text-5xl text-[var(--text-primary)]">
+          <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)]">
             {heading}
           </h2>
           <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed">
@@ -46,13 +46,13 @@ export const PortfolioInvitation: React.FC<PortfolioInvitationProps> = ({
             <div
               key={card.id}
               className={cn(
-                "relative bg-white rounded-xl h-[200px] flex items-center justify-center",
+                "relative bg-[var(--background-white)] rounded-2xl h-[200px] flex items-center justify-center",
                 "border-2 border-dashed border-[var(--primary)]/30",
-                "transition-all duration-300 hover:border-solid hover:border-[var(--primary)] hover:shadow-soft group",
+                "transition-all duration-300 hover:border-solid hover:border-[var(--primary)] hover:shadow-[var(--shadow-soft)] group",
                 index === 1 && "lg:rotate-2" // Slight rotation on middle card
               )}
             >
-              <p className="text-[var(--muted-foreground)] text-center font-medium">
+              <p className="text-[var(--text-secondary)] text-center font-medium">
                 {card.placeholderText}
               </p>
 
@@ -68,8 +68,8 @@ export const PortfolioInvitation: React.FC<PortfolioInvitationProps> = ({
         </div>
 
         {/* CTA Section */}
-        <div className="text-center space-y-4">
-          <Button variant="solid" size="lg" href={cta.href}>
+        <div className="text-center space-y-6">
+          <Button variant="solid" size="large" href={cta.href}>
             {cta.text}
           </Button>
           <p className="text-[var(--text-secondary)] text-sm font-medium">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface NavLink {
   label: string;
@@ -54,7 +55,7 @@ export const CardNav: React.FC<CardNavProps> = ({
       links: [
         { label: "Book a Call", ariaLabel: "Book discovery call", href: "/contact#calendly" },
         { label: "Send a Message", ariaLabel: "Contact form", href: "/contact#contact-form" },
-        { label: "Email Leo", ariaLabel: "Email directly", href: "mailto:leo@edtechvault.com" },
+        { label: "Email Leo", ariaLabel: "Email directly", href: "mailto:leo.mahe.professional@gmail.com" },
         { label: "FAQ", ariaLabel: "Frequently asked questions", href: "/contact#faq" }
       ]
     }
@@ -97,9 +98,11 @@ export const CardNav: React.FC<CardNavProps> = ({
 
             {/* Brand Logo */}
             <Link href="/" className="brand-logo flex items-center gap-2">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F5f787c1589c7444c8aaa7fc358b2077e?format=webp&width=800"
+              <Image
+                src="https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F5f787c1589c7444c8aaa7fc358b2077e?format=webp&width=64"
                 alt="EdTechVault Logo"
+                width={600}
+                height={400}
                 className="w-8 h-8"
               />
               <span className="text-white font-semibold text-lg hidden sm:block font-heading">{brandName}</span>

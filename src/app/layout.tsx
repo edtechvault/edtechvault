@@ -1,10 +1,25 @@
 import type { Metadata } from 'next';
 import { CardNav } from '@/components/navigation/CardNav';
 import './globals.css';
+import { Outfit, Inter } from 'next/font/google'
+
+const outfit = Outfit({ 
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+  weight: ['400', '500', '600', '700']
+})
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  weight: ['400', '500', '600', '700']
+})
 
 export const metadata: Metadata = {
   title: 'EdTechVault - Websites for Teaching Businesses',
-  description: 'Professional websites for tutors, coaches & teaching businesses. Built in days, not months. No tech headaches. No monthly fees.',
+  description: 'Professional landing pages for tutors, coaches, and teaching businesses. Built in 3-7 days. No monthly fees. You own everything.',
   keywords: ['website design', 'tutor website', 'coaching website', 'teaching business', 'web development'],
   authors: [{ name: 'Leo Mahé' }],
   openGraph: {
@@ -32,11 +47,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${outfit.variable} ${inter.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-screen bg-[var(--background)]">
         <CardNav theme="dark" />

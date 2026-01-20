@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Hero } from '@/components/ui/hero';
 import { ContactOptions } from '@/components/contact/ContactOptions';
 import { MultiStepContactForm } from '@/components/contact/MultiStepContactForm';
@@ -5,6 +6,11 @@ import { CalendlyEmbed } from '@/components/contact/CalendlyEmbed';
 import { FAQAccordion } from '@/components/contact/FAQAccordion';
 import { Footer } from '@/components/layout/Footer';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Contact - Get Your Teaching Business Online',
+  description: 'Book a call, send a message, or email directly. Get your professional website for tutors, coaches, and teaching businesses built in 3-7 days.',
+};
 
 // Content data from handoff
 const heroContent = {
@@ -23,11 +29,12 @@ const heroContent = {
   preview: (
     <div className="relative w-full aspect-square max-w-[500px] rounded-3xl overflow-hidden">
       <Image
-        src="https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F05fdee05a33943699b22cfed2becbf2f?format=webp&width=800"
+        src="https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F05fdee05a33943699b22cfed2becbf2f?format=webp&width=600"
         alt="Learning experience designer planning a project"
         fill
         className="object-cover"
         priority
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
     </div>
   )

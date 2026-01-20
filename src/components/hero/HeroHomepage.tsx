@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Button } from '../ui/Button';
+import Image from 'next/image';
 
 interface Beam {
   x: number;
@@ -19,7 +20,7 @@ interface Beam {
 function createBeam(width: number, height: number, layer: number): Beam {
   const angle = -35 + Math.random() * 10;
   const baseSpeed = 0.2 + layer * 0.2;
-  const baseOpacity = 0.08 + layer * 0.05;
+  const baseOpacity = 0.12 + layer * 0.06;
   const baseWidth = 10 + layer * 5;
   return {
     x: Math.random() * width,
@@ -113,14 +114,20 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
       ctx.rotate((beam.angle * Math.PI) / 180);
 
       const pulsingOpacity = Math.min(1, beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.4));
-      const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
 
-      // Using Warm Terracotta (196, 120, 90) for the beams
-      gradient.addColorStop(0, `rgba(196, 120, 90, 0)`);
-      gradient.addColorStop(0.2, `rgba(196, 120, 90, ${pulsingOpacity * 0.4})`);
-      gradient.addColorStop(0.5, `rgba(196, 120, 90, ${pulsingOpacity * 0.7})`);
-      gradient.addColorStop(0.8, `rgba(196, 120, 90, ${pulsingOpacity * 0.4})`);
-      gradient.addColorStop(1, `rgba(196, 120, 90, 0)`);
+      // Alternate between warm terracotta and lighter peach based on layer
+      const isWarmBeam = beam.layer % 2 === 0;
+      const [r, g, b] = isWarmBeam 
+        ? [196, 120, 90]   // Warm Terracotta
+        : [216, 154, 127]; // Light Peach
+
+      const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
+      gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0)`);
+      gradient.addColorStop(0.15, `rgba(${r}, ${g}, ${b}, ${pulsingOpacity * 0.5})`);
+      gradient.addColorStop(0.4, `rgba(${r}, ${g}, ${b}, ${pulsingOpacity * 0.8})`);
+      gradient.addColorStop(0.65, `rgba(${r}, ${g}, ${b}, ${pulsingOpacity * 0.8})`);
+      gradient.addColorStop(0.85, `rgba(${r}, ${g}, ${b}, ${pulsingOpacity * 0.5})`);
+      gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
       ctx.fillStyle = gradient;
       ctx.filter = `blur(${4 + beam.layer * 3}px)`;
@@ -132,9 +139,10 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
       if (!canvas || !ctx) return;
 
       const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      // Using Off-White (#FAFAFA) and Soft Cream (#FDF6F0) for the background
-      gradient.addColorStop(0, "#FAFAFA");
-      gradient.addColorStop(1, "#FDF6F0");
+      gradient.addColorStop(0, "#FEFBF8");      // Very light warm white
+      gradient.addColorStop(0.4, "#FDF6F0");    // Soft cream
+      gradient.addColorStop(0.7, "#F5E8DC");    // Secondary dark (peachy)
+      gradient.addColorStop(1, "#F5DDD0");      // Warm peachy bottom
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -165,7 +173,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#FAFAFA] min-h-[600px] md:min-h-[800px] flex items-center">
+    <section className="relative overflow-hidden bg-[var(--background)] min-h-[600px] md:min-h-[800px] flex items-center">
       {/* Background Animation */}
       <canvas ref={noiseRef} className="absolute inset-0 z-0 pointer-events-none" />
       <canvas ref={canvasRef} className="absolute inset-0 z-10" />
@@ -180,7 +188,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
             </span>
 
             {/* Headline */}
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-[var(--text-primary)]">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-[56px] leading-tight text-[var(--text-primary)]">
               {headline}
             </h1>
 
@@ -211,11 +219,13 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
           {/* Visual - Right Column (45%) */}
           <div className="md:col-span-5 relative h-96 md:h-[550px]">
             <div className="relative h-full flex items-center justify-center md:justify-end">
-              <img
+              <Image
                 src={laptopMockup.src}
                 alt={laptopMockup.alt}
+                width={600}
+                height={400}
                 className="w-full h-full object-contain"
-                loading="eager"
+                priority
               />
             </div>
           </div>

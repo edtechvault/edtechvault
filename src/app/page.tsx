@@ -7,12 +7,12 @@ import { Footer } from '@/components/layout/Footer';
 // Content data from handoff
 const heroContent = {
   eyebrow: "FOR TUTORS, COACHES & TEACHING BUSINESSES",
-  headline: "Websites That Attract Students—Built in Days, Not Months",
+  headline: "Websites built in Days, Not Months",
   subheadline: "You teach. I build. No tech headaches. No monthly fees. Just a professional online presence that works as hard as you do.",
   primaryCTA: { text: "See Packages", href: "/contact" },
   secondaryCTA: { text: "View Pricing", href: "#pricing" },
   laptopMockup: {
-    src: "https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F0fd590c17bae430695ec6e9e02319e6f?format=webp&width=800",
+    src: "https://cdn.builder.io/api/v1/image/assets%2F5c54bbd5552f4317a44934808ff452e6%2F0fd590c17bae430695ec6e9e02319e6f?format=webp&width=600",
     alt: "Website dashboard preview on laptop"
   }
 };
@@ -24,7 +24,7 @@ const pricingContent = {
       id: "quick-launch",
       name: "Quick Launch Sprint",
       price: "199",
-      pricePeriod: "deposit",
+      pricePeriod: "99,5 deposit",
       tagline: "For new tutors testing the waters",
       color: "primary" as const,
       features: [
@@ -44,7 +44,7 @@ const pricingContent = {
       id: "local-visibility",
       name: "Local Visibility Package",
       price: "399",
-      pricePeriod: "deposit",
+      pricePeriod: "199,5 deposit",
       tagline: "Perfect for established local tutors",
       label: "Most Popular",
       featured: true,
@@ -67,7 +67,7 @@ const pricingContent = {
       id: "growth-system",
       name: "Growth System",
       price: "599",
-      pricePeriod: "deposit",
+      pricePeriod: "299,5 deposit",
       tagline: "Complete digital student acquisition",
       color: "primary" as const,
       features: [
@@ -91,7 +91,7 @@ const pricingContent = {
 const portfolioContent = {
   eyebrow: "PORTFOLIO",
   heading: "This Section Is Waiting for You",
-  body: "I'm building my portfolio with real results from real educators. Want to be featured here—with a link to your new site and your success story?",
+  body: "I'm building my portfolio with real results from real educators. Want to be featured here—with a link to your new site and your success story ?",
   cards: [
     { id: "1", placeholderText: "Your Project Here" },
     { id: "2", placeholderText: "Your Project Here" },
@@ -103,8 +103,7 @@ const portfolioContent = {
 const footerContent = {
   brand: { name: "edtechvault", tagline: "Websites for teaching businesses" },
   social_links: [
-    { platform: "LinkedIn", href: "https://linkedin.com/in/leomahe" },
-    { platform: "Instagram", href: "https://instagram.com/edtechvault" }
+    { platform: "LinkedIn", href: "https://www.linkedin.com/in/léo-mahé-bb95772b7/" }
   ],
   page_links: [
     { href: "/", label: "Home" },
@@ -114,7 +113,7 @@ const footerContent = {
   ],
   contact_links: [
     { href: "/contact", label: "Book a Call" },
-    { href: "mailto:leo@edtechvault.com", label: "Email Leo" }
+    { href: "mailto:leo.mahe.professional@gmail.com", label: "Email Leo" }
   ],
   copyright: "© 2024 edtechvault",
   location: "Made in Shanghai",

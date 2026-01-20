@@ -44,14 +44,14 @@ const packages: Package[] = [
       {
         day: 'Day 0',
         title: 'Discovery Call',
-        description: '15-minute chat to understand your tutoring focus',
-        details: 'We discuss your target students, subjects, and what makes your teaching unique. No tech talk—just getting to know your goals.',
+        description: '30 minute chat to understand your tutoring focus',
+        details: 'We discuss your target students, subjects, and what makes your teaching unique. No tech talk, just getting to know your goals.',
       },
       {
         day: 'Day 1',
         title: 'You Send Content → I Design',
         description: 'Share your bio, photos, and pricing',
-        details: 'I create a clean 1-page design showcasing your expertise. Mobile-responsive, professional, ready to attract students.',
+        details: 'I create a clean 1 page design showcasing your expertise. Mobile-responsive, professional, ready to attract students.',
       },
       {
         day: 'Day 2',
@@ -63,7 +63,7 @@ const packages: Package[] = [
         day: 'Day 3',
         title: 'Launch & Handoff',
         description: 'Site goes live, you get full access',
-        details: 'I send you login credentials, a quick tutorial video, and your site is live. Students can find you immediately.',
+        details: 'I send you login credentials, and your site is live. Students can find you immediately.',
       },
     ],
   },
@@ -78,8 +78,8 @@ const packages: Package[] = [
       {
         day: 'Day 0',
         title: 'Discovery Call',
-        description: '20-minute strategy session',
-        details: 'We map out your local student acquisition goals, discuss your unique teaching approach, and plan your 3-page website structure.',
+        description: '30 minute strategy session',
+        details: 'We map out your local student acquisition goals, discuss your teaching, and plan your 3 page website structure.',
       },
       {
         day: 'Day 1-2',
@@ -101,7 +101,7 @@ const packages: Package[] = [
       },
       {
         day: 'Day 5',
-        title: 'Launch + 7-Day Support',
+        title: 'Launch + 7 Day Support',
         description: 'Go live with ongoing assistance',
         details: "Your site launches, students can book you immediately. I'm available for 7 days for any tweaks or questions.",
       },
@@ -117,13 +117,13 @@ const packages: Package[] = [
       {
         day: 'Day 0',
         title: 'Strategy Call',
-        description: '30-minute growth planning session',
-        details: 'We design your complete digital presence: website structure, blog strategy, email capture approach, and student journey mapping.',
+        description: '30 minute growth planning session',
+        details: 'We design your complete digital presence: website structure, blog strategy, and student journey mapping.',
       },
       {
         day: 'Day 1-2',
         title: 'Full Site Design + Blog Setup',
-        description: '5-page website with content system',
+        description: '5 page website with content system',
         details: 'I design your Home, About, Services, Blog, and Contact pages. Blog setup lets you share teaching tips to attract organic traffic.',
       },
       {
@@ -147,8 +147,8 @@ const packages: Package[] = [
       {
         day: 'Day 7',
         title: 'Launch + Strategy Call',
-        description: 'Go live with 14-day support + growth consultation',
-        details: 'Your growth system launches. We have a final strategy call to discuss how to maximize student inquiries. 14-day support included.',
+        description: 'Go live with 14 day support + growth consultation',
+        details: 'Your growth system launches. We have a final strategy call to discuss how to maximize student inquiries. 14 day support included.',
       },
     ],
   },

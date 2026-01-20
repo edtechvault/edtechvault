@@ -55,18 +55,18 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
           ref={ref}
           aria-label={title}
           className={cn(
-            'w-full bg-background text-foreground rounded-lg border overflow-hidden',
+            'w-full bg-[var(--secondary)] text-[var(--text-primary)] rounded-lg border border-[var(--border)] overflow-hidden',
             className
           )}
           {...props}
         >
           {/* Header Section */}
           <div className="p-6 md:p-8 lg:p-10">
-            <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 lg:gap-8 pb-6 md:pb-8 border-b">
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter text-balance">
+            <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 lg:gap-8 pb-6 md:pb-8 border-b border-[var(--primary)]/10">
+              <h2 className="font-heading font-semibold text-3xl md:text-4xl tracking-tighter text-balance">
                 {title}
               </h2>
-              <p className="text-muted-foreground self-start lg:justify-self-end text-balance">
+              <p className="text-[var(--text-secondary)] self-start lg:justify-self-end text-lg text-balance">
                 {description}
               </p>
             </div>
@@ -93,7 +93,7 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
                   className="group shrink-0 flex flex-col items-center gap-3"
                 >
                   {/* Logo Card */}
-                  <div className="relative h-24 w-40 flex items-center justify-center rounded-lg bg-secondary/70 overflow-hidden">
+                  <div className="relative h-24 w-40 flex items-center justify-center rounded-lg bg-[var(--background-white)] overflow-hidden">
                     {/* Gradient background revealed on hover */}
                     <div
                       style={
@@ -110,12 +110,12 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
                     <img
                       src={logo.src}
                       alt={logo.alt}
-                      className="relative h-3/4 w-auto object-contain"
+                      className="h-8 w-auto object-contain"
                     />
                   </div>
 
                   {/* Logo Name */}
-                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                  <span className="text-sm font-medium text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-300">
                     {logo.alt}
                   </span>
                 </div>
