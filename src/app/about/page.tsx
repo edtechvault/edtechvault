@@ -45,9 +45,9 @@ const CredentialsGrid = dynamic(
   }
 );
 
-export const metadata: Metadata = {
-  title: 'About Leo Mahé - EdTechVault Designer & Developer',
-  description: 'Meet Leo Mahé, French designer at Tongji University building professional websites for tutors, coaches, and teaching businesses in 3-7 days.',
+export const metadata = {
+  title: "About Leo Mahé - EdTechVault",
+  description: "Meet Leo Mahé, a French designer at Tongji University helping teaching businesses build professional websites. Learn about my process, credentials, and why I focus on educators.",
 };
 
 export default function AboutPage() {

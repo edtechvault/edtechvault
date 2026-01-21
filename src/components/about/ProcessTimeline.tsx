@@ -160,13 +160,12 @@ export const ProcessTimeline: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
+    const updateIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    updateIsMobile();
+    window.addEventListener('resize', updateIsMobile);
+    return () => window.removeEventListener('resize', updateIsMobile);
   }, []);
 
   const handlePackageChange = (pkg: Package) => {
@@ -180,13 +179,17 @@ export const ProcessTimeline: React.FC = () => {
       <BackgroundEllipses sections={['process']} />
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-[600px] mx-auto mb-12">
-          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-3">
+          <label htmlFor="package-selector" className="block text-sm font-medium text-[var(--text-secondary)] mb-3">
             Select Your Package
           </label>
           <div className="relative">
             <button
+              id="package-selector"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="w-full bg-[var(--background-white)] border-2 border-[var(--border)] rounded-xl px-6 py-4 flex items-center justify-between hover:border-[var(--primary)] transition-all duration-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)]"
+              aria-expanded={isDropdownOpen}
+              aria-controls="package-dropdown"
+              aria-label={`Selected package: ${selectedPackage.name}. Click to change package`}
             >
               <div className="flex items-center gap-4">
                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-[var(--primary)]/10">
@@ -212,11 +215,17 @@ export const ProcessTimeline: React.FC = () => {
                 className={`w-5 h-5 text-[var(--text-secondary)] transition-transform duration-200 ${
                   isDropdownOpen ? 'rotate-180' : ''
                 }`}
+                aria-hidden="true"
               />
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute z-10 w-full mt-2 bg-[var(--background-white)] border-2 border-[var(--border)] rounded-xl shadow-[var(--shadow-strong)] overflow-hidden">
+              <div 
+                id="package-dropdown"
+                className="absolute z-10 w-full mt-2 bg-[var(--background-white)] border-2 border-[var(--border)] rounded-xl shadow-[var(--shadow-strong)] overflow-hidden"
+                role="listbox"
+                aria-label="Available packages"
+              >
                 {packages.map((pkg) => (
                   <button
                     key={pkg.id}
@@ -224,9 +233,11 @@ export const ProcessTimeline: React.FC = () => {
                     className={`w-full px-6 py-4 flex items-center gap-4 hover:bg-[var(--secondary)] transition-colors border-b border-[var(--border)] last:border-b-0 ${
                       selectedPackage.id === pkg.id ? 'bg-[var(--secondary)]' : ''
                     }`}
+                    role="option"
+                    aria-selected={selectedPackage.id === pkg.id}
                   >
                     <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--primary)]/10">
-                      <Sparkles className="w-5 h-5 text-[var(--primary)]" />
+                      <Sparkles className="w-5 h-5 text-[var(--primary)]" aria-hidden="true" />
                     </div>
                     <div className="text-left flex-1">
                       <div className="flex items-center gap-2">
@@ -261,8 +272,10 @@ export const ProcessTimeline: React.FC = () => {
             indicators={{
               completed: <Check className="w-4 h-4" />,
             }}
+            aria-label="Process timeline"
+            suppressHydrationWarning
           >
-            <StepperNav className="mb-8 md:mb-12">
+            <StepperNav className="mb-8 md:mb-12" aria-label="Process steps">
               {selectedPackage.steps.map((step, index) => (
                 <React.Fragment key={index}>
                   <StepperItem
@@ -296,7 +309,7 @@ export const ProcessTimeline: React.FC = () => {
               ))}
             </StepperNav>
 
-            <StepperPanel className="mt-8">
+            <StepperPanel className="mt-8" aria-label="Step details">
               {selectedPackage.steps.map((step, index) => (
                 <StepperContent key={index} value={index + 1}>
                   <div className="bg-[var(--background-white)] rounded-2xl p-6 md:p-8 border-2 border-[var(--primary)]/20 shadow-[var(--shadow-soft)]">
@@ -332,6 +345,7 @@ export const ProcessTimeline: React.FC = () => {
                         onClick={() => setActiveStep(Math.max(1, activeStep - 1))}
                         disabled={activeStep === 1}
                         className="text-[var(--text-secondary)] hover:text-[var(--primary)] font-medium text-sm disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                        aria-label="Previous step"
                       >
                         Previous
                       </button>
@@ -341,6 +355,7 @@ export const ProcessTimeline: React.FC = () => {
                         }
                         disabled={activeStep === selectedPackage.steps.length}
                         className="text-[var(--primary)] hover:text-[var(--primary-dark)] font-medium text-sm disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                        aria-label="Next step"
                       >
                         Next
                       </button>

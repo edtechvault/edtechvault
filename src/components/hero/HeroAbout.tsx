@@ -28,13 +28,19 @@ export const HeroAbout: React.FC<HeroAboutProps> = ({
             {breadcrumb.items.map((item, index) => (
               <li key={index} className="flex items-center gap-2">
                 {item.href ? (
-                  <Link href={item.href} className="hover:text-[var(--accent)] transition-colors">
+                  <Link 
+                    href={item.href} 
+                    className="hover:text-[var(--accent)] transition-colors"
+                    aria-current={index === breadcrumb.items.length - 1 ? 'page' : undefined}
+                  >
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="text-[var(--text-primary)]">{item.label}</span>
+                  <span aria-current="page" className="text-[var(--text-primary)]">{item.label}</span>
                 )}
-                {index < breadcrumb.items.length - 1 && <span>/</span>}
+                {index < breadcrumb.items.length - 1 && (
+                  <span aria-hidden="true">/</span>
+                )}
               </li>
             ))}
           </ol>
@@ -46,9 +52,9 @@ export const HeroAbout: React.FC<HeroAboutProps> = ({
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-[56px] text-[var(--text-primary)] leading-tight">
               {headline}
             </h1>
-            <div className="space-y-4 text-[var(--text-secondary)] text-lg leading-relaxed">
+            <div className="space-y-4 text-lg leading-relaxed">
               {intro.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p key={index} className="text-[var(--text-primary)]/80">{paragraph}</p>
               ))}
             </div>
           </div>
@@ -57,7 +63,7 @@ export const HeroAbout: React.FC<HeroAboutProps> = ({
           <div className="md:col-span-5 relative z-10">
             <div className="relative max-w-[400px] mx-auto md:ml-auto md:mr-0">
               {/* Decorative border offset behind image */}
-              <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border-4 border-[var(--primary)] rounded-2xl" />
+              <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border-4 border-[var(--primary)] rounded-2xl" aria-hidden="true" />
               
               {/* Main photo */}
               <div className="relative w-full overflow-hidden rounded-2xl shadow-[var(--shadow-medium)]">
@@ -67,7 +73,10 @@ export const HeroAbout: React.FC<HeroAboutProps> = ({
                     alt={photo.alt} 
                     width={600}
                     height={400}
-                    className="absolute inset-0 w-full h-full object-cover" 
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(max-width: 768px) 100vw, 400px"
                   />
                 </div>
               </div>
