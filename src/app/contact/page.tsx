@@ -3,9 +3,23 @@ import { Hero } from '@/components/ui/hero';
 import { ContactOptions } from '@/components/contact/ContactOptions';
 import { MultiStepContactForm } from '@/components/contact/MultiStepContactForm';
 import { CalendlyEmbed } from '@/components/contact/CalendlyEmbed';
-import { FAQAccordion } from '@/components/contact/FAQAccordion';
+import dynamic from 'next/dynamic';
 import { Footer } from '@/components/layout/Footer';
 import Image from 'next/image';
+
+const FAQAccordion = dynamic(
+  () => import('@/components/contact/FAQAccordion'),
+  { 
+    loading: () => (
+      <div className="py-24">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="h-96 bg-gray-100 rounded-2xl animate-pulse" />
+        </div>
+      </div>
+    ),
+    ssr: true 
+  }
+);
 
 export const metadata: Metadata = {
   title: 'Contact - Get Your Teaching Business Online',

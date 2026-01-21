@@ -7,6 +7,7 @@ const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-outfit',
   display: 'swap',
+  preload: true,
   weight: ['400', '500', '600', '700']
 })
 
@@ -14,17 +15,18 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  preload: true,
   weight: ['400', '500', '600', '700']
 })
 
 export const metadata: Metadata = {
   title: 'EdTechVault - Websites for Teaching Businesses',
-  description: 'Professional landing pages for tutors, coaches, and teaching businesses. Built in 3-7 days. No monthly fees. You own everything.',
+  description: 'Professional websites for tutors, coaches, and teaching businesses. Built in 3-7 days. No monthly fees. You own everything.',
   keywords: ['website design', 'tutor website', 'coaching website', 'teaching business', 'web development'],
   authors: [{ name: 'Leo Mahé' }],
   openGraph: {
     title: 'EdTechVault - Websites for Teaching Businesses',
-    description: 'Professional websites for tutors, coaches & teaching businesses. Built in days, not months.',
+    description: 'Professional websites for tutors, coaches, and teaching businesses. Built in 3-7 days. No monthly fees. You own everything.',
     url: 'https://edtechvault.com',
     siteName: 'EdTechVault',
     locale: 'en_US',
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'EdTechVault - Websites for Teaching Businesses',
-    description: 'Professional websites for tutors, coaches & teaching businesses. Built in days, not months.',
+    description: 'Professional websites for tutors, coaches, and teaching businesses. Built in 3-7 days. No monthly fees. You own everything.',
   },
   robots: {
     index: true,

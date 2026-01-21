@@ -193,7 +193,7 @@ export const CardNav: React.FC<CardNavProps> = ({
           height: 2px;
           background-color: white;
           border-radius: 2px;
-          transition: all 0.3s ease;
+          transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .menu-dropdown-container {
@@ -212,7 +212,8 @@ export const CardNav: React.FC<CardNavProps> = ({
         }
 
         .menu-card {
-          transition: all 0.2s ease;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          will-change: transform;
         }
 
         .menu-card:hover {

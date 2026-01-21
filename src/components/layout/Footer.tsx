@@ -87,9 +87,9 @@ export const Footer: React.FC<FooterProps> = ({
               {page_links.map((link) => (
                 <li key={link.href}>
                   {link.coming_soon ? (
-                    <span className="text-white/40 text-sm flex items-center gap-2">
+                    <span className="text-white/60 text-sm flex items-center gap-2">
                       {link.label}
-                      <span className="text-xs bg-white/10 px-2 py-0.5 rounded">Soon</span>
+                      <span className="text-xs bg-white/20 px-2 py-0.5 rounded">Soon</span>
                     </span>
                   ) : (
                     <a

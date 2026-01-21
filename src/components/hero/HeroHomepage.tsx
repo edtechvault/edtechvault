@@ -45,7 +45,7 @@ interface HeroHomepageProps {
   laptopMockup: { src: string; alt: string };
 }
 
-export const HeroHomepage: React.FC<HeroHomepageProps> = ({
+const HeroHomepageComponentInner: React.FC<HeroHomepageProps> = ({
   eyebrow,
   headline,
   subheadline,
@@ -69,6 +69,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
     const nCtx = noiseCanvas.getContext("2d");
     if (!ctx || !nCtx) return;
 
+    let resizeTimeout: NodeJS.Timeout;
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
       canvas.width = window.innerWidth * dpr;
@@ -94,7 +95,11 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
     };
 
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resizeCanvas, 100);
+    };
+    window.addEventListener("resize", handleResize);
 
     const generateNoise = () => {
       const imgData = nCtx.createImageData(noiseCanvas.width, noiseCanvas.height);
@@ -130,7 +135,7 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
       gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = `blur(${4 + beam.layer * 3}px)`;
+      ctx.filter = `blur(${4 + beam.layer * 2}px)`;
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
     };
@@ -162,7 +167,8 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
     animate();
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimeout);
       cancelAnimationFrame(animationFrameRef.current);
     };
   }, []);
@@ -175,8 +181,8 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
   return (
     <section className="relative overflow-hidden bg-[var(--background)] min-h-[600px] md:min-h-[800px] flex items-center">
       {/* Background Animation */}
-      <canvas ref={noiseRef} className="absolute inset-0 z-0 pointer-events-none" />
-      <canvas ref={canvasRef} className="absolute inset-0 z-10" />
+      <canvas ref={noiseRef} className="absolute inset-0 z-0 pointer-events-none will-change-transform" />
+      <canvas ref={canvasRef} className="absolute inset-0 z-10 will-change-transform" />
 
       <div className="relative z-20 max-w-[1200px] mx-auto px-6 py-16 md:py-24 w-full">
         <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
@@ -209,7 +215,8 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
 
               <button
                 onClick={() => handleScrollTo(secondaryCTA.href)}
-                className="inline-flex items-center justify-center h-12 px-8 py-4 text-base md:text-lg font-semibold rounded-xl border-2 border-[var(--accent)] text-[var(--accent)] bg-transparent hover:bg-[var(--accent)] hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 active:scale-[0.98]"
+                className="inline-flex items-center justify-center h-12 px-8 py-4 text-base md:text-lg font-semibold rounded-xl border-2 border-[var(--accent)] text-[var(--accent)] bg-transparent hover:bg-[var(--accent)] hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2"
+                style={{ transform: 'translateZ(0)' }}
               >
                 {secondaryCTA.text}
               </button>
@@ -226,6 +233,8 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
                 height={400}
                 className="w-full h-full object-contain"
                 priority
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
           </div>
@@ -233,6 +242,10 @@ export const HeroHomepage: React.FC<HeroHomepageProps> = ({
       </div>
     </section>
   );
-};
+}
 
-export default HeroHomepage;
+const HeroHomepageComponent = React.memo(HeroHomepageComponentInner);
+HeroHomepageComponent.displayName = 'HeroHomepage';
+
+export const HeroHomepage = HeroHomepageComponent;
+export default HeroHomepageComponent;

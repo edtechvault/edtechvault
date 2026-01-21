@@ -1,12 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import HeroBadge from "@/components/ui/hero-badge";
-
-const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 interface HeroContentProps {
   title: string;
@@ -45,30 +42,21 @@ function HeroContent({
 
   return (
     <div className="flex flex-col space-y-4">
-      <motion.h1
-        className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-[var(--text-primary)]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease }}
+      <h1
+        className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-[var(--text-primary)] animate-fade-in"
       >
         {title}{" "}
         {titleHighlight && (
           <span className="text-[var(--primary)]">{titleHighlight}</span>
         )}
-      </motion.h1>
-      <motion.p
-        className="max-w-[42rem] leading-relaxed text-[var(--text-secondary)] text-lg sm:text-xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1, duration: 0.8, ease }}
+      </h1>
+      <p
+        className="max-w-[42rem] leading-relaxed text-[var(--text-secondary)] text-lg sm:text-xl animate-fade-in animation-delay-100"
       >
         {description}
-      </motion.p>
-      <motion.div
-        className="flex flex-col sm:flex-row gap-4 pt-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.8, ease }}
+      </p>
+      <div
+        className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in animation-delay-200"
       >
         {primaryAction && (
           <Link
@@ -96,7 +84,7 @@ function HeroContent({
             {secondaryAction.text}
           </Link>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }

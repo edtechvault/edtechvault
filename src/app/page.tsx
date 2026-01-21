@@ -1,8 +1,35 @@
-import { HeroHomepage } from '@/components/hero/HeroHomepage';
+import HeroHomepage from '@/components/hero/HeroHomepage';
 import { PricingTable } from '@/components/pricing/PricingTable';
-import { PortfolioInvitation } from '@/components/portfolio/PortfolioInvitation';
-import { SocialProofStrip } from '@/components/social-proof/SocialProofStrip';
+import dynamic from 'next/dynamic';
 import { Footer } from '@/components/layout/Footer';
+
+const PortfolioInvitation = dynamic(
+  () => import('@/components/portfolio/PortfolioInvitation'),
+  { 
+    loading: () => (
+      <div className="py-24">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="h-64 bg-gray-100 rounded-2xl animate-pulse" />
+        </div>
+      </div>
+    ),
+    ssr: true 
+  }
+);
+
+const SocialProofStrip = dynamic(
+  () => import('@/components/social-proof/SocialProofStrip'),
+  { 
+    loading: () => (
+      <div className="py-16">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="h-24 bg-gray-100 rounded-xl animate-pulse" />
+        </div>
+      </div>
+    ),
+    ssr: true 
+  }
+);
 
 // Content data from handoff
 const heroContent = {

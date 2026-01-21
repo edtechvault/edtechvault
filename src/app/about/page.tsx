@@ -1,9 +1,49 @@
 import type { Metadata } from 'next';
 import { HeroAbout } from '@/components/hero/HeroAbout';
-import { OriginStory } from '@/components/about/OriginStory';
-import { ProcessTimeline } from '@/components/about/ProcessTimeline';
-import { CredentialsGrid } from '@/components/about/CredentialsGrid';
+import dynamic from 'next/dynamic';
 import { Footer } from '@/components/layout/Footer';
+
+const OriginStory = dynamic(
+  () => import('@/components/about/OriginStory'),
+  { 
+    loading: () => (
+      <div className="py-24">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="h-96 bg-gray-100 rounded-2xl animate-pulse" />
+        </div>
+      </div>
+    ),
+    ssr: true 
+  }
+);
+
+const ProcessTimeline = dynamic(
+  () => import('@/components/about/ProcessTimeline'),
+  { 
+    loading: () => (
+      <div className="py-24">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="h-64 bg-gray-100 rounded-2xl animate-pulse" />
+        </div>
+      </div>
+    ),
+    ssr: true 
+  }
+);
+
+const CredentialsGrid = dynamic(
+  () => import('@/components/about/CredentialsGrid'),
+  { 
+    loading: () => (
+      <div className="py-24">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="h-96 bg-gray-100 rounded-2xl animate-pulse" />
+        </div>
+      </div>
+    ),
+    ssr: true 
+  }
+);
 
 export const metadata: Metadata = {
   title: 'About Leo Mahé - EdTechVault Designer & Developer',
