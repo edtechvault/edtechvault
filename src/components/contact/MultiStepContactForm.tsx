@@ -598,7 +598,7 @@ export const MultiStepContactForm: React.FC = () => {
                     {
                       value: 'custom',
                       label: 'Custom Quote',
-                      price: 'Let\'s Discuss',
+price: "Let's Discuss",
                       icon: '💬',
                       features: ['Tailored solution', 'Flexible timeline', 'Custom features']
                     }
