@@ -53,7 +53,7 @@ export const ContactOptions: React.FC<ContactOptionsProps> = ({ options }) => {
               <div className="relative text-center space-y-4">
                 <div className="text-5xl mb-4">{option.icon}</div>
                 <h3 className="font-heading font-semibold text-xl text-[var(--text-primary)]">{option.label}</h3>
-                <p className="text-[var(--text-secondary)] text-base leading-relaxed whitespace-pre-line">{option.description}</p>
+                <p className="text-gray-700 text-base leading-relaxed whitespace-pre-line">{option.description}</p>
                 
                 {option.cta.action === 'link' ? (
                   <Button variant="outline" size="medium" href={option.cta.target} className="w-full">

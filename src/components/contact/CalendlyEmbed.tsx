@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 interface CalendlyEmbedProps {
   heading: string;
@@ -9,12 +9,7 @@ interface CalendlyEmbedProps {
   height?: number;
 }
 
-export const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({
-  heading,
-  subheading,
-  calendlyUrl,
-  height = 700,
-}) => {
+function CalendlyWidget({ calendlyUrl, height }: { calendlyUrl: string; height: number }) {
   useEffect(() => {
     // Load Calendly widget script
     const script = document.createElement('script');
@@ -32,25 +27,42 @@ export const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({
   }, []);
 
   return (
+    <div 
+      className="calendly-inline-widget"
+      data-url={calendlyUrl}
+      style={{ minWidth: '320px', height: `${height}px` }}
+    />
+  );
+}
+
+export const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({
+  heading,
+  subheading,
+  calendlyUrl,
+  height = 700,
+}) => {
+  return (
     <section id="calendly" className="bg-[var(--secondary)] py-16 md:py-24">
       <div className="max-w-[900px] mx-auto px-6">
         <div className="text-center mb-8">
           <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-primary)] mb-4">
             {heading}
           </h2>
-          <p className="text-[var(--text-secondary)] text-lg">
+          <p className="text-gray-700 text-lg">
             {subheading}
           </p>
         </div>
         
-        <div 
-          className="bg-[var(--background-white)] rounded-2xl shadow-[var(--shadow-medium)] overflow-hidden"
-        >
-          <div 
-            className="calendly-inline-widget"
-            data-url={calendlyUrl}
-            style={{ minWidth: '320px', height: `${height}px` }}
-          />
+        <div className="bg-[var(--background-white)] rounded-2xl shadow-[var(--shadow-medium)] overflow-hidden">
+          <Suspense fallback={
+            <div className="w-full bg-gray-100 animate-pulse rounded-lg" style={{ height: `${height}px` }}>
+              <div className="flex items-center justify-center h-full">
+                <p className="text-gray-700">Loading calendar...</p>
+              </div>
+            </div>
+          }>
+            <CalendlyWidget calendlyUrl={calendlyUrl} height={height} />
+          </Suspense>
         </div>
       </div>
     </section>

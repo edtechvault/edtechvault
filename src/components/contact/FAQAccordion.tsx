@@ -61,8 +61,13 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                   </span>
                 </button>
 
-                <div className={`transition-all duration-200 overflow-hidden ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <p className="text-[var(--text-secondary)] text-base leading-relaxed mt-4 mb-6">
+                <div 
+                  id={`accordion-region-${item.id}`}
+                  role="region"
+                  aria-labelledby={`accordion-button-${item.id}`}
+                  className={`transition-all duration-200 overflow-hidden ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <p className="text-gray-700 text-base leading-relaxed mt-4 mb-6">
                     {item.answer}
                   </p>
                 </div>

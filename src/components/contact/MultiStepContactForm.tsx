@@ -188,8 +188,8 @@ export const MultiStepContactForm: React.FC = () => {
             <h3 className="font-heading font-semibold text-2xl text-[var(--text-primary)]">
               Message Sent!
             </h3>
-            <p className="text-[var(--text-secondary)] text-lg">
-              Thanks for reaching out! I&apos;ll get back to you within 24 hours.
+            <p className="text-gray-700 text-lg">
+              Thanks for reaching out! I'll get back to you within 24 hours.
             </p>
             <Button
               variant="outline"
@@ -295,7 +295,7 @@ export const MultiStepContactForm: React.FC = () => {
 
               <div className="form-group">
                 <label htmlFor="phone" className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                  Phone Number <span className="text-[var(--text-secondary)] text-xs">(Optional)</span>
+                  Phone Number <span className="text-gray-700 text-xs">(Optional)</span>
                 </label>
                 <input
                   type="tel"
@@ -515,7 +515,7 @@ export const MultiStepContactForm: React.FC = () => {
                       <span className="text-2xl">{option.icon}</span>
                       <div>
                         <div className="font-medium text-[var(--text-primary)]">{option.label}</div>
-                        <div className="text-sm text-[var(--text-secondary)]">{option.desc}</div>
+                <div className="text-sm text-gray-700">{option.desc}</div>
                       </div>
                     </label>
                   ))}
@@ -626,7 +626,7 @@ export const MultiStepContactForm: React.FC = () => {
                           <div className="font-semibold text-lg text-[var(--text-primary)]">{option.label}</div>
                           <div className="font-bold text-[var(--primary)]">
                             {option.price}
-                            {option.deposit && <span className="text-xs font-normal text-[var(--text-secondary)] ml-1">{option.deposit}</span>}
+                            {option.deposit && <span className="text-xs font-normal text-gray-700 ml-1">{option.deposit}</span>}
                           </div>
                         </div>
                         <ul className="space-y-1">

@@ -72,7 +72,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <div className="relative z-10 max-w-[600px] mx-auto px-6 text-center space-y-6">
           <div className="text-6xl">✅</div>
           <h2 className="font-heading font-semibold text-2xl md:text-3xl text-[var(--text-primary)]">Got it!</h2>
-          <p className="text-[var(--text-secondary)] text-lg">{successMessage}</p>
+          <p className="text-gray-700 text-lg">{successMessage}</p>
         </div>
       </section>
     );
@@ -172,7 +172,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             <Button variant="solid" size="large" type="submit" disabled={isSubmitting} loading={isSubmitting}>
               {submitButtonText}
             </Button>
-            <p className="text-[var(--text-secondary)] text-sm mt-4">* Required</p>
+            <p className="text-gray-700 text-sm mt-4">* Required</p>
           </div>
         </form>
       </div>

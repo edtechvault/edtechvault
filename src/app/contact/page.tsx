@@ -22,8 +22,8 @@ const FAQAccordion = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: 'Contact - Get Your Teaching Business Online',
-  description: 'Book a call, send a message, or email directly. Get your professional website for tutors, coaches, and teaching businesses built in 3-7 days.',
+  title: 'Contact - EdTechVault',
+  description: 'Get in touch to discuss your teaching business website. Book a discovery call or send a message. Same-day reply from Shanghai.',
 };
 
 // Content data from handoff
