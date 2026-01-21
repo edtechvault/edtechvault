@@ -1,14 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
 import { Button } from '../ui/Button';
 import { cn } from '@/lib/utils';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 interface FormData {
   // Personal Info
@@ -755,7 +750,7 @@ export const MultiStepContactForm: React.FC = () => {
                 onClick={handleBack}
                 disabled={isSubmitting}
               >
-                ← Back
+                Back
               </Button>
             ) : (
               <div />
@@ -771,7 +766,7 @@ export const MultiStepContactForm: React.FC = () => {
                 size="medium"
                 onClick={handleNext}
               >
-                Next →
+                Next
               </Button>
             ) : (
               <Button
@@ -780,7 +775,7 @@ export const MultiStepContactForm: React.FC = () => {
                 onClick={handleSubmit}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message →'}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             )}
           </div>

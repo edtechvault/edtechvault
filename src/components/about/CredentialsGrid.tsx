@@ -198,7 +198,7 @@ export const CredentialsGrid: React.FC<CredentialsGridProps> = ({
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--accent)] text-white rounded-xl font-semibold text-lg hover:bg-[var(--accent-dark)] transition-all duration-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] hover:-translate-y-0.5"
             >
-              Let&#39;s Talk About Your Project →
+              Let&#39;s Talk About Your Project
             </a>
           </div>
         </div>

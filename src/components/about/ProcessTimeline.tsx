@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Stepper,
   StepperItem,
@@ -8,7 +8,6 @@ import {
   StepperIndicator,
   StepperSeparator,
   StepperTitle,
-  StepperDescription,
   StepperNav,
   StepperPanel,
   StepperContent,
@@ -49,7 +48,7 @@ const packages: Package[] = [
       },
       {
         day: 'Day 1',
-        title: 'You Send Content → I Design',
+        title: 'You Send Content to I Design',
         description: 'Share your bio, photos, and pricing',
         details: 'I create a clean 1 page design showcasing your expertise. Mobile-responsive, professional, ready to attract students.',
       },
@@ -155,22 +154,31 @@ const packages: Package[] = [
 ];
 
 export const ProcessTimeline: React.FC = () => {
-  const [selectedPackage, setSelectedPackage] = useState<Package>(packages[1]); // Default to Local Visibility
+  const [selectedPackage, setSelectedPackage] = useState<Package>(packages[1]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Reset active step when package changes
-  React.useEffect(() => {
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handlePackageChange = (pkg: Package) => {
+    setSelectedPackage(pkg);
     setActiveStep(1);
-  }, [selectedPackage.id]);
+    setIsDropdownOpen(false);
+  };
 
   return (
-    <section className="relative bg-[var(--background)] py-16 md:py-24 lg:py-32">
+    <section className="relative bg-[var(--background)] py-16 md:py-24 lg:py-32 overflow-hidden">
       <BackgroundEllipses sections={['process']} />
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-        {/* Section Header Removed as requested */}
-
-        {/* Beautiful Package Selector Dropdown */}
         <div className="max-w-[600px] mx-auto mb-12">
           <label className="block text-sm font-medium text-[var(--text-secondary)] mb-3">
             Select Your Package
@@ -207,16 +215,12 @@ export const ProcessTimeline: React.FC = () => {
               />
             </button>
 
-            {/* Dropdown Options */}
             {isDropdownOpen && (
               <div className="absolute z-10 w-full mt-2 bg-[var(--background-white)] border-2 border-[var(--border)] rounded-xl shadow-[var(--shadow-strong)] overflow-hidden">
                 {packages.map((pkg) => (
                   <button
                     key={pkg.id}
-                    onClick={() => {
-                      setSelectedPackage(pkg);
-                      setIsDropdownOpen(false);
-                    }}
+                    onClick={() => handlePackageChange(pkg)}
                     className={`w-full px-6 py-4 flex items-center gap-4 hover:bg-[var(--secondary)] transition-colors border-b border-[var(--border)] last:border-b-0 ${
                       selectedPackage.id === pkg.id ? 'bg-[var(--secondary)]' : ''
                     }`}
@@ -249,33 +253,32 @@ export const ProcessTimeline: React.FC = () => {
           </div>
         </div>
 
-        {/* Stepper Timeline */}
         <div className="max-w-[900px] mx-auto">
           <Stepper
             value={activeStep}
             onValueChange={setActiveStep}
-            orientation="horizontal"
-            className="md:orientation-horizontal"
+            orientation={isMobile ? 'vertical' : 'horizontal'}
             indicators={{
               completed: <Check className="w-4 h-4" />,
             }}
           >
-            {/* Desktop: Horizontal | Mobile: Vertical */}
-            <StepperNav className="mb-8 md:mb-12 flex-col md:flex-row gap-0">
+            <StepperNav className="mb-8 md:mb-12">
               {selectedPackage.steps.map((step, index) => (
                 <React.Fragment key={index}>
                   <StepperItem
                     step={index + 1}
                     completed={activeStep > index + 1}
-                    className="w-full md:w-auto"
+                    className="flex-1"
                   >
-                    <StepperTrigger className="w-full md:w-auto py-4 md:py-0 px-0">
-                      <div className="flex items-start md:items-center md:flex-col gap-3 md:gap-2 w-full">
+                    <StepperTrigger>
+                      <div className="flex items-start md:items-center md:flex-col gap-3 md:gap-2">
                         <StepperIndicator className="shrink-0 mt-1 md:mt-0">
                           {index + 1}
                         </StepperIndicator>
                         <div className="flex-1 md:flex-none text-left md:text-center">
-                          <StepperTitle className="mb-1">{step.title}</StepperTitle>
+                          <StepperTitle className="mb-1 text-sm md:text-base">
+                            {step.title}
+                          </StepperTitle>
                           <div className="text-xs font-medium text-[var(--accent)]">
                             {step.day}
                           </div>
@@ -284,8 +287,8 @@ export const ProcessTimeline: React.FC = () => {
                     </StepperTrigger>
                   </StepperItem>
 
-                  {index < selectedPackage.steps.length - 1 && (
-                    <div className="hidden md:flex items-center px-2">
+                  {index < selectedPackage.steps.length - 1 && !isMobile && (
+                    <div className="flex items-center px-2">
                       <StepperSeparator />
                     </div>
                   )}
@@ -293,7 +296,6 @@ export const ProcessTimeline: React.FC = () => {
               ))}
             </StepperNav>
 
-            {/* Step Content Panels */}
             <StepperPanel className="mt-8">
               {selectedPackage.steps.map((step, index) => (
                 <StepperContent key={index} value={index + 1}>
@@ -302,12 +304,12 @@ export const ProcessTimeline: React.FC = () => {
                       <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--primary)] text-white font-bold text-lg shrink-0">
                         {index + 1}
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                           <h3 className="font-heading font-semibold text-xl md:text-2xl text-[var(--text-primary)]">
                             {step.title}
                           </h3>
-                          <span className="text-sm font-semibold text-[var(--accent)] bg-[var(--accent)]/10 px-3 py-1 rounded-full">
+                          <span className="text-sm font-semibold text-[var(--accent)] bg-[var(--accent)]/10 px-3 py-1 rounded-full self-start">
                             {step.day}
                           </span>
                         </div>
@@ -317,7 +319,7 @@ export const ProcessTimeline: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="pl-16 md:pl-16">
+                    <div className="pl-0 sm:pl-16 md:pl-16">
                       <div className="bg-[var(--secondary)] rounded-xl p-4 md:p-6 border-l-4 border-[var(--primary)]">
                         <p className="text-[var(--text-secondary)] leading-relaxed">
                           {step.details}
@@ -325,14 +327,13 @@ export const ProcessTimeline: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Navigation Buttons */}
-                    <div className="flex items-center justify-between mt-6 pl-16">
+                    <div className="flex items-center justify-between mt-6 pl-0 sm:pl-16">
                       <button
                         onClick={() => setActiveStep(Math.max(1, activeStep - 1))}
                         disabled={activeStep === 1}
                         className="text-[var(--text-secondary)] hover:text-[var(--primary)] font-medium text-sm disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                       >
-                        ← Previous
+                        Previous
                       </button>
                       <button
                         onClick={() =>
@@ -341,7 +342,7 @@ export const ProcessTimeline: React.FC = () => {
                         disabled={activeStep === selectedPackage.steps.length}
                         className="text-[var(--primary)] hover:text-[var(--primary-dark)] font-medium text-sm disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                       >
-                        Next →
+                        Next
                       </button>
                     </div>
                   </div>
@@ -351,17 +352,17 @@ export const ProcessTimeline: React.FC = () => {
           </Stepper>
         </div>
 
-        {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="inline-block bg-[var(--secondary)] rounded-2xl p-8 md:p-10 shadow-[var(--shadow-medium)]">
+          <div className="inline-block bg-[var(--secondary)] rounded-2xl p-8 md:p-10 shadow-[var(--shadow-medium)] max-w-[600px] w-full">
             <p className="text-[var(--text-secondary)] text-lg mb-4">
               Ready to get started with <strong className="text-[var(--text-primary)]">{selectedPackage.name}</strong>?
             </p>
+            
             <a
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--accent)] text-white rounded-xl font-semibold text-lg hover:bg-[var(--accent-dark)] transition-all duration-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] hover:-translate-y-0.5"
             >
-              Book Discovery Call →
+              Book Discovery Call
             </a>
             <p className="text-sm text-[var(--text-secondary)] mt-3">
               Free 15-20 minute consultation • No pressure
